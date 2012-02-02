@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
+		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
+		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
+		FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703D14DB2CA500BF7020 /* Credits.rtf */; };
+		FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704114DB2CA500BF7020 /* AppDelegate.m */; };
+		FAEE704514DB2CA600BF7020 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE704314DB2CA600BF7020 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FAEE703114DB2CA500BF7020 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FAEE703214DB2CA500BF7020 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FAEE703314DB2CA500BF7020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */ = {isa = PBXFileReference; path = "SymSteam-Info.plist"; sourceTree = "<group>"; };
+		FAEE703814DB2CA500BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAEE703A14DB2CA500BF7020 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAEE703C14DB2CA500BF7020 /* SymSteam-Prefix.pch */ = {isa = PBXFileReference; path = "SymSteam-Prefix.pch"; sourceTree = "<group>"; };
+		FAEE703E14DB2CA500BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FAEE704014DB2CA500BF7020 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAEE704114DB2CA500BF7020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAEE704414DB2CA600BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAEE702714DB2CA500BF7020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAEE701F14DB2CA500BF7020 = {
+			isa = PBXGroup;
+			children = (
+				FAEE703414DB2CA500BF7020 /* SymSteam */,
+				FAEE702D14DB2CA500BF7020 /* Frameworks */,
+				FAEE702B14DB2CA500BF7020 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAEE702B14DB2CA500BF7020 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE702A14DB2CA500BF7020 /* SymSteam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
+				FAEE703014DB2CA500BF7020 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAEE703014DB2CA500BF7020 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE703114DB2CA500BF7020 /* AppKit.framework */,
+				FAEE703214DB2CA500BF7020 /* CoreData.framework */,
+				FAEE703314DB2CA500BF7020 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
+				FAEE704114DB2CA500BF7020 /* AppDelegate.m */,
+				FAEE704314DB2CA600BF7020 /* MainMenu.xib */,
+				FAEE703514DB2CA500BF7020 /* Supporting Files */,
+			);
+			path = SymSteam;
+			sourceTree = "<group>";
+		};
+		FAEE703514DB2CA500BF7020 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */,
+				FAEE703714DB2CA500BF7020 /* InfoPlist.strings */,
+				FAEE703A14DB2CA500BF7020 /* main.m */,
+				FAEE703C14DB2CA500BF7020 /* SymSteam-Prefix.pch */,
+				FAEE703D14DB2CA500BF7020 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAEE702914DB2CA500BF7020 /* SymSteam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAEE704814DB2CA600BF7020 /* Build configuration list for PBXNativeTarget "SymSteam" */;
+			buildPhases = (
+				FAEE702614DB2CA500BF7020 /* Sources */,
+				FAEE702714DB2CA500BF7020 /* Frameworks */,
+				FAEE702814DB2CA500BF7020 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SymSteam;
+			productName = SymSteam;
+			productReference = FAEE702A14DB2CA500BF7020 /* SymSteam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAEE702114DB2CA500BF7020 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = FAEE702414DB2CA500BF7020 /* Build configuration list for PBXProject "SymSteam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAEE701F14DB2CA500BF7020;
+			productRefGroup = FAEE702B14DB2CA500BF7020 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAEE702914DB2CA500BF7020 /* SymSteam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAEE702814DB2CA500BF7020 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */,
+				FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */,
+				FAEE704514DB2CA600BF7020 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAEE702614DB2CA500BF7020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEE703B14DB2CA500BF7020 /* main.m in Sources */,
+				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAEE703714DB2CA500BF7020 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEE703814DB2CA500BF7020 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FAEE703D14DB2CA500BF7020 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEE703E14DB2CA500BF7020 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FAEE704314DB2CA600BF7020 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEE704414DB2CA600BF7020 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAEE704614DB2CA600BF7020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FAEE704714DB2CA600BF7020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FAEE704914DB2CA600BF7020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
+				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAEE704A14DB2CA600BF7020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
+				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAEE702414DB2CA500BF7020 /* Build configuration list for PBXProject "SymSteam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAEE704614DB2CA600BF7020 /* Debug */,
+				FAEE704714DB2CA600BF7020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAEE704814DB2CA600BF7020 /* Build configuration list for PBXNativeTarget "SymSteam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAEE704914DB2CA600BF7020 /* Debug */,
+				FAEE704A14DB2CA600BF7020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAEE702114DB2CA500BF7020 /* Project object */;
+}

@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "AppController.h"
+#import "SetupWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (strong) AppController *aController;
+@property (strong) SetupWindowController *setupController;
 
 @end

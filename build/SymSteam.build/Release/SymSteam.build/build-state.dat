@@ -1,0 +1,235 @@
+TSymSteam
+v4
+r1
+cCheck dependencies
+cProcessInfoPlistFile "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Info.plist" SymSteam/SymSteam-Info.plist
+cProcessPCH /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth SymSteam/SymSteam-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+
+N/Developer/SDKs/MacOSX10.7.sdk
+c000000004EF9935100000000000000EE
+t1324979025
+s238
+
+N/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004E7AD7020000000000002470
+t1316673282
+s9328
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.m
+c000000004F2C493B0000000000000252
+t1328302395
+s594
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.m
+c000000004F2AFBCE00000000000005A8
+t1328217038
+s1448
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../SetupWindow.xib
+c000000004F2C4946000000000000C992
+t1328302406
+s51602
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m
+c000000004F2E38D40000000000000806
+t1328429268
+s2054
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/SymSteam-Prefix.pch
+c000000004F2AF5250000000000000093
+t1328215333
+s147
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/en.lproj/Credits.rtf
+c000000004F2AF52500000000000001B4
+t1328215333
+s436
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/en.lproj/InfoPlist.strings
+c000000004F2AF525000000000000002D
+t1328215333
+s45
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/en.lproj/MainMenu.xib
+c000000004F2C4A380000000000022707
+t1328302648
+s141063
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m
+c000000004F2AF5250000000000000103
+t1328215333
+s259
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app.dSYM
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Info.plist
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/MacOS/SymSteam
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Resources/SetupWindow.nib
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Resources/en.lproj/Credits.rtf
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Resources/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Resources/en.lproj/MainMenu.nib
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o
+t2
+s0
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SymSteam.LinkFileList
+c000000004F2E38E000000000000001D9
+t1328429280
+s473
+
+N/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth
+t2
+s0
+
+NSymSteam/SymSteam-Info.plist
+c000000004F2C4A730000000000000476
+t1328302707
+s1142
+
+CCheck dependencies
+r0
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesfc1bc46070deb441^3e3df26070deb441^---0#1#0#--18"Check dependencies36"3904739B-98A6-4270-9DC3-1A1657FE3E94-
+
+CCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s350122082.743959
+e350122082.972059
+r1
+xCompileC
+xbuild/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o
+x/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection72"Compile /Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.meba8be6270deb441^1bd6f86270deb441^---0#0#0#-19%DVTDocumentLocation2@82"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/../AppController.m0000000000000000^2238"CompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o SymSteam/../AppController.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-generated-files.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-own-target-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-all-target-headers.hmap" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-project-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/include" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources/x86_64" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources" "-F/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release" -include /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch -MMD -MT dependencies -MF "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.d" -c "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../AppController.m" -o "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppController.o"36"56E88BB4-12B8-48AF-82FE-F6B2D5BB27FE-
+
+CCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s350122082.743979
+e350122082.871266
+r0
+xCompileC
+xbuild/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o
+x/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m:23:35: error: receiver type 'NSWindowController' for instance message does not declare a method with selector 'initWithNibName:' [4]
+o         NSWindowController *wc = [[NSWindowController alloc] initWithNibName:@"SetupWindow"];
+o                                   ^
+o1 error generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m4fb1be6270deb441^6e16df6270deb441^-344"/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m:23:35: error: receiver type 'NSWindowController' for instance message does not declare a method with selector 'initWithNibName:' [4]         NSWindowController *wc = [[NSWindowController alloc] initWithNibName:@"SetupWindow"];                                   ^1 error generated.1(21%IDEActivityLogMessage2@114"Receiver type 'NSWindowController' for instance message does not declare a method with selector 'initWithNibName:'-350122082#0#193#-2#-23%DVTTextDocumentLocation3@77"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/AppDelegate.m0000000000000000^22#34#22#34#18446744073709551615#0#34"Automatic Reference Counting Issue--0#0#0#-19%DVTDocumentLocation4@77"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/AppDelegate.m0000000000000000^2222"CompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o SymSteam/AppDelegate.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-generated-files.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-own-target-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-all-target-headers.hmap" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-project-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/include" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources/x86_64" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources" "-F/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release" -include /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch -MMD -MT dependencies -MF "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.d" -c "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/AppDelegate.m" -o "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/AppDelegate.o"36"1D2556BB-9561-4AE8-B385-9495F9E19DC8-
+
+CCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s350122082.743991
+e350122082.972103
+r1
+xCompileC
+xbuild/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o
+x/Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.mb1a6be6270deb441^4ce2f86270deb441^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SetupWindowController.m0000000000000000^2254"CompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o SetupWindowController.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-generated-files.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-own-target-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-all-target-headers.hmap" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-project-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/include" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources/x86_64" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources" "-F/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release" -include /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch -MMD -MT dependencies -MF "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.d" -c "/Users/alex/Dropbox/Mac Dev/SymSteam/SetupWindowController.m" -o "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/SetupWindowController.o"36"02FF4D09-77EE-444F-BEA8-A7414838F313-
+
+CCompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m" normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s350122082.743901
+e350122082.972153
+r1
+xCompileC
+xbuild/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o
+x/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Compile /Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m72a5be6270deb441^a3e9f86270deb441^---0#0#0#-19%DVTDocumentLocation2@70"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/main.m0000000000000000^2187"CompileC build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o SymSteam/main.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-generated-files.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-own-target-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-all-target-headers.hmap" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-project-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/include" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources/x86_64" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources" "-F/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release" -include /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch -MMD -MT dependencies -MF "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.d" -c "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/main.m" -o "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/Objects-normal/x86_64/main.o"36"5C42BB0C-F84C-4F72-BC53-24BF334C306B-
+
+CCompileXIB "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/../SetupWindow.xib"
+r0
+
+CCompileXIB "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/en.lproj/MainMenu.xib"
+r0
+
+CCopyStringsFile "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Resources/en.lproj/InfoPlist.strings" SymSteam/en.lproj/InfoPlist.strings
+r0
+
+CCpResource SymSteam/en.lproj/Credits.rtf build/Release/SymSteam.app/Contents/Resources/en.lproj/Credits.rtf
+r0
+
+CGenerateDSYMFile "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app.dSYM" "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/MacOS/SymSteam"
+r0
+
+CLd "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/MacOS/SymSteam" normal x86_64
+r0
+
+CProcessInfoPlistFile "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Info.plist" SymSteam/SymSteam-Info.plist
+s350122080.978096
+e350122080.993215
+r1
+xProcessInfoPlistFile
+x/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Info.plist
+xSymSteam/SymSteam-Info.plist
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Process SymSteam/SymSteam-Info.plist6addfa6070deb441^f641fe6070deb441^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/SymSteam-Info.plist0000000000000000^423"ProcessInfoPlistFile build/Release/SymSteam.app/Contents/Info.plist SymSteam/SymSteam-Info.plist    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    builtin-infoPlistUtility SymSteam/SymSteam-Info.plist -genpkginfo "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/PkgInfo" -expandbuildsettings -platform macosx -o "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app/Contents/Info.plist"36"9C133246-57B2-4A02-AACC-111619D9E785-
+
+CProcessPCH /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth SymSteam/SymSteam-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s350122081.001559
+e350122082.736345
+r1
+xProcessPCH
+x/var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth
+xSymSteam/SymSteam-Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection39"Precompile SymSteam/SymSteam-Prefix.pchbcb1006170deb441^a181bc6270deb441^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/alex/Dropbox/Mac%20Dev/SymSteam/SymSteam/SymSteam-Prefix.pch0000000000000000^2244"ProcessPCH /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth SymSteam/SymSteam-Prefix.pch normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/alex/Dropbox/Mac Dev/SymSteam"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c-header -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -fvisibility=hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-generated-files.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-own-target-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-all-target-headers.hmap" -iquote "/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/SymSteam-project-headers.hmap" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/include" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources/x86_64" "-I/Users/alex/Dropbox/Mac Dev/SymSteam/build/SymSteam.build/Release/SymSteam.build/DerivedSources" "-F/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release" -c "/Users/alex/Dropbox/Mac Dev/SymSteam/SymSteam/SymSteam-Prefix.pch" -o /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/gq/9vsl_3955w90tv4b8zm381p80000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/SymSteam-Prefix-aqqyifwbpnqgeublykremtlxwplw/SymSteam-Prefix.pch.d36"8AD7023E-C2E1-4121-B04B-0B14CCA501BC-
+
+CTouch "/Users/alex/Dropbox/Mac Dev/SymSteam/build/Release/SymSteam.app"
+r0
+

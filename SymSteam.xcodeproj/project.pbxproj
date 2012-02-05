@@ -7,28 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
+		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
+		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
 		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
 		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
 		FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703D14DB2CA500BF7020 /* Credits.rtf */; };
 		FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704114DB2CA500BF7020 /* AppDelegate.m */; };
-		FAEE704514DB2CA600BF7020 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEE704314DB2CA600BF7020 /* MainMenu.xib */; };
+		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupWindowController.h; sourceTree = "<group>"; };
+		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupWindowController.m; sourceTree = "<group>"; };
+		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
+		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAEE703114DB2CA500BF7020 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FAEE703214DB2CA500BF7020 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAEE703314DB2CA500BF7020 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */ = {isa = PBXFileReference; path = "SymSteam-Info.plist"; sourceTree = "<group>"; };
+		FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SymSteam-Info.plist"; sourceTree = "<group>"; };
 		FAEE703814DB2CA500BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAEE703A14DB2CA500BF7020 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAEE703C14DB2CA500BF7020 /* SymSteam-Prefix.pch */ = {isa = PBXFileReference; path = "SymSteam-Prefix.pch"; sourceTree = "<group>"; };
+		FAEE703C14DB2CA500BF7020 /* SymSteam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SymSteam-Prefix.pch"; sourceTree = "<group>"; };
 		FAEE703E14DB2CA500BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FAEE704014DB2CA500BF7020 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAEE704014DB2CA500BF7020 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAEE704114DB2CA500BF7020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAEE704414DB2CA600BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FAEE704B14DB2CAD00BF7020 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ../AppController.h; sourceTree = "<group>"; };
+		FAEE704C14DB2CAD00BF7020 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = ../AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,8 @@
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
+				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
+				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 				FAEE703414DB2CA500BF7020 /* SymSteam */,
 				FAEE702D14DB2CA500BF7020 /* Frameworks */,
 				FAEE702B14DB2CA500BF7020 /* Products */,
@@ -82,9 +92,12 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
+				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
+				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
+				FAEE704B14DB2CAD00BF7020 /* AppController.h */,
+				FAEE704C14DB2CAD00BF7020 /* AppController.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
 				FAEE704114DB2CA500BF7020 /* AppDelegate.m */,
-				FAEE704314DB2CA600BF7020 /* MainMenu.xib */,
 				FAEE703514DB2CA500BF7020 /* Supporting Files */,
 			);
 			path = SymSteam;
@@ -154,7 +167,8 @@
 			files = (
 				FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */,
 				FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */,
-				FAEE704514DB2CA600BF7020 /* MainMenu.xib in Resources */,
+				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
+				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,12 +181,22 @@
 			files = (
 				FAEE703B14DB2CA500BF7020 /* main.m in Sources */,
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
+				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
+				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FABBF7BB14DC81AD0060F879 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABBF7BC14DC81AD0060F879 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		FAEE703714DB2CA500BF7020 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -187,14 +211,6 @@
 				FAEE703E14DB2CA500BF7020 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		FAEE704314DB2CA600BF7020 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAEE704414DB2CA600BF7020 /* en */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -288,6 +304,7 @@
 				FAEE704A14DB2CA600BF7020 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

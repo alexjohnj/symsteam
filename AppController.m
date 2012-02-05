@@ -135,15 +135,15 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 
 -(BOOL)scanDriveForSteamAppsFolder{
     NSFileManager *fManager = [[NSFileManager alloc] init];
+        
+    BOOL steamAppsFound = NO;
     
-    NSString *filePath;
-    
-    for (filePath in [fManager enumeratorAtPath:self.driveURL.path]) {
+    for (NSString *filePath in [fManager enumeratorAtPath:self.driveURL.path]) {
         if ([filePath.lastPathComponent isEqualToString:@"SteamApps"]){
-            NSLog(@"Found it");
-            return YES;
+            steamAppsFound = YES;
+            break;
         }
     }
-    return NO;
+    return steamAppsFound;
 }
 @end

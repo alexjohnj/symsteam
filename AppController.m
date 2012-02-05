@@ -33,8 +33,9 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 }
 
 -(void)didUnmount:(NSNotification *)aNotification{
+    NSLog(@"Drive unmounted");
     NSFileManager *fmanager = [[NSFileManager alloc] init];
-    if(self.steamDriveIsConnected == NO || [fmanager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath]])
+    if(self.steamDriveIsConnected == NO && [fmanager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath]])
         return;
     else{
         NSError *moveSymError;
@@ -55,6 +56,7 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 }
 
 -(void)didMount:(NSNotification *)aNotification{
+    NSLog(@"Drive mounted");
     if(self.steamDriveIsConnected == YES){
         return;
     }

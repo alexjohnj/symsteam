@@ -1,6 +1,6 @@
 ## What is SymSteam
 
-SymSteam is for all you Mac SSD owners who like to play games (via Steam) on their computer too. Steam stores its games in a folder called SteamApps. Since this folder can get pretty big, people with SSDs like to put this folder on a external HDD and create a symbolic link to it where the folder used to be on the SSD. This is awesome for big games, but smaller, puzzle like games will be unplayable if you don't have your HDD on you. These are suited to being stored on your SSD since they're fairly small and lightweight. SymSteam manages to SteamApps folders. One of them is actually the symbolic link to your HDD's SteamApps folder, the other is a SteamApps folder stored on your local hard drive for smaller games. When a drive is plugged in, the local SteamApps folder is renamed to something else (like SteamAppsLoc) and the symbolic link is renamed to SteamApps, so you can play games off your HDD. When the HDD is unplugged, the symbolic link is renamed to something like SteamAppsSymb and the local SteamApps folder is renamed to SteamApps, so you can play games off of your internal SSD. It's pretty simple and can be quite handy. 
+SymSteam is for all you Mac SSD owners who like to play games (via Steam) on their computer too. Steam stores its games in a folder called SteamApps. Since this folder can get pretty big, people with SSDs like to put this folder on a external HDD and create a symbolic link to it where the folder used to be on the SSD. This is awesome for big games, but smaller, puzzle like games will be unplayable if you don't have your HDD on you. These are suited to being stored on your SSD since they're fairly small and lightweight. SymSteam manages two SteamApps folders. One of them is actually the symbolic link to your HDD's SteamApps folder, the other is a SteamApps folder stored on your local hard drive for smaller games. When a drive is plugged in, the local SteamApps folder is renamed to something else (like SteamAppsLoc) and the symbolic link is renamed to SteamApps, so you can play games off your HDD. When the HDD is unplugged, the symbolic link is renamed to something like SteamAppsSymb and the local SteamApps folder is renamed to SteamApps, so you can play games off of your internal SSD. It's pretty simple and can be quite handy. 
 
 ## Setup
 
@@ -33,7 +33,7 @@ Find a bug? Post it on the issues page.
 
 - Add the ability to specify what drive to scan so that SymSteam doesn't scan *every* drive you plug in.
 - Add a preferences window so you can change the folder locations. 
-- Add Growl notifications so you can get an idea of what SymbSteam is doing when a drive is plugged in. 
+- Add Growl notifications so you can get an idea of what SymSteam is doing when a drive is plugged in. 
 - Add autoupdate.
 - Test
 - Fix bugs

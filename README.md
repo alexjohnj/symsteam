@@ -27,12 +27,12 @@ Find a bug? Post it on the issues page.
 
 - If your hard drive has a lot of files on it, it will take a while for SymSteam to detect the SteamApps folder and hence rename the symbolic link. 
 - There's no way of knowing what SymSteam is doing. 
-- There's no (easy) way to change the paths to the local SteamApps folder and the symbolic link after the first run. To change them, delete the SymSteam plist file. 
+- <del>There's no (easy) way to change the paths to the local SteamApps folder and the symbolic link after the first run. To change them, delete the SymSteam plist file. </del> Added a preferences window in 0.1.5 that allows you to change them.
 
 ## To Do
 
 - Add the ability to specify what drive to scan so that SymSteam doesn't scan *every* drive you plug in.
-- Add a preferences window so you can change the folder locations. 
+- Add a preferences window so you can change the folder locations. ✓
 - Add Growl notifications so you can get an idea of what SymSteam is doing when a drive is plugged in. 
 - Add autoupdate.
 - Test

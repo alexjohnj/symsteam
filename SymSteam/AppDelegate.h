@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "AppController.h"
 #import "SetupWindowController.h"
+#import "PreferencesController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (strong) AppController *aController;
 @property (strong) SetupWindowController *setupController;
+@property (strong) PreferencesController *prefController;
 
 @end

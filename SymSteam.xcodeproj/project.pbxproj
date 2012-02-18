@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
+		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
+		FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89765514EBACA30008620D /* PreferencesWindow.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
 		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
@@ -22,6 +24,9 @@
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
+		FA89765114EBAC960008620D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		FA89765514EBACA30008620D /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -92,6 +97,9 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
+				FA89765114EBAC960008620D /* PreferencesController.h */,
+				FA89765214EBAC960008620D /* PreferencesController.m */,
+				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
 				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
 				FAEE704B14DB2CAD00BF7020 /* AppController.h */,
@@ -169,6 +177,7 @@
 				FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */,
 				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
+				FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +192,7 @@
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
 				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
+				FA89765314EBAC960008620D /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

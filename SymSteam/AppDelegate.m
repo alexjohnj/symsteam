@@ -10,18 +10,7 @@
 
 @implementation AppDelegate
 
-@synthesize aController, setupController;
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
-    if(setupIsComplete == NO){
-        setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
-        [self.setupController showWindow:self];
-    }
-    
-    [self.aController startWatchingDrives];
-}
+@synthesize aController, setupController, prefController;
 
 -(id)init{
     self = [super init];
@@ -30,6 +19,25 @@
     }
     
     return self;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    if(setupIsComplete == NO){
+        setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
+        [self.setupController showWindow:self];
+    }
+        
+    [self.aController startWatchingDrives];
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
+    if(self.prefController == nil)
+        self.prefController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesWindow"];
+    [self.prefController showWindow:self];
+    
+    return YES;
 }
 
 +(void)initialize{
@@ -52,5 +60,4 @@
     
     [uDefaults registerDefaults:defaultValues];
 }
-
 @end

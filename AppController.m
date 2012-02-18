@@ -7,7 +7,6 @@
 //
 
 #import "AppController.h"
-
 static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
 static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 
@@ -52,8 +51,8 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
             return;
         }
         else{
-        [self.connectedDrives removeObjectForKey:[[aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey]path]]; //get rid of the drive from the dictionary
-        return;
+            [self.connectedDrives removeObjectForKey:[[aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey]path]]; //get rid of the drive from the dictionary
+            return;
         }
     }
     
@@ -72,6 +71,13 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
     if(self.steamDriveIsConnected == YES)
         self.steamDriveIsConnected = NO;
     [self.connectedDrives removeObjectForKey:[[aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey]path]]; //remove the drive from our list of drives
+    [GrowlApplicationBridge notifyWithTitle:@"SteamApps folder has changed"
+                                description:@"Succesfully made the local SteamApps folder the primary one" 
+                           notificationName:@"steamAppsChanged"
+                                   iconData:nil
+                                   priority:0
+                                   isSticky:NO
+                               clickContext:nil];
 }
 
 -(void)didMount:(NSNotification *)aNotification{
@@ -92,7 +98,22 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
     
     self.driveURL = [aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey];
     
+    [GrowlApplicationBridge notifyWithTitle:@"Scanning Drive"
+                                description:@"Scanning the connected drive for a SteamApps folder"
+                           notificationName:@"driveScanBegin"
+                                   iconData:nil
+                                   priority:0
+                                   isSticky:NO
+                               clickContext:nil];
+    
     if(![self scanDriveForSteamAppsFolder]){ //scan for our SteamApps folder
+        [GrowlApplicationBridge notifyWithTitle:@"No Steam Apps Folder Found"
+                                    description:@"Nothing's changed"
+                               notificationName:@"driveScanFailure"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:nil];
         NSLog(@"No steam apps folder found");
         self.driveURL = nil;
         return;
@@ -111,7 +132,7 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
         if([fManager fileExistsAtPath:self.steamAppsPath] && [fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath]] == NO){ //check that our steam apps file exists and our local folder doesn't exist
             NSError *moveLocalError;
             if(![fManager moveItemAtPath:self.steamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] error:&moveLocalError]){ //rename current steam apps to steam local, 
-                NSLog(@"80 - Error moving item at path %@ to path %@ with error %@", self.steamAppsPath, [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath], [moveLocalError localizedDescription]);
+                NSLog(@"Error moving item at path %@ to path %@ with error %@", self.steamAppsPath, [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath], [moveLocalError localizedDescription]);
                 
                 self.steamDriveIsConnected = NO;
                 return;
@@ -130,12 +151,20 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
         self.driveURL = nil;
     }
     
+    [GrowlApplicationBridge notifyWithTitle:@"SteamApps folder changed"
+                                description:@"Succesfully made the symbolic SteamApps folder the primary one"
+                           notificationName:@"steamAppsChanged"
+                                   iconData:nil
+                                   priority:0
+                                   isSticky:NO
+                               clickContext:nil];
+    
     NSLog(@"Setup completed succesfully.");
 }
 
 -(BOOL)scanDriveForSteamAppsFolder{
     NSFileManager *fManager = [[NSFileManager alloc] init];
-        
+    
     BOOL steamAppsFound = NO;
     
     for (NSString *filePath in [fManager enumeratorAtPath:self.driveURL.path]) {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
+		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
 		FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89765514EBACA30008620D /* PreferencesWindow.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
@@ -21,10 +23,24 @@
 		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA871C1314F00CE3009F5268 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
+		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		FA89765114EBAC960008620D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		FA89765514EBACA30008620D /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
@@ -118,6 +134,7 @@
 		FAEE703514DB2CA500BF7020 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */,
 				FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */,
 				FAEE703714DB2CA500BF7020 /* InfoPlist.strings */,
 				FAEE703A14DB2CA500BF7020 /* main.m */,
@@ -137,6 +154,7 @@
 				FAEE702614DB2CA500BF7020 /* Sources */,
 				FAEE702714DB2CA500BF7020 /* Frameworks */,
 				FAEE702814DB2CA500BF7020 /* Resources */,
+				FA871C1314F00CE3009F5268 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -182,6 +200,7 @@
 				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
 				FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */,
+				FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

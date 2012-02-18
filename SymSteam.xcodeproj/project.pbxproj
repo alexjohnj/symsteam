@@ -12,6 +12,7 @@
 		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
 		FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89765514EBACA30008620D /* PreferencesWindow.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
+		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
 		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
 		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
@@ -28,6 +29,7 @@
 		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		FA89765514EBACA30008620D /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAEE703114DB2CA500BF7020 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -50,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
+				FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +81,7 @@
 		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FADB5B0314F0089300739ED3 /* Growl.framework */,
 				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
 				FAEE703014DB2CA500BF7020 /* Other Frameworks */,
 			);
@@ -276,6 +280,10 @@
 		FAEE704914DB2CA600BF7020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
 				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";
@@ -287,6 +295,10 @@
 		FAEE704A14DB2CA600BF7020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
 				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";

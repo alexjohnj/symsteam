@@ -171,7 +171,7 @@
 		FAEE702114DB2CA500BF7020 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = FAEE702414DB2CA500BF7020 /* Build configuration list for PBXProject "SymSteam" */;
 			compatibilityVersion = "Xcode 3.2";

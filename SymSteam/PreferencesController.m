@@ -68,4 +68,13 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
+
+-(IBAction)quitApplication:(id)sender{
+    [[NSApplication sharedApplication] terminate:self];
+}
+
+-(IBAction)aboutApplication:(id)sender{
+    [[NSApplication sharedApplication] orderFrontStandardAboutPanel:self];
+}
+
 @end

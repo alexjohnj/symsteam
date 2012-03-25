@@ -18,5 +18,7 @@
 -(IBAction)chooseLocalSteamAppsPath:(id)sender;
 -(IBAction)chooseSymbolicSteamAppsPath:(id)sender;
 -(IBAction)toggleGrowlNotifications:(id)sender;
+-(IBAction)quitApplication:(id)sender;
+-(IBAction)aboutApplication:(id)sender;
 
 @end

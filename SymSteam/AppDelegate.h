@@ -18,6 +18,4 @@
 @property (strong) SetupWindowController *setupController;
 @property (strong) PreferencesController *prefController;
 
--(void)testGrowlNotifications;
-
 @end

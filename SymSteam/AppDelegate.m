@@ -12,11 +12,6 @@
 
 @synthesize aController, setupController, prefController;
 
--(void)testGrowlNotifications{
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"growlNotificationsEnabled"])
-        [GrowlApplicationBridge notifyWithTitle:@"Notifications Enabled" description:@"!" notificationName:@"driveScanBegin" iconData:nil priority:0 isSticky:NO clickContext:nil];
-}
-
 -(id)init{
     self = [super init];
     if(self){
@@ -33,7 +28,6 @@
         setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
         [self.setupController showWindow:self];
     }
-    [self testGrowlNotifications];
     [self.aController startWatchingDrives];
 }
 

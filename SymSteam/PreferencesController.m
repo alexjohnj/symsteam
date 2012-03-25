@@ -10,7 +10,7 @@
 
 @implementation PreferencesController
 
-@synthesize localPathTextField, symbolicPathTextField;
+@synthesize localPathTextField, symbolicPathTextField, growlNotificationsCheckBox;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -27,6 +27,10 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+
+-(IBAction)toggleGrowlNotifications:(id)sender{
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(IBAction)chooseLocalSteamAppsPath:(id)sender{

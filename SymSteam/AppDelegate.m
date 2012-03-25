@@ -12,6 +12,11 @@
 
 @synthesize aController, setupController, prefController;
 
+-(void)testGrowlNotifications{
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"growlNotificationsEnabled"])
+        [GrowlApplicationBridge notifyWithTitle:@"Notifications Enabled" description:@"!" notificationName:@"driveScanBegin" iconData:nil priority:0 isSticky:NO clickContext:nil];
+}
+
 -(id)init{
     self = [super init];
     if(self){
@@ -28,7 +33,7 @@
         setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
         [self.setupController showWindow:self];
     }
-        
+    [self testGrowlNotifications];
     [self.aController startWatchingDrives];
 }
 
@@ -50,6 +55,9 @@
     NSString *steamAppsLocalPathKey = [[NSString alloc] initWithString:@"steamAppsLocalPath"];
     NSString *steamAppsLocalPath = [[NSString alloc] initWithString:@""];
     
+    NSString *growlNotificationsEnabledKey = [[NSString alloc] initWithString:@"growlNotificationsEnabled"];
+    NSNumber *growlNotificationsEnabled = [[NSNumber alloc] initWithBool:YES]; 
+    
     NSUserDefaults *uDefaults = [NSUserDefaults standardUserDefaults];
    
     NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
@@ -57,6 +65,7 @@
     [defaultValues setValue:[NSNumber numberWithBool:setupComplete] forKey:setupCompleteKey];
     [defaultValues setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
     [defaultValues setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
+    [defaultValues setValue:growlNotificationsEnabled forKey:growlNotificationsEnabledKey];
     
     [uDefaults registerDefaults:defaultValues];
 }

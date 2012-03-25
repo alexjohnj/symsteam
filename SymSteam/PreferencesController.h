@@ -12,9 +12,11 @@
 
 @property (strong) IBOutlet NSTextField *localPathTextField;
 @property (strong) IBOutlet NSTextField *symbolicPathTextField;
+@property (strong) IBOutlet NSButton *growlNotificationsCheckBox;
 
 
 -(IBAction)chooseLocalSteamAppsPath:(id)sender;
 -(IBAction)chooseSymbolicSteamAppsPath:(id)sender;
+-(IBAction)toggleGrowlNotifications:(id)sender;
 
 @end

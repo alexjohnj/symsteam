@@ -8,10 +8,11 @@
 	<key>AllNotifications</key>
 	<array>
 		<string>driveScanBegin</string>
-		<string>driveScanSuccess</string>
 		<string>driveScanFailure</string>
-		<string>driveUnplug</string>
-		<string>steamAppsChanged</string>
+		<string>driveSetupSuccess</string>
+		<string>driveSetupFailure</string>
+		<string>driveUnplugFailure</string>
+		<string>driveUnplugSuccess</string>
 </array>
 </dict>
 </plist>

@@ -14,6 +14,8 @@
 -(void)startWatchingDrives;
 -(void)didMount:(NSNotification *)aNotification;
 -(void)didUnmount:(NSNotification *)aNotification;
+-(void)registerDrive:(NSString *)drive asSteamDrive:(BOOL)sDrive;
+-(void)deRegisterDrive:(NSString *)drive;
 -(BOOL)scanDriveForSteamAppsFolder;
 
 @property (copy) NSURL *driveURL;

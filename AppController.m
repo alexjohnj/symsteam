@@ -73,7 +73,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     if(![fManager moveItemAtPath:currentSteamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] error:&renameLocalError]){
         [GrowlApplicationBridge notifyWithTitle:@"Error reverting local SteamApps folder" 
                                     description:[renameSymbolicError localizedDescription]
-                               notificationName:@"drieUnplugFailure"
+                               notificationName:@"driveUnplugFailure"
                                        iconData:nil
                                        priority:0
                                        isSticky:NO

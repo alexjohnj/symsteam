@@ -9,7 +9,7 @@
 #import "AppController.h"
 static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
 static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
-static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnabled";
+static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 
 @implementation AppController
 

@@ -1,3 +1,8 @@
+## 0.2
+
+- Growl notifications for a variety of events in the application. 
+- Total rewrite of the underlying logic. The setup of SymSteam has been greatly simplified and the management of connected drives has been improved greatly. 
+
 ## 0.1.5
 
 - Added a basic, potentially buggy, preferences window that allows you to change the location of the local and symbolic SteamApps folders. 

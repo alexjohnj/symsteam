@@ -56,13 +56,16 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     
     NSError *renameSymbolicError;
     if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath] error:&renameSymbolicError]){
-        [GrowlApplicationBridge notifyWithTitle:@"Error reverting symbolic SteamApps folder"
-                                    description:[renameSymbolicError localizedDescription]
-                               notificationName:@"driveUnplugFailure"
-                                       iconData:nil
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+            [GrowlApplicationBridge notifyWithTitle:@"Error reverting symbolic SteamApps folder"
+                                        description:[renameSymbolicError localizedDescription]
+                                   notificationName:@"driveUnplugFailure"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
+        
         [self deRegisterDrive:notificationDriveURL.path];
         self.steamDriveIsConnected = NO;
         return;
@@ -71,13 +74,16 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     NSError *renameLocalError;
     NSString *currentSteamAppsPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath]stringByDeletingLastPathComponent]];
     if(![fManager moveItemAtPath:currentSteamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] error:&renameLocalError]){
-        [GrowlApplicationBridge notifyWithTitle:@"Error reverting local SteamApps folder" 
-                                    description:[renameSymbolicError localizedDescription]
-                               notificationName:@"driveUnplugFailure"
-                                       iconData:nil
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+            [GrowlApplicationBridge notifyWithTitle:@"Error reverting local SteamApps folder" 
+                                        description:[renameSymbolicError localizedDescription]
+                                   notificationName:@"driveUnplugFailure"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
+        
         [self deRegisterDrive:notificationDriveURL.path];
         self.steamDriveIsConnected = NO;
         return;
@@ -85,13 +91,15 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     
     [self deRegisterDrive:notificationDriveURL.path];
     self.steamDriveIsConnected = NO;
-    [GrowlApplicationBridge notifyWithTitle:@"Successfully reverted SteamApps Folders"
-                                description:[NSString stringWithFormat:@"Reverted folders after your Steam Drive(%@) was unplugged", notificationDriveURL.lastPathComponent]
-                           notificationName:@"driveUnplugSuccess"
-                                   iconData:nil
-                                   priority:0
-                                   isSticky:NO
-                               clickContext:nil];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        [GrowlApplicationBridge notifyWithTitle:@"Successfully reverted SteamApps Folders"
+                                    description:[NSString stringWithFormat:@"Reverted folders after your Steam Drive(%@) was unplugged", notificationDriveURL.lastPathComponent]
+                               notificationName:@"driveUnplugSuccess"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:nil];
+    }
 }
 
 -(void)didMount:(NSNotification *)aNotification{
@@ -105,22 +113,26 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
         self.driveURL = nil;
     self.driveURL = notificationDriveURL;
     
-    [GrowlApplicationBridge notifyWithTitle:@"Scanning Drive"
-                                description:[NSString stringWithFormat:@"Scanning %@", notificationDriveURL.path]
-                           notificationName:@"driveScanBegin" 
-                                   iconData:nil 
-                                   priority:0 
-                                   isSticky:NO 
-                               clickContext:nil];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        [GrowlApplicationBridge notifyWithTitle:@"Scanning Drive"
+                                    description:[NSString stringWithFormat:@"Scanning %@", notificationDriveURL.path]
+                               notificationName:@"driveScanBegin" 
+                                       iconData:nil 
+                                       priority:0 
+                                       isSticky:NO 
+                                   clickContext:nil];
+    }
     
     if(![self scanDriveForSteamAppsFolder]){
-        [GrowlApplicationBridge notifyWithTitle:@"No SteamApps Folder Found"
-                                    description:[NSString stringWithFormat:@"Nothing found on %@", notificationDriveURL.path]
-                               notificationName:@"driveScanFailure"
-                                       iconData:nil
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+            [GrowlApplicationBridge notifyWithTitle:@"No SteamApps Folder Found"
+                                        description:[NSString stringWithFormat:@"Nothing found on %@", notificationDriveURL.path]
+                                   notificationName:@"driveScanFailure"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
         [self registerDrive:notificationDriveURL.path asSteamDrive:NO];
         return;
     }
@@ -131,26 +143,32 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     NSString *newLocalPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] stringByDeletingLastPathComponent]];
     
     if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] toPath:newLocalPath error:&localFolderRename]){
-        [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Local Steam Folder" 
-                                    description:[localFolderRename localizedDescription]
-                               notificationName:@"driveSetupFailure" 
-                                       iconData:nil 
-                                       priority:0 
-                                       isSticky:NO 
-                                   clickContext:nil];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+            [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Local Steam Folder" 
+                                        description:[localFolderRename localizedDescription]
+                                   notificationName:@"driveSetupFailure" 
+                                           iconData:nil 
+                                           priority:0 
+                                           isSticky:NO 
+                                       clickContext:nil];
+        }
+        
         [self registerDrive:notificationDriveURL.path asSteamDrive:NO];
         return;
     }
     
     NSError *symbFolderRename;
     if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath ] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath ] error:&symbFolderRename]){
-        [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Symbolic Folder"
-                                    description:[localFolderRename localizedDescription]
-                               notificationName:@"driveSetupFailure"
-                                       iconData:nil
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
+        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+            [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Symbolic Folder"
+                                        description:[localFolderRename localizedDescription]
+                                   notificationName:@"driveSetupFailure"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
+        
         [self registerDrive:notificationDriveURL.path asSteamDrive:NO];
         return;
     }
@@ -158,14 +176,15 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificatonsEnable
     [self registerDrive:notificationDriveURL.path asSteamDrive:YES];
     self.steamDriveIsConnected = YES;
     self.driveURL = nil;
-    
-    [GrowlApplicationBridge notifyWithTitle:@"Successfully setup Steam Drive"
-                                description:[NSString stringWithFormat:@"%@ is your Steam Drive.", notificationDriveURL.lastPathComponent]
-                           notificationName:@"driveSetupSuccess"
-                                   iconData:nil
-                                   priority:0
-                                   isSticky:NO
-                               clickContext:nil];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        [GrowlApplicationBridge notifyWithTitle:@"Successfully setup Steam Drive"
+                                    description:[NSString stringWithFormat:@"%@ is your Steam Drive.", notificationDriveURL.lastPathComponent]
+                               notificationName:@"driveSetupSuccess"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:nil];
+    }
     
 }
 

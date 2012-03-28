@@ -14,6 +14,7 @@
 
 static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
 static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
+static NSString * const setupComplete = @"setupComplete";
 
 #pragma mark - Window Lifecycle methods
 
@@ -129,7 +130,7 @@ static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
     
     [[NSUserDefaults standardUserDefaults] setValue:finalLocalPath forKey:steamAppsLocalPath];
     [[NSUserDefaults standardUserDefaults] setValue:finalSymbolicPath forKey:steamAppsSymbolicLinkPath];
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:@"setupComplete"];
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:setupComplete];
     
     NSAlert *successAlert = [NSAlert alertWithMessageText:@"Success!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Successfully setup SymSteam"];
     NSInteger result = [successAlert runModal];

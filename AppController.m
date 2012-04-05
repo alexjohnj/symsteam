@@ -216,10 +216,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     if(steamAppsFound == YES)
         return steamAppsFound;
-    
     else{
-        
-        for (NSString *filePath in [fManager enumeratorAtPath:drive.path]) {
+        for (NSString *filePath in [fManager enumeratorAtURL:drive includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsHiddenFiles | NSDirectoryEnumerationSkipsPackageDescendants) errorHandler:nil]) {
             if ([filePath.lastPathComponent isEqualToString:@"SteamApps"]){
                 steamAppsFound = YES;
                 break;

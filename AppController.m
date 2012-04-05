@@ -112,6 +112,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         return;
     }
     
+    
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
         [GrowlApplicationBridge notifyWithTitle:@"Scanning Drive"
                                     description:[NSString stringWithFormat:@"Scanning %@", notificationDriveURL.path]
@@ -201,15 +202,31 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 
 -(BOOL)scanForSteamAppsFolderOnDrive:(NSURL *)drive{
     NSFileManager *fManager = [[NSFileManager alloc] init];
+    __block BOOL steamAppsFound = NO;
     
-    BOOL steamAppsFound = NO;
+    // perform a shallow scan of the drive first since most people will store the SteamApps folder on the root of their drive. This is a lot faster than just doing the deep scan. 
     
-    for (NSString *filePath in [fManager enumeratorAtPath:drive.path]) {
-        if ([filePath.lastPathComponent isEqualToString:@"SteamApps"]){
+    NSArray *shallowDirectoryContent = [fManager contentsOfDirectoryAtPath:drive.path error:nil];
+    [shallowDirectoryContent enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if([obj isEqualToString:@"SteamApps"]){
             steamAppsFound = YES;
-            break;
+            *stop = YES;
         }
+    }];
+    
+    if(steamAppsFound == YES)
+        return steamAppsFound;
+    
+    else{
+        
+        for (NSString *filePath in [fManager enumeratorAtPath:drive.path]) {
+            if ([filePath.lastPathComponent isEqualToString:@"SteamApps"]){
+                steamAppsFound = YES;
+                break;
+            }
+        }    
+        
+        return steamAppsFound;
     }
-    return steamAppsFound;
 }
 @end

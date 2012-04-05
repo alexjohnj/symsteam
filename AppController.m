@@ -13,17 +13,13 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 
 @implementation AppController
 
-@synthesize remoteSteamAppsFolder = _remoteSteamAppsFolder;
 @synthesize steamDriveIsConnected = _steamDriveIsConnected;
-@synthesize steamAppsPath = _steamAppsPath;
 @synthesize connectedDrives = _connectedDrives;
 
 -(id)init{
     self = [super init];
     if(self){
         _steamDriveIsConnected = NO;
-        NSArray *libarray = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-        _steamAppsPath = [[NSString alloc] initWithFormat:@"%@/Application Support/Steam/SteamApps", [libarray objectAtIndex:0]];
     }
     return self;
 }

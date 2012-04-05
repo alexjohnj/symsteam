@@ -11,9 +11,7 @@
 
 @interface AppController : NSObject
 
-@property (copy) NSString *remoteSteamAppsFolder;
 @property (assign) BOOL steamDriveIsConnected;
-@property (copy) NSString *steamAppsPath;
 @property (strong) NSMutableDictionary *connectedDrives;
 
 -(void)startWatchingDrives;

@@ -12,6 +12,7 @@
 
 static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
+static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 @synthesize localPathTextField, symbolicPathTextField, growlNotificationsCheckBox;
 
@@ -84,13 +85,19 @@ static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath"
         return;
     
     else if(result == NSOKButton){
-        if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"])
+        NSFileManager *fManager = [[NSFileManager alloc] init];
+        
+        if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
             [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPath];
+            
+            NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];  
+            [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
+        }
+        
         else{
             NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
             newPath = [newPath URLByAppendingPathComponent:@"SteamAppSymb" isDirectory:YES];
             
-            NSFileManager *fManager = [[NSFileManager alloc] init];
             NSError *renameError;
             if (![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]) {
                 NSAlert *renameFailAlert = [NSAlert alertWithMessageText:@"Error Renaming Symbolic SteamApps Folder"
@@ -102,8 +109,11 @@ static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath"
                 return;
             }
             [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsSymbolicLinkPath];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:newPath.path error:nil];
+            [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
         }
+        [[NSUserDefaults standardUserDefaults] synchronize];  
     }
 }
 

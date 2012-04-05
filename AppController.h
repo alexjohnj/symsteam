@@ -7,18 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Growl/Growl.h>
+#import "SteamAppsController.h"
 
 @interface AppController : NSObject
 
-@property (assign) BOOL steamDriveIsConnected;
-@property (strong) NSMutableDictionary *connectedDrives;
+@property (strong) SteamAppsController *saController;
 
 -(void)startWatchingDrives;
--(void)didMount:(NSNotification *)aNotification;
--(void)didUnmount:(NSNotification *)aNotification;
--(void)registerDrive:(NSString *)drive asSteamDrive:(BOOL)sDrive;
--(void)deRegisterDrive:(NSString *)drive;
--(BOOL)scanForSteamAppsFolderOnDrive:(NSURL *)drive;
 
 @end

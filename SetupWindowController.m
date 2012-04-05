@@ -15,6 +15,7 @@
 static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
 static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
 static NSString * const setupComplete = @"setupComplete";
+static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 #pragma mark - Window Lifecycle methods
 
@@ -87,8 +88,8 @@ static NSString * const setupComplete = @"setupComplete";
     NSString *providedLocalSymbolicPath = [[NSString alloc] initWithString:self.pathToSymLinkField.stringValue];
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
-    NSString *finalLocalPath = [[NSString alloc] init];
-    NSString *finalSymbolicPath = [[NSString alloc] init];
+    NSString *steamAppsLocalPath = [[NSString alloc] init];
+    NSString *steamAppsSymbolicLinkPath = [[NSString alloc] init];
     
     if(![providedLocalPath.lastPathComponent isEqualToString:@"SteamApps"]){
         NSError *moveLocalFolderError;
@@ -103,11 +104,11 @@ static NSString * const setupComplete = @"setupComplete";
             if(result != NSOKButton)
                 [[NSApplication sharedApplication] terminate:self];
         }
-        finalLocalPath = newLocalPath.path;
+        steamAppsLocalPath = newLocalPath.path;
     }
     
     else{
-        finalLocalPath = providedLocalPath;
+        steamAppsLocalPath = providedLocalPath;
     }
     
     if(![providedLocalSymbolicPath.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
@@ -122,15 +123,19 @@ static NSString * const setupComplete = @"setupComplete";
             if(result != NSOKButton)
                 [[NSApplication sharedApplication] terminate:self];
         }
-        finalSymbolicPath = newSymbPath.path;  
+        steamAppsSymbolicLinkPath = newSymbPath.path;  
     }
     else{
-        finalSymbolicPath = providedLocalSymbolicPath;
+        steamAppsSymbolicLinkPath = providedLocalSymbolicPath;
     }
     
-    [[NSUserDefaults standardUserDefaults] setValue:finalLocalPath forKey:steamAppsLocalPath];
-    [[NSUserDefaults standardUserDefaults] setValue:finalSymbolicPath forKey:steamAppsSymbolicLinkPath];
+    NSString *symbolicPathDestination = [fManager destinationOfSymbolicLinkAtPath:steamAppsSymbolicLinkPath error:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:steamAppsLocalPath forKey:steamAppsLocalPath];
+    [[NSUserDefaults standardUserDefaults] setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPath];
+    [[NSUserDefaults standardUserDefaults] setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:setupComplete];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSAlert *successAlert = [NSAlert alertWithMessageText:@"Success!" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Successfully setup SymSteam"];
     NSInteger result = [successAlert runModal];

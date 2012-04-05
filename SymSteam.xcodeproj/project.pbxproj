@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
+		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
@@ -40,6 +41,8 @@
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
+		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
+		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		FA89765114EBAC960008620D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				FA89765214EBAC960008620D /* PreferencesController.m */,
 				FA89765114EBAC960008620D /* PreferencesController.h */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
+				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
+				FA7E4766152DFE6F005E4336 /* SteamAppsController.m */,
 				FAEE704B14DB2CAD00BF7020 /* AppController.h */,
 				FAEE704C14DB2CAD00BF7020 /* AppController.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
@@ -216,6 +221,7 @@
 				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
 				FA89765314EBAC960008620D /* PreferencesController.m in Sources */,
+				FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

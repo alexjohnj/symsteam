@@ -7,12 +7,11 @@
 	
 	<key>AllNotifications</key>
 	<array>
-		<string>driveScanBegin</string>
-		<string>driveScanFailure</string>
-		<string>driveSetupSuccess</string>
-		<string>driveSetupFailure</string>
-		<string>driveUnplugFailure</string>
-		<string>driveUnplugSuccess</string>
+		<string>noSteamAppsFound</string>
+		<string>symbolicSteamAppsPrimary</string>
+		<string>localSteamAppsPrimary</string>
+		<string>symbolicPrimaryFail</string>
+		<string>localPrimaryFail</string>
 </array>
 </dict>
 </plist>

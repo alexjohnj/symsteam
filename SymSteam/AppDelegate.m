@@ -49,6 +49,9 @@
     NSString *steamAppsLocalPathKey = [[NSString alloc] initWithString:@"steamAppsLocalPath"];
     NSString *steamAppsLocalPath = [[NSString alloc] initWithString:@""];
     
+    NSString *symbolicPathDestinationKey = [[NSString alloc] initWithString:@"symbolicPathDestination"];
+    NSString *symbolicPathDestination = [[NSString alloc] initWithString:@""];
+    
     NSString *growlNotificationsEnabledKey = [[NSString alloc] initWithString:@"growlNotificationsEnabled"];
     NSNumber *growlNotificationsEnabled = [[NSNumber alloc] initWithBool:YES]; 
     
@@ -60,6 +63,7 @@
     [defaultValues setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
     [defaultValues setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
     [defaultValues setValue:growlNotificationsEnabled forKey:growlNotificationsEnabledKey];
+    [defaultValues setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
     
     [uDefaults registerDefaults:defaultValues];
 }

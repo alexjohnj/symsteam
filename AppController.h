@@ -11,20 +11,16 @@
 
 @interface AppController : NSObject
 
+@property (copy) NSString *remoteSteamAppsFolder;
+@property (assign) BOOL steamDriveIsConnected;
+@property (copy) NSString *steamAppsPath;
+@property (strong) NSMutableDictionary *connectedDrives;
+
 -(void)startWatchingDrives;
 -(void)didMount:(NSNotification *)aNotification;
 -(void)didUnmount:(NSNotification *)aNotification;
 -(void)registerDrive:(NSString *)drive asSteamDrive:(BOOL)sDrive;
 -(void)deRegisterDrive:(NSString *)drive;
--(BOOL)scanDriveForSteamAppsFolder;
-
-@property (copy) NSURL *driveURL;
-@property (copy) NSString *remoteSteamAppsFolder;
-
-@property (assign) BOOL steamDriveIsConnected;
-
-@property (copy) NSString *steamAppsPath;
-
-@property (strong) NSMutableDictionary *connectedDrives;
+-(BOOL)scanForSteamAppsFolderOnDrive:(NSURL *)drive;
 
 @end

@@ -13,14 +13,17 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 
 @implementation AppController
 
-@synthesize driveURL, remoteSteamAppsFolder, steamDriveIsConnected, steamAppsPath, connectedDrives;
+@synthesize remoteSteamAppsFolder = _remoteSteamAppsFolder;
+@synthesize steamDriveIsConnected = _steamDriveIsConnected;
+@synthesize steamAppsPath = _steamAppsPath;
+@synthesize connectedDrives = _connectedDrives;
 
 -(id)init{
     self = [super init];
     if(self){
-        steamDriveIsConnected = NO;
+        _steamDriveIsConnected = NO;
         NSArray *libarray = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-        steamAppsPath = [[NSString alloc] initWithFormat:@"%@/Application Support/Steam/SteamApps", [libarray objectAtIndex:0]];
+        _steamAppsPath = [[NSString alloc] initWithFormat:@"%@/Application Support/Steam/SteamApps", [libarray objectAtIndex:0]];
     }
     return self;
 }
@@ -109,10 +112,6 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         return;
     }
     
-    if(self.driveURL != nil)
-        self.driveURL = nil;
-    self.driveURL = notificationDriveURL;
-    
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
         [GrowlApplicationBridge notifyWithTitle:@"Scanning Drive"
                                     description:[NSString stringWithFormat:@"Scanning %@", notificationDriveURL.path]
@@ -123,7 +122,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                    clickContext:nil];
     }
     
-    if(![self scanDriveForSteamAppsFolder]){
+    if(![self scanForSteamAppsFolderOnDrive:notificationDriveURL]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"No SteamApps Folder Found"
                                         description:[NSString stringWithFormat:@"Nothing found on %@", notificationDriveURL.path]
@@ -175,7 +174,6 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     [self registerDrive:notificationDriveURL.path asSteamDrive:YES];
     self.steamDriveIsConnected = YES;
-    self.driveURL = nil;
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
         [GrowlApplicationBridge notifyWithTitle:@"Successfully setup Steam Drive"
                                     description:[NSString stringWithFormat:@"%@ is your Steam Drive.", notificationDriveURL.lastPathComponent]
@@ -201,12 +199,12 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [self.connectedDrives removeObjectForKey:drive];
 }
 
--(BOOL)scanDriveForSteamAppsFolder{
+-(BOOL)scanForSteamAppsFolderOnDrive:(NSURL *)drive{
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
     BOOL steamAppsFound = NO;
     
-    for (NSString *filePath in [fManager enumeratorAtPath:self.driveURL.path]) {
+    for (NSString *filePath in [fManager enumeratorAtPath:drive.path]) {
         if ([filePath.lastPathComponent isEqualToString:@"SteamApps"]){
             steamAppsFound = YES;
             break;

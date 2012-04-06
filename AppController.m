@@ -8,8 +8,8 @@
 
 #import "AppController.h"
 
-static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
-static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
+static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
+static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 
@@ -26,8 +26,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 -(void)performInitialDriveScan{
-    NSString *symbolicLinkPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPath];
-    NSString *localPath = [[[NSUserDefaults standardUserDefaults] stringForKey:steamAppsLocalPath] stringByDeletingPathExtension];
+    NSString *symbolicLinkPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPathKey];
+    NSString *localPath = [[[NSUserDefaults standardUserDefaults] stringForKey:steamAppsLocalPathKey] stringByDeletingPathExtension];
     NSString *symbolicLinkDestination = [[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey];
     NSString *steamAppsLocPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", localPath.stringByDeletingLastPathComponent];
     
@@ -72,7 +72,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     if(!steamAppsExists && steamAppsSymbExists && steamAppsLocExists){
         NSError *renameSteamAppsLocToSteamAppsError;
-        if(![fManager moveItemAtPath:steamAppsLocPath toPath:steamAppsLocalPath error:&renameSteamAppsLocToSteamAppsError]){
+        if(![fManager moveItemAtPath:steamAppsLocPath toPath:steamAppsLocalPathKey error:&renameSteamAppsLocToSteamAppsError]){
             NSLog(@"Unabled to rename %@ to %@, %@", steamAppsLocPath, localPath, [renameSteamAppsLocToSteamAppsError localizedDescription]);
             
             if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])

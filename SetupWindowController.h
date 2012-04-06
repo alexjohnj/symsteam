@@ -10,9 +10,9 @@
 
 @interface SetupWindowController : NSWindowController
 
-@property (strong) IBOutlet NSTextField *pathToSymLinkField;
-@property (strong) IBOutlet NSTextField *pathToNonSymLinkField;
-@property (strong) IBOutlet NSButton *continueButton;
+@property (weak) IBOutlet NSTextField *pathToSymLinkField;
+@property (weak) IBOutlet NSTextField *pathToNonSymLinkField;
+@property (weak) IBOutlet NSButton *continueButton;
 
 @property (assign) BOOL symLinkPathProvided;
 @property (assign) BOOL nonSymLinkPathProvided;

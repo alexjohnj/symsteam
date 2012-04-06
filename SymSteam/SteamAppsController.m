@@ -8,8 +8,8 @@
 
 #import "SteamAppsController.h"
 
-static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
-static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
+static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
+static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
@@ -91,9 +91,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
     NSError *localFolderRename;
-    NSString *newLocalPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] stringByDeletingLastPathComponent]];
+    NSString *newLocalPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] stringByDeletingLastPathComponent]];
     
-    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] toPath:newLocalPath error:&localFolderRename]){
+    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] toPath:newLocalPath error:&localFolderRename]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Local Steam Folder" 
                                         description:[localFolderRename localizedDescription]
@@ -107,7 +107,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }
     
     NSError *symbFolderRename;
-    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath ] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath ] error:&symbFolderRename]){
+    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey ] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey ] error:&symbFolderRename]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Symbolic Folder"
                                         description:[localFolderRename localizedDescription]
@@ -127,7 +127,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
     NSError *renameSymbolicError;
-    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPath] error:&renameSymbolicError]){
+    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey] error:&renameSymbolicError]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Error reverting symbolic SteamApps folder"
                                         description:[renameSymbolicError localizedDescription]
@@ -141,8 +141,8 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }
     
     NSError *renameLocalError;
-    NSString *currentSteamAppsPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath]stringByDeletingLastPathComponent]];
-    if(![fManager moveItemAtPath:currentSteamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPath] error:&renameLocalError]){
+    NSString *currentSteamAppsPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey]stringByDeletingLastPathComponent]];
+    if(![fManager moveItemAtPath:currentSteamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] error:&renameLocalError]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Error reverting local SteamApps folder" 
                                         description:[renameSymbolicError localizedDescription]

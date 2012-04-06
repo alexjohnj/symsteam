@@ -12,8 +12,8 @@
 @synthesize pathToSymLinkField, pathToNonSymLinkField, continueButton;
 @synthesize symLinkPathProvided, nonSymLinkPathProvided, formComplete;
 
-static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
-static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
+static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
+static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const setupComplete = @"setupComplete";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
@@ -131,8 +131,8 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     NSString *symbolicPathDestination = [fManager destinationOfSymbolicLinkAtPath:steamAppsSymbolicLinkPath error:nil];
     
-    [[NSUserDefaults standardUserDefaults] setValue:steamAppsLocalPath forKey:steamAppsLocalPath];
-    [[NSUserDefaults standardUserDefaults] setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPath];
+    [[NSUserDefaults standardUserDefaults] setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
+    [[NSUserDefaults standardUserDefaults] setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
     [[NSUserDefaults standardUserDefaults] setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:setupComplete];
     [[NSUserDefaults standardUserDefaults] synchronize];

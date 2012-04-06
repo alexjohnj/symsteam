@@ -10,8 +10,8 @@
 
 @implementation PreferencesController
 
-static NSString * const steamAppsLocalPath = @"steamAppsLocalPath";
-static NSString * const steamAppsSymbolicLinkPath = @"steamAppsSymbolicLinkPath";
+static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
+static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 @synthesize localPathTextField, symbolicPathTextField, growlNotificationsCheckBox;
@@ -51,7 +51,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     else if(result == NSOKButton){
         if([oPanel.URL.lastPathComponent isEqualToString:@"SteamApps"])
-            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsLocalPath];
+            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsLocalPathKey];
         else {
             NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
             newPath = [newPath URLByAppendingPathComponent:@"SteamApps" isDirectory:YES];
@@ -67,7 +67,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
                 [renameFailAlert runModal];
                 return;
             }
-            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsLocalPath];
+            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsLocalPathKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
@@ -88,7 +88,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSFileManager *fManager = [[NSFileManager alloc] init];
         
         if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
-            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPath];
+            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPathKey];
             
             NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];  
             [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
@@ -108,7 +108,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
                 [renameFailAlert runModal];
                 return;
             }
-            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsSymbolicLinkPath];
+            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsSymbolicLinkPathKey];
             
             NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:newPath.path error:nil];
             [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];

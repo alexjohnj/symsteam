@@ -10,9 +10,9 @@
 
 @interface PreferencesController : NSWindowController
 
-@property (strong) IBOutlet NSTextField *localPathTextField;
-@property (strong) IBOutlet NSTextField *symbolicPathTextField;
-@property (strong) IBOutlet NSButton *growlNotificationsCheckBox;
+@property (weak) IBOutlet NSTextField *localPathTextField;
+@property (weak) IBOutlet NSTextField *symbolicPathTextField;
+@property (weak) IBOutlet NSButton *growlNotificationsCheckBox;
 
 
 -(IBAction)chooseLocalSteamAppsPath:(id)sender;

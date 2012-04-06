@@ -119,11 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
-				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
+				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
-				FA89765214EBAC960008620D /* PreferencesController.m */,
 				FA89765114EBAC960008620D /* PreferencesController.h */,
+				FA89765214EBAC960008620D /* PreferencesController.m */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
 				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
 				FA7E4766152DFE6F005E4336 /* SteamAppsController.m */,

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Growl/Growl.h>
 #import "SteamAppsController.h"
 
 @interface AppController : NSObject
@@ -14,5 +15,6 @@
 @property (strong) SteamAppsController *saController;
 
 -(void)startWatchingDrives;
+-(void)performInitialDriveScan;
 
 @end

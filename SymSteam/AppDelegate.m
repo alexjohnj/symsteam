@@ -32,6 +32,11 @@
     [self.aController startWatchingDrives];
 }
 
+-(void)applicationWillTerminate:(NSNotification *)notification{
+    if(self.aController.saController.steamDriveIsConnected)
+        [self.aController.saController makeLocalSteamAppsPrimary];
+}
+
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
     if(self.prefController == nil)
         self.prefController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesWindow"];

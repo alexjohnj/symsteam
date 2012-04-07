@@ -78,6 +78,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA89765114EBAC960008620D /* PreferencesController.h */,
+				FA89765214EBAC960008620D /* PreferencesController.m */,
+				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
+				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
+			);
+			name = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		FACC00D0153074C700D5FD8C /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
+				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
+				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
@@ -118,13 +139,8 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
-				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
-				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
-				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
-				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
-				FA89765114EBAC960008620D /* PreferencesController.h */,
-				FA89765214EBAC960008620D /* PreferencesController.m */,
-				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
+				FACC00D0153074C700D5FD8C /* Windows */,
+				FACC00CD1530743E00D5FD8C /* Window Controllers */,
 				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
 				FA7E4766152DFE6F005E4336 /* SteamAppsController.m */,
 				FAEE704B14DB2CAD00BF7020 /* AppController.h */,

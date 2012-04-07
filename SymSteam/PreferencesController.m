@@ -41,35 +41,34 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     oPanel.canChooseFiles = NO;
     oPanel.canChooseDirectories = YES;
     oPanel.canCreateDirectories = YES;
-    
-    NSInteger result;
-    result = [oPanel runModal];
-    
-    if(result != NSOKButton) 
-        return;
-    
-    else if(result == NSOKButton){
-        if([oPanel.URL.lastPathComponent isEqualToString:@"SteamApps"])
-            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsLocalPathKey];
-        else {
-            NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
-            newPath = [newPath URLByAppendingPathComponent:@"SteamApps" isDirectory:YES];
-            
-            NSFileManager *fManager = [[NSFileManager alloc] init];
-            NSError *renameError;
-            if(![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]){
-                NSAlert *renameFailAlert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder"
-                                                           defaultButton:@"OK"
-                                                         alternateButton:nil
-                                                             otherButton:nil
-                                               informativeTextWithFormat:[renameError localizedDescription]];
-                [renameFailAlert runModal];
-                return;
+        
+    [oPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton) 
+            return;
+        
+        else if(result == NSFileHandlingPanelOKButton){
+            if([oPanel.URL.lastPathComponent isEqualToString:@"SteamApps"])
+                [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsLocalPathKey];
+            else {
+                NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
+                newPath = [newPath URLByAppendingPathComponent:@"SteamApps" isDirectory:YES];
+                
+                NSFileManager *fManager = [[NSFileManager alloc] init];
+                NSError *renameError;
+                if(![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]){
+                    NSAlert *renameFailAlert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder"
+                                                               defaultButton:@"OK"
+                                                             alternateButton:nil
+                                                                 otherButton:nil
+                                                   informativeTextWithFormat:[renameError localizedDescription]];
+                    [renameFailAlert runModal];
+                    return;
+                }
+                [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsLocalPathKey];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
-            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsLocalPathKey];
-            [[NSUserDefaults standardUserDefaults] synchronize];
         }
-    }
+    }];
 }
 
 -(IBAction)chooseSymbolicSteamAppsPath:(id)sender{
@@ -77,43 +76,42 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     oPanel.canChooseDirectories = YES;
     oPanel.canCreateDirectories = YES;
     
-    NSInteger result;
-    result = [oPanel runModal];
-    
-    if(result != NSOKButton)
-        return;
-    
-    else if(result == NSOKButton){
-        NSFileManager *fManager = [[NSFileManager alloc] init];
+    [oPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton)
+            return;
         
-        if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
-            [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPathKey];
+        else if(result == NSFileHandlingPanelOKButton){
+            NSFileManager *fManager = [[NSFileManager alloc] init];
             
-            NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];  
-            [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
-        }
-        
-        else{
-            NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
-            newPath = [newPath URLByAppendingPathComponent:@"SteamAppSymb" isDirectory:YES];
-            
-            NSError *renameError;
-            if (![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]) {
-                NSAlert *renameFailAlert = [NSAlert alertWithMessageText:@"Error Renaming Symbolic SteamApps Folder"
-                                                           defaultButton:@"OK"
-                                                         alternateButton:nil
-                                                             otherButton:nil
-                                               informativeTextWithFormat:[renameError localizedDescription]];
-                [renameFailAlert runModal];
-                return;
+            if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
+                [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPathKey];
+                
+                NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];  
+                [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
             }
-            [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsSymbolicLinkPathKey];
             
-            NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:newPath.path error:nil];
-            [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
+            else{
+                NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
+                newPath = [newPath URLByAppendingPathComponent:@"SteamAppSymb" isDirectory:YES];
+                
+                NSError *renameError;
+                if (![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]) {
+                    NSAlert *renameFailAlert = [NSAlert alertWithMessageText:@"Error Renaming Symbolic SteamApps Folder"
+                                                               defaultButton:@"OK"
+                                                             alternateButton:nil
+                                                                 otherButton:nil
+                                                   informativeTextWithFormat:[renameError localizedDescription]];
+                    [renameFailAlert runModal];
+                    return;
+                }
+                [[NSUserDefaults standardUserDefaults] setValue:newPath.path forKey:steamAppsSymbolicLinkPathKey];
+                
+                NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:newPath.path error:nil];
+                [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
+            }
+            [[NSUserDefaults standardUserDefaults] synchronize];  
         }
-        [[NSUserDefaults standardUserDefaults] synchronize];  
-    }
+    }];
 }
 
 -(IBAction)quitApplication:(id)sender{

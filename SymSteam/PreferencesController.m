@@ -92,7 +92,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
             
             else{
                 NSURL *newPath = [[NSURL alloc] initFileURLWithPath:[oPanel.URL.path stringByDeletingLastPathComponent]];
-                newPath = [newPath URLByAppendingPathComponent:@"SteamAppSymb" isDirectory:YES];
+                newPath = [newPath URLByAppendingPathComponent:@"SteamAppsSymb" isDirectory:YES];
                 
                 NSError *renameError;
                 if (![fManager moveItemAtURL:oPanel.URL toURL:newPath error:&renameError]) {

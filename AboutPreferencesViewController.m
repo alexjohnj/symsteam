@@ -35,7 +35,7 @@
     NSAttributedString *credits = [[NSAttributedString alloc] initWithRTF:creditsRTF documentAttributes:NULL];
     self.aboutDescription.textStorage.attributedString = credits;
     
-    self.versionLabel.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+    self.versionLabel.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 }
 
 #pragma mark - MASPreferences Window Setters

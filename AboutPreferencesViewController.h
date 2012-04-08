@@ -12,6 +12,7 @@
 @interface AboutPreferencesViewController : NSViewController <MASPreferencesViewController>
 
 @property (unsafe_unretained) IBOutlet NSTextView *aboutDescription;
+@property (weak) IBOutlet NSTextField *versionLabel;
 
 -(IBAction)quitApplication:(id)sender;
 

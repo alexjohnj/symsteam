@@ -11,7 +11,7 @@
 				http://alexjohnj.github.com/symsteam/changelog.html
 			</sparkle:releaseNotesLink>
 			<pubDate>Sun, 08 Apr 2012 18:00:00 +1000</pubDate>
-			<enclosure url="https://github.com/downloads/alexjohnj/symsteam/SymSteam-beta-1.zip" sparkle:version="0.2" length="1600000" type="application/octet-stream" sparkle:dsaSignature="..."/>
+			<enclosure url="https://github.com/downloads/alexjohnj/symsteam/SymSteam-beta-1.zip" sparkle:version="0.2" sparkle:shortVersionString="Beta 1" length="1600000" type="application/octet-stream" sparkle:dsaSignature="..."/>
 		</item>
 	</channel>
 </rss>

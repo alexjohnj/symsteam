@@ -24,4 +24,16 @@
     return self;
 }
 
+-(NSString *)identifier{
+    return @"Update Prefs";
+}
+
+-(NSString *)toolbarItemLabel{
+    return @"Update";
+}
+
+-(NSImage *)toolbarItemImage{
+    return [NSImage imageNamed:NSImageNameNetwork];
+}
+
 @end

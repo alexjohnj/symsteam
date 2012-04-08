@@ -41,7 +41,8 @@
     if(_preferencesWindowController == nil){
         GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" bundle:[NSBundle mainBundle]];
         AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView" bundle:[NSBundle mainBundle]];
-        NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, aboutPrefs, nil];
+        UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" bundle:[NSBundle mainBundle]];
+        NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, updatePrefs, aboutPrefs,  nil];
         
         _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray title:NSLocalizedString(@"Preferences", @"Preferences Window name")];
     }

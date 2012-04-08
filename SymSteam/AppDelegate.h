@@ -14,6 +14,7 @@
 #import "MASPreferencesWindowController.h"
 #import "AboutPreferencesViewController.h"
 #import "GeneralPreferencesViewController.h"
+#import "UpdatesPreferencesViewController.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>

@@ -38,7 +38,7 @@
 #pragma mark - MASPreferences Window Setters
 
 -(NSString *)identifier{
-    return @"view2";
+    return @"Info Prefs";
 }
 
 -(NSString *)toolbarItemLabel{

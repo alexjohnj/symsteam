@@ -15,8 +15,9 @@
 		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
-		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesViewController.xib */; };
+		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
 		FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
+		FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
 		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
 		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
 		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
@@ -41,6 +42,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */,
+				FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +60,7 @@
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
-		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesViewController.xib; sourceTree = "<group>"; };
+		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
 		FAA053BA1531C82000A6FEB7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
@@ -139,7 +141,7 @@
 		FABB1BBB1531A06F0073DD70 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesViewController.xib */,
+				FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */,
 				FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */,
 				FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */,
 			);
@@ -295,7 +297,7 @@
 				FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */,
 				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
 				FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */,
-				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesViewController.xib in Resources */,
+				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

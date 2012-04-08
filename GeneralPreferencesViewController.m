@@ -121,7 +121,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 #pragma mark - Setters for MASPreferencesWindow
 
 -(NSString *)identifier{
-    return @"view1";
+    return @"General Prefsr";
 }
 
 -(NSString *)toolbarItemLabel{

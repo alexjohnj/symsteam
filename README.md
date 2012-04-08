@@ -4,22 +4,15 @@ SymSteam is for all you Mac SSD owners who like to play games (via Steam) on the
 
 ## Setup
 
-At the moment, SymSteam requires a bit of a specific setup. This should change as more time is spent developing it. The full setup:
+Version 0.2 has significantly shortened the previously complicated set-up of SymSteam. 
 
-1. Copy your SteamApps folder (~/Library/Application Support/Steam/SteamApps) to an external hard drive. 
-2. Create a symbolic link in ~/Library/Application Support/Steam to the SteamApps folder on your hard drive.
-3. Rename the symbolic link folder to something other than SteamApps i.e *SteamAppsSymb*
-4. Create a new folder in the ~/Library/Application Support/Steam folder and call it something like *SteamAppsLoc*, this is where the games on your SSD will be stored.
-5. Launch SymSteam and follow the onscreen instructions. 
-6. Plug in the drive with the SteamApps folder on and check that *SteamAppsSymb* gets renamed to *SteamApps*. 
-7. Unplug the drive and check that:
-	1. *SteamApps* (on your SSD) gets renamed to *SteamAppsSymb* (or whatever you called the folder). 
-	2. *SteamAppsLoc* gets renamed to *SteamApps*.
-8. You're ready to play games of your internal SSD now! 
-9. Have some cake. If you're a developer, help fix bugs!
+1. Make a copy of your SteamApps folder (~/Library/Application Support/Steam/SteamApps) on your external hard drive.
+2. Create a symbolic link to the SteamApps folder (now located on your external hard drive) in the same directory as your SteamApps folder (on your internal drive). 
+3. Launch SymSteam and choose the local and symbolic SteamApps folders in the first run window. 
+4. That's it! So much easier. 
+5. You may want to add SymSteam to your list of applications that launch on login. 
 
-**Even if you don't follow the above procedure the application may work. I just can't guarantee!**
-**Make sure you make a backup of your SteamApps folder!**
+During setup, SymSteam will rename the symbolic SteamApps folder to "SteamAppsSymb" and, while your external Steam drive is connected, your local SteamApps folder will be renamed to "SteamAppsLoc".  
 
 ## Known Bugs/Problems
 
@@ -32,11 +25,16 @@ Find a bug? Post it on the issues page.
 ## To Do
 
 - Add the ability to specify what drive to scan so that SymSteam doesn't scan *every* drive you plug in.
+<<<<<<< HEAD
 - Add a preferences window so you can change the folder locations. ✓
 - Add Growl notifications so you can get an idea of what SymSteam is doing when a drive is plugged in. 
+=======
+- <del>Add a preferences window so you can change the folder locations.</del>✓
+- <del>Add Growl notifications so you can get an idea of what SymSteam is doing when a drive is plugged in.</del> ✓
+>>>>>>> symsteam-2.0
 - Add autoupdate.
 - Test
-- Fix bugs
+- <del>Fix b</del>ugs (Partly done)
 
 ## License
 

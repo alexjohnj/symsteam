@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
-		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
-		FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89765514EBACA30008620D /* PreferencesWindow.xib */; };
+		FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */; };
+		FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */; };
+		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
+		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
+		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
+		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
+		FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
+		FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
+		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
+		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
+		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
+		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
+		FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */; };
+		FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
+		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
 		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
 		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
@@ -20,14 +35,47 @@
 		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA871C1314F00CE3009F5268 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */,
+				FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupWindowController.h; sourceTree = "<group>"; };
-		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupWindowController.m; sourceTree = "<group>"; };
+		FA23E86C1531D3F600339B54 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
+		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
+		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
-		FA89765114EBAC960008620D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
-		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
-		FA89765514EBACA30008620D /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkGuideController.h; sourceTree = "<group>"; };
+		FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkGuideController.m; sourceTree = "<group>"; };
+		FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolicLinkGuideSheet.xib; sourceTree = "<group>"; };
+		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
+		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
+		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
+		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
+		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
+		FAA053BA1531C82000A6FEB7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesView.xib; path = ../GeneralPreferencesView.xib; sourceTree = "<group>"; };
+		FABB1BA215319B070073DD70 /* AboutPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutPreferencesViewController.h; path = ../AboutPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutPreferencesViewController.m; path = ../AboutPreferencesViewController.m; sourceTree = "<group>"; };
+		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
+		FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAEE703114DB2CA500BF7020 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -50,17 +98,82 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
+				FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */,
+				FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FAA053B41531C7AA00A6FEB7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */,
+				FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */,
+				FABB1BA215319B070073DD70 /* AboutPreferencesViewController.h */,
+				FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */,
+				FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */,
+				FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FABB1BA715319B170073DD70 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				FABB1BA815319B1D0073DD70 /* MASPreferencesController */,
+				FABB1BBB1531A06F0073DD70 /* Views */,
+				FAA053B41531C7AA00A6FEB7 /* View Controllers */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		FABB1BA815319B1D0073DD70 /* MASPreferencesController */ = {
+			isa = PBXGroup;
+			children = (
+				FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */,
+				FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */,
+				FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */,
+				FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */,
+			);
+			name = MASPreferencesController;
+			sourceTree = "<group>";
+		};
+		FABB1BBB1531A06F0073DD70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */,
+				FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */,
+				FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */,
+				FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */,
+				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
+				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
+			);
+			name = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		FACC00D0153074C700D5FD8C /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */,
+				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
+				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
-				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
-				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 				FAEE703414DB2CA500BF7020 /* SymSteam */,
 				FAEE702D14DB2CA500BF7020 /* Frameworks */,
 				FAEE702B14DB2CA500BF7020 /* Products */,
@@ -78,6 +191,8 @@
 		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAA053BA1531C82000A6FEB7 /* Sparkle.framework */,
+				FADB5B0314F0089300739ED3 /* Growl.framework */,
 				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
 				FAEE703014DB2CA500BF7020 /* Other Frameworks */,
 			);
@@ -97,11 +212,11 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
-				FA89765114EBAC960008620D /* PreferencesController.h */,
-				FA89765214EBAC960008620D /* PreferencesController.m */,
-				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
-				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
-				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
+				FABB1BA715319B170073DD70 /* Preferences */,
+				FACC00D0153074C700D5FD8C /* Windows */,
+				FACC00CD1530743E00D5FD8C /* Window Controllers */,
+				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
+				FA7E4766152DFE6F005E4336 /* SteamAppsController.m */,
 				FAEE704B14DB2CAD00BF7020 /* AppController.h */,
 				FAEE704C14DB2CAD00BF7020 /* AppController.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
@@ -114,6 +229,8 @@
 		FAEE703514DB2CA500BF7020 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA23E86C1531D3F600339B54 /* dsa_pub.pem */,
+				FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */,
 				FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */,
 				FAEE703714DB2CA500BF7020 /* InfoPlist.strings */,
 				FAEE703A14DB2CA500BF7020 /* main.m */,
@@ -133,6 +250,7 @@
 				FAEE702614DB2CA500BF7020 /* Sources */,
 				FAEE702714DB2CA500BF7020 /* Frameworks */,
 				FAEE702814DB2CA500BF7020 /* Resources */,
+				FA871C1314F00CE3009F5268 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -149,7 +267,7 @@
 		FAEE702114DB2CA500BF7020 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = FAEE702414DB2CA500BF7020 /* Build configuration list for PBXProject "SymSteam" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -177,7 +295,13 @@
 				FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */,
 				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
-				FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */,
+				FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */,
+				FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */,
+				FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */,
+				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
+				FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */,
+				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
+				FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +316,12 @@
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
 				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
-				FA89765314EBAC960008620D /* PreferencesController.m in Sources */,
+				FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */,
+				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
+				FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */,
+				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
+				FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */,
+				FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +405,10 @@
 		FAEE704914DB2CA600BF7020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
 				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";
@@ -287,6 +420,10 @@
 		FAEE704A14DB2CA600BF7020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SymSteam/SymSteam-Prefix.pch";
 				INFOPLIST_FILE = "SymSteam/SymSteam-Info.plist";

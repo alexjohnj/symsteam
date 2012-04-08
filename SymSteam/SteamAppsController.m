@@ -11,6 +11,7 @@ static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPa
 static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
+static NSString * const setupComplete = @"setupComplete";
 
 @implementation SteamAppsController
 
@@ -25,6 +26,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 }
 
 -(void)didMountDrive:(NSNotification *)aNotification{
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
+        return;
+    
     if(self.steamDriveIsConnected)
         return;
     
@@ -62,6 +66,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 }
 
 -(void)didUnMountDrive:(NSNotification *)aNotification{
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
+        return;
+    
     if(!self.steamDriveIsConnected)
         return;
     

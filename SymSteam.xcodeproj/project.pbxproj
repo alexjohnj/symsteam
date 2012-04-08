@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
+		FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */; };
+		FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */; };
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
@@ -41,6 +43,9 @@
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
+		FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkGuideController.h; sourceTree = "<group>"; };
+		FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkGuideController.m; sourceTree = "<group>"; };
+		FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolicLinkGuideSheet.xib; sourceTree = "<group>"; };
 		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
 		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
@@ -81,6 +86,8 @@
 		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */,
+				FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */,
 				FA89765114EBAC960008620D /* PreferencesController.h */,
 				FA89765214EBAC960008620D /* PreferencesController.m */,
 				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
@@ -92,6 +99,7 @@
 		FACC00D0153074C700D5FD8C /* Windows */ = {
 			isa = PBXGroup;
 			children = (
+				FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
 				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
 				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
@@ -222,6 +230,7 @@
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
 				FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */,
 				FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */,
+				FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +247,7 @@
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
 				FA89765314EBAC960008620D /* PreferencesController.m in Sources */,
 				FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */,
+				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

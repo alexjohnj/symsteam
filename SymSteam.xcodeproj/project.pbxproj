@@ -14,8 +14,12 @@
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
-		FA89765314EBAC960008620D /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA89765214EBAC960008620D /* PreferencesController.m */; };
-		FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA89765514EBACA30008620D /* PreferencesWindow.xib */; };
+		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
+		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
+		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
+		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
+		FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */; };
+		FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
@@ -49,9 +53,16 @@
 		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
 		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		FA89765114EBAC960008620D /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
-		FA89765214EBAC960008620D /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
-		FA89765514EBACA30008620D /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesView.xib; path = ../GeneralPreferencesView.xib; sourceTree = "<group>"; };
+		FABB1BA215319B070073DD70 /* AboutPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutPreferencesViewController.h; path = ../AboutPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutPreferencesViewController.m; path = ../AboutPreferencesViewController.m; sourceTree = "<group>"; };
+		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
+		FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,13 +94,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FABB1BA715319B170073DD70 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				FABB1BBB1531A06F0073DD70 /* Views */,
+				FABB1BA815319B1D0073DD70 /* MASPreferencesController */,
+				FABB1BA215319B070073DD70 /* AboutPreferencesViewController.h */,
+				FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */,
+				FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */,
+				FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		FABB1BA815319B1D0073DD70 /* MASPreferencesController */ = {
+			isa = PBXGroup;
+			children = (
+				FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */,
+				FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */,
+				FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */,
+				FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */,
+			);
+			name = MASPreferencesController;
+			sourceTree = "<group>";
+		};
+		FABB1BBB1531A06F0073DD70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */,
+				FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */,
 				FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */,
-				FA89765114EBAC960008620D /* PreferencesController.h */,
-				FA89765214EBAC960008620D /* PreferencesController.m */,
 				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
 				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 			);
@@ -102,7 +144,6 @@
 				FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
 				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
-				FA89765514EBACA30008620D /* PreferencesWindow.xib */,
 			);
 			name = Windows;
 			sourceTree = "<group>";
@@ -147,6 +188,7 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
+				FABB1BA715319B170073DD70 /* Preferences */,
 				FACC00D0153074C700D5FD8C /* Windows */,
 				FACC00CD1530743E00D5FD8C /* Window Controllers */,
 				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
@@ -228,9 +270,11 @@
 				FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */,
 				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
-				FA89765614EBACA30008620D /* PreferencesWindow.xib in Resources */,
 				FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */,
 				FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */,
+				FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */,
+				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
+				FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,9 +289,11 @@
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
 				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
-				FA89765314EBAC960008620D /* PreferencesController.m in Sources */,
 				FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */,
 				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
+				FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */,
+				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
+				FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

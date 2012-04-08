@@ -1,23 +1,29 @@
 //
-//  PreferencesController.m
+//  GeneralPreferencesViewController.m
 //  SymSteam
 //
-//  Created by Alex Jackson on 15/02/2012.
+//  Created by Alex Jackson on 08/04/2012.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
 
-
-#import "PreferencesController.h"
-
-@implementation PreferencesController
+#import "GeneralPreferencesViewController.h"
+#import "AppDelegate.h"
 
 static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
-@synthesize localPathTextField, symbolicPathTextField, growlNotificationsCheckBox;
+@interface GeneralPreferencesViewController ()
 
-- (id)initWithWindow:(NSWindow *)window
+@end
+
+@implementation GeneralPreferencesViewController
+
+@synthesize localPathTextField = _localPathTextField, symbolicPathTextField = _symbolicPathTextField, growlNotificationsCheckBox = _growlNotificationsCheckBox;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithWindow:window];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
     }
@@ -25,24 +31,15 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     return self;
 }
 
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-}
-
--(IBAction)toggleGrowlNotifications:(id)sender{
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(IBAction)chooseLocalSteamAppsPath:(id)sender{
+- (IBAction)chooseLocalSteamAppsPath:(id)sender{
     NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
     oPanel.canChooseFiles = NO;
     oPanel.canChooseDirectories = YES;
     oPanel.canCreateDirectories = YES;
-        
-    [oPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    [oPanel beginSheetModalForWindow:appDelegate.preferencesWindowController.window completionHandler:^(NSInteger result) {
         if(result == NSFileHandlingPanelCancelButton) 
             return;
         
@@ -69,14 +66,17 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
             }
         }
     }];
+    
 }
 
--(IBAction)chooseSymbolicSteamAppsPath:(id)sender{
+- (IBAction)chooseSymbolicSteamAppsPath:(id)sender{
     NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
     oPanel.canChooseDirectories = YES;
     oPanel.canCreateDirectories = YES;
     
-    [oPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+    AppDelegate *appDelegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    
+    [oPanel beginSheetModalForWindow:appDelegate.preferencesWindowController.window completionHandler:^(NSInteger result) {
         if(result == NSFileHandlingPanelCancelButton)
             return;
         
@@ -114,12 +114,22 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }];
 }
 
--(IBAction)quitApplication:(id)sender{
-    [[NSApplication sharedApplication] terminate:self];
+- (IBAction)toggleGrowlNotifications:(id)sender{
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
--(IBAction)aboutApplication:(id)sender{
-    [[NSApplication sharedApplication] orderFrontStandardAboutPanel:self];
+#pragma mark - Setters for MASPreferencesWindow
+
+-(NSString *)identifier{
+    return @"view1";
+}
+
+-(NSString *)toolbarItemLabel{
+    return NSLocalizedString(@"General", @"Toolbar label for the general preference tab");
+}
+
+-(NSImage *)toolbarItemImage{
+    return [NSImage imageNamed:NSImageNamePreferencesGeneral];
 }
 
 @end

@@ -8,12 +8,14 @@
 
 @implementation AppDelegate
 
-@synthesize aController, setupController, prefController;
+@synthesize aController = _aController;
+@synthesize setupController = _setupController;
+@synthesize preferencesWindowController = _preferencesWindowController;
 
 -(id)init{
     self = [super init];
     if(self){
-        aController = [[AppController alloc] init];
+        _aController = [[AppController alloc] init];
     }
     
     return self;
@@ -23,7 +25,7 @@
 {
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
     if(setupIsComplete == NO){
-        setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
+        _setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
         [self.setupController showWindow:self];
     }
     [self.aController performInitialDriveScan];
@@ -36,9 +38,15 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
-    if(self.prefController == nil)
-        self.prefController = [[PreferencesController alloc] initWithWindowNibName:@"PreferencesWindow"];
-    [self.prefController showWindow:self];
+    if(_preferencesWindowController == nil){
+        GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" bundle:[NSBundle mainBundle]];
+        AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView" bundle:[NSBundle mainBundle]];
+        NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, aboutPrefs, nil];
+        
+        _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray title:NSLocalizedString(@"Preferences", @"Preferences Window name")];
+    }
+    
+    [self.preferencesWindowController showWindow:self];
     
     return YES;
 }

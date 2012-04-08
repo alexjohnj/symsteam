@@ -6,15 +6,20 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
+
 #import "AppController.h"
 #import "SetupWindowController.h"
-#import "PreferencesController.h"
-#import <Growl/Growl.h>
+
+#import "MASPreferencesWindowController.h"
+#import "AboutPreferencesViewController.h"
+#import "GeneralPreferencesViewController.h"
+
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (strong) AppController *aController;
 @property (strong) SetupWindowController *setupController;
-@property (strong) PreferencesController *prefController;
+@property (strong) NSWindowController *preferencesWindowController;
 
 @end

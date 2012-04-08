@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+	<channel>
+		<title>SymSteam Changelog</title>
+		<link>http://alexjohnj.github.com/symsteam/appcast.xml</link>
+		<description>Most recent changes with links to updates.</description>
+		<language>en</language>
+		<item>
+			<title>Version 0.2</title>
+			<sparkle:releaseNotesLink>
+				http://alexjohnj.github.com/symsteam/changelog.html
+			</sparkle:releaseNotesLink>
+			<pubDate>Sun, 08 Apr 2012 18:00:00 +1000</pubDate>
+			<encosure url="..." sparkle:version="0.2" length="1600000" type="application/octet-stream" sparkle:dsaSignature="..."/>
+		</item>
+	</channel>
+</rss>

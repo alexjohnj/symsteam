@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
 		FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA23E86C1531D3F600339B54 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		FAEE703514DB2CA500BF7020 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA23E86C1531D3F600339B54 /* dsa_pub.pem */,
 				FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */,
 				FAEE703614DB2CA500BF7020 /* SymSteam-Info.plist */,
 				FAEE703714DB2CA500BF7020 /* InfoPlist.strings */,
@@ -298,6 +301,7 @@
 				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
 				FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */,
 				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
+				FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

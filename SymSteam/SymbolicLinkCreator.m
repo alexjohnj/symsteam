@@ -21,16 +21,22 @@
 }
 
 -(id)init{
-    self = [super init];
-    if(self){
-        _symbolicLinkDestination = [[NSURL alloc] initWithString:@"/"];
-    }
-    
-    return self;
+    return [self initWithSymbolicLinkDestination:nil];
 }
 
 -(BOOL)createSymbolicLink:(NSError **)error{
     NSFileManager *fManager = [[NSFileManager alloc] init];
+    
+    if(self.symbolicLinkDestination == nil){
+        if(error != NULL){
+            NSMutableDictionary *errorDetails = [NSMutableDictionary dictionary];
+            [errorDetails setValue:@"No destination was provided for the symbolic link." forKey:NSLocalizedDescriptionKey];
+            *error = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
+                                                code:1
+                                            userInfo:errorDetails];
+        }
+        return NO;
+    }
     
     NSString *symbolicLinkPath = [[NSString alloc] initWithFormat:@"%@/Library/Application Support/Steam/SteamAppsSymb", NSHomeDirectory()];
     
@@ -41,7 +47,9 @@
         return YES;
     
     else{
-        *error = symbolicLinkCreationError;
+        if(*error != NULL)
+            *error = symbolicLinkCreationError;
+        
         return NO;
     }
     

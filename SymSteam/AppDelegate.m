@@ -80,4 +80,5 @@
     
     [uDefaults registerDefaults:defaultValues];
 }
+
 @end

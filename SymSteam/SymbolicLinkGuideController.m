@@ -45,25 +45,33 @@
     
 }
 - (IBAction)createSymbolicLink:(id)sender {
-    NSFileManager *fManager = [[NSFileManager alloc] init];
-    NSString *newSymbolicFolderPath = [[NSString alloc] initWithFormat:@"%@/Library/Application Support/Steam/SteamAppsSymb", NSHomeDirectory()];
-    NSError *createSymbolicLinkError;
-    if(![fManager createSymbolicLinkAtPath:newSymbolicFolderPath withDestinationPath:self.steamAppsLocation.path error:&createSymbolicLinkError]){
-        NSAlert *alert = [NSAlert alertWithMessageText:@"There was a problem creating the symbolic link"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:[createSymbolicLinkError localizedDescription]];
-        [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:NULL];
-    }
-    else{
+    SymbolicLinkCreator *symCreator = [[SymbolicLinkCreator alloc] initWithSymbolicLinkDestination:self.steamAppsLocation];
+    NSError *symbolicLinkCreationError;
+    
+    if([symCreator createSymbolicLink:&symbolicLinkCreationError]){
         NSAlert *alert = [NSAlert alertWithMessageText:@"Success!"
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:[NSString stringWithFormat:@"Successfully made a symbolic link to %@ at %@.", self.steamAppsLocation.path, newSymbolicFolderPath]];
-        [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) contextInfo:@"successSymbolicCreateSheet"];
+                             informativeTextWithFormat:[NSString stringWithFormat:@"Successfully made a symbolic link to %@.", self.steamAppsLocation.path]];
+        [alert beginSheetModalForWindow:self.window 
+                          modalDelegate:self 
+                         didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) 
+                            contextInfo:@"successSymbolicCreateSheet"];
     }
+    
+    else {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"There was a problem creating the symbolic link"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:[symbolicLinkCreationError localizedDescription]];
+        [alert beginSheetModalForWindow:self.window 
+                          modalDelegate:self 
+                         didEndSelector:NULL 
+                            contextInfo:NULL];
+    }
+    
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo {

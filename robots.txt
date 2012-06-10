@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /appcast.xml
+Sitemap: http://alexjohnj.github.com/symsteam/sitemap.xml

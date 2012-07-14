@@ -7,11 +7,8 @@
 	
 	<key>AllNotifications</key>
 	<array>
-		<string>noSteamAppsFound</string>
-		<string>symbolicSteamAppsPrimary</string>
-		<string>localSteamAppsPrimary</string>
-		<string>symbolicPrimaryFail</string>
-		<string>localPrimaryFail</string>
+		<string>An Error Occured</string>
+		<string>Changed SteamApps Folders</string>
 </array>
 </dict>
 </plist>

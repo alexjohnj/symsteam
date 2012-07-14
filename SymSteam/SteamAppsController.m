@@ -39,13 +39,13 @@ static NSString * const setupComplete = @"setupComplete";
     
     if(![fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-        [GrowlApplicationBridge notifyWithTitle:@"Could Not Find SteamApps Folder"
-                                    description:@"The folder was not found at its expected location on your Steam Drive."
-                               notificationName:@"noSteamAppsFound"
-                                       iconData:nil
-                                       priority:0
-                                       isSticky:NO
-                                   clickContext:nil];
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occured"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
         }
         return;
     }
@@ -55,13 +55,13 @@ static NSString * const setupComplete = @"setupComplete";
     
     self.steamDriveIsConnected = YES;
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-    [GrowlApplicationBridge notifyWithTitle:@"The symbolic SteamApps Folder is now active"
-                                description:@"Your Steam drive was plugged in."
-                           notificationName:@"symbolicSteamAppsPrimary"
-                                   iconData:nil
-                                   priority:0
-                                   isSticky:NO
-                               clickContext:nil];
+        [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
+                                    description:@"You're now playing games off of your external drive."
+                               notificationName:@"Changed SteamApps Folders"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:nil];
     }
 }
 
@@ -83,13 +83,13 @@ static NSString * const setupComplete = @"setupComplete";
     
     self.steamDriveIsConnected = NO;
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-    [GrowlApplicationBridge notifyWithTitle:@"The local SteamApps folder is now active"
-                                description:@"Your Steam drive was unplugged."
-                           notificationName:@"localSteamAppsPrimary"
-                                   iconData:nil
-                                   priority:0
-                                   isSticky:NO
-                               clickContext:nil];
+        [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
+                                    description:@"You're now playing games off of your internal drive."
+                               notificationName:@"Changed SteamApps Folders"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:nil];
     }
 }
 
@@ -101,23 +101,26 @@ static NSString * const setupComplete = @"setupComplete";
     
     if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] toPath:newLocalPath error:&localFolderRename]){
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Local Steam Folder" 
-                                        description:[localFolderRename localizedDescription]
-                                   notificationName:@"symbolicPrimaryFail" 
-                                           iconData:nil 
-                                           priority:0 
-                                           isSticky:NO 
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occured"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
                                        clickContext:nil];
         }
         return NO;
     }
     
     NSError *symbFolderRename;
-    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey ] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey ] error:&symbFolderRename]){
+    if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] error:&symbFolderRename]){
+        
+        NSLog(@"Couldn't rename item [%@] to [%@] because [%@]", [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey], [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey], [symbFolderRename localizedDescription]);
+        
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Error Renaming Symbolic Folder"
-                                        description:[localFolderRename localizedDescription]
-                                   notificationName:@"symbolicPrimaryFail"
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occured"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -134,10 +137,11 @@ static NSString * const setupComplete = @"setupComplete";
     
     NSError *renameSymbolicError;
     if(![fManager moveItemAtPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey] error:&renameSymbolicError]){
+        NSLog(@"Couldn't rename [%@] to [%@] because [%@]",[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey], [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey], [renameSymbolicError localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Error reverting symbolic SteamApps folder"
-                                        description:[renameSymbolicError localizedDescription]
-                                   notificationName:@"localPrimaryFail"
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occured"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -149,10 +153,11 @@ static NSString * const setupComplete = @"setupComplete";
     NSError *renameLocalError;
     NSString *currentSteamAppsPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", [[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey]stringByDeletingLastPathComponent]];
     if(![fManager moveItemAtPath:currentSteamAppsPath toPath:[[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey] error:&renameLocalError]){
+        NSLog(@"Couldn't rename [%@] to [%@] because [%@]", currentSteamAppsPath, [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey], [renameLocalError localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Error reverting local SteamApps folder" 
-                                        description:[renameSymbolicError localizedDescription]
-                                   notificationName:@"localPrimaryFail"
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occured"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO

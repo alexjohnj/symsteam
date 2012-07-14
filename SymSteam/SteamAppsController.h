@@ -12,9 +12,10 @@
 
 @property (assign) BOOL steamDriveIsConnected;
 
--(void)didMountDrive:(NSNotification *)aNotification;
--(void)didUnMountDrive:(NSNotification *)aNotification;
--(BOOL)makeSymbolicSteamAppsPrimary;
--(BOOL)makeLocalSteamAppsPrimary;
+- (void)didMountDrive:(NSNotification *)aNotification;
+- (void)didUnMountDrive:(NSNotification *)aNotification;
+- (BOOL)makeSymbolicSteamAppsPrimary;
+- (BOOL)makeLocalSteamAppsPrimary;
+
 
 @end

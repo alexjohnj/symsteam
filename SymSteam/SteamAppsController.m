@@ -17,7 +17,7 @@ static NSString * const setupComplete = @"setupComplete";
 
 @synthesize steamDriveIsConnected = _steamDriveIsConnected;
 
--(id)init{
+- (id)init{
     self = [super init];
     if(self){
         _steamDriveIsConnected = NO;
@@ -25,7 +25,7 @@ static NSString * const setupComplete = @"setupComplete";
     return self;
 }
 
--(void)didMountDrive:(NSNotification *)aNotification{
+- (void)didMountDrive:(NSNotification *)aNotification{
     if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
         return;
     
@@ -74,7 +74,7 @@ static NSString * const setupComplete = @"setupComplete";
     }
 }
 
--(void)didUnMountDrive:(NSNotification *)aNotification{
+- (void)didUnMountDrive:(NSNotification *)aNotification{
     if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
         return;
     
@@ -104,7 +104,7 @@ static NSString * const setupComplete = @"setupComplete";
     }
 }
 
--(BOOL)makeSymbolicSteamAppsPrimary{
+- (BOOL)makeSymbolicSteamAppsPrimary{
     NSString *localSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey];
     NSString *symbolicSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey];
     NSFileManager *fManager = [[NSFileManager alloc] init];
@@ -156,7 +156,7 @@ static NSString * const setupComplete = @"setupComplete";
     return YES;
 }
 
--(BOOL)makeLocalSteamAppsPrimary{
+- (BOOL)makeLocalSteamAppsPrimary{
     NSString *localSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey];
     NSString *symbolicSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey];
     NSFileManager *fManager = [[NSFileManager alloc] init];

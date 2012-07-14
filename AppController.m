@@ -81,6 +81,23 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                            clickContext:nil];
             }
         }
+        else{ // if SymSteam was able to fix this configuration issue, check to see if a drive is connected and if it is, update the Steam Folders. 
+            if([fManager fileExistsAtPath:symbolicLinkDestination]){
+                if(![self.saController makeSymbolicSteamAppsPrimary]){
+                    return;
+                }
+                self.saController.steamDriveIsConnected = YES;
+                if(growlEnabled){
+                    [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
+                                                description:@"You're now playing games off of your external drive."
+                                           notificationName:@"Changed SteamApps Folders"
+                                                   iconData:nil
+                                                   priority:0
+                                                   isSticky:NO
+                                               clickContext:nil];
+                }
+            }
+        }
         return;
     }
     
@@ -128,7 +145,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     else if(localSteamAppsFolderPath && steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
         NSDictionary *steamAppsFolderAttributes = [fManager attributesOfItemAtPath:localSteamAppsFolderPath error:nil]; 
-        if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink]){
+        if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && [fManager fileExistsAtPath:symbolicLinkDestination]){
             self.saController.steamDriveIsConnected = YES;
             if(growlEnabled){
                 [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
@@ -138,6 +155,43 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                                priority:0
                                                isSticky:NO
                                            clickContext:nil];
+            }
+        }
+        
+        else if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && ![fManager fileExistsAtPath:symbolicLinkDestination]){
+            BOOL success = NO;
+            
+            NSError *renameLocalToSymbolic;
+            success = [fManager moveItemAtPath:localSteamAppsFolderPath toPath:symbolicSteamAppsFolderPath error:&renameLocalToSymbolic];
+            if(!success){
+                NSLog(@"I was trying to rename SteamApps to SteamAppsSymb since SteamApps is the symbolic link but no drive is plugged in. I couldn't rename [%@] to [%@] because: [%@]", localSteamAppsFolderPath, symbolicSteamAppsFolderPath, [renameLocalToSymbolic localizedDescription]);
+                if(growlEnabled){
+                    [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                                description:@"Check the console for details."
+                                           notificationName:@"An Error Occurred"
+                                                   iconData:nil
+                                                   priority:0
+                                                   isSticky:NO
+                                               clickContext:nil];
+                }
+                
+                return;
+            }
+            
+            NSError *renameSteamAppsLocToSteamApps;
+            success = [fManager moveItemAtPath:steamAppsLocPath toPath:localSteamAppsFolderPath error:&renameSteamAppsLocToSteamApps];
+            if(!success){
+                NSLog(@"I was trying to rename SteamAppsLoc to SteamApps as part of my error correction but I couldn't rename [%@] to [%@] because: [%@]", steamAppsLocPath, localSteamAppsFolderPath, [renameSteamAppsLocToSteamApps localizedDescription]);
+                if(growlEnabled){
+                    [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                                description:@"Check the console for details."
+                                           notificationName:@"An Error Occurred"
+                                                   iconData:nil
+                                                   priority:0
+                                                   isSticky:NO
+                                               clickContext:nil];
+                }
+                return;
             }
         }
         
@@ -154,10 +208,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             }
         }
         return;
-    }
-
-
-    
+    }    
 }
 
 
@@ -167,6 +218,5 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [center addObserver:self.saController selector:@selector(didMountDrive:) name:NSWorkspaceDidMountNotification object:nil];
     [center addObserver:self.saController selector:@selector(didUnMountDrive:) name:NSWorkspaceDidUnmountNotification object:nil];
 }
-
 
 @end

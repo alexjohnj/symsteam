@@ -25,81 +25,138 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 -(void)performInitialDriveScan{
-    NSString *symbolicLinkPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPathKey];
-    NSString *localPath = [[[NSUserDefaults standardUserDefaults] stringForKey:steamAppsLocalPathKey] stringByDeletingPathExtension];
+    BOOL growlEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey];
+    
+    NSString *symbolicSteamAppsFolderPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPathKey];
+    NSString *localSteamAppsFolderPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsLocalPathKey];
     NSString *symbolicLinkDestination = [[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey];
-    NSString *steamAppsLocPath = [[NSString alloc] initWithFormat:@"%@/SteamAppsLoc", localPath.stringByDeletingLastPathComponent];
+    
+    NSString *steamAppsLocPath = [localSteamAppsFolderPath stringByDeletingLastPathComponent];
+    steamAppsLocPath = [steamAppsLocPath stringByAppendingPathComponent:@"SteamAppsLoc"];
     
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
-    BOOL steamAppsSymbExists = NO;
-    BOOL steamAppsLocExists = NO;
-    BOOL steamAppsExists = NO;
+    BOOL symbolicSteamAppsFolderExists = NO;
+    BOOL localSteamAppsFolderExists = [fManager fileExistsAtPath:localSteamAppsFolderPath];
+    BOOL steamAppsLocFolderExists = [fManager fileExistsAtPath:steamAppsLocPath];
     
-    steamAppsSymbExists = [fManager fileExistsAtPath:symbolicLinkPath];
-    steamAppsLocExists = [fManager fileExistsAtPath:steamAppsLocPath];
-    steamAppsExists = [fManager fileExistsAtPath:localPath];
+    NSDictionary *symbolicSteamAppsFolderAttributes = [fManager attributesOfItemAtPath:symbolicSteamAppsFolderPath error:nil];
+    if(!symbolicSteamAppsFolderAttributes)
+        symbolicSteamAppsFolderExists = NO;
+    else
+        symbolicSteamAppsFolderExists = YES;
     
-    if(!steamAppsSymbExists && steamAppsLocExists && steamAppsExists){
-        NSError *moveSteamAppsToSymbError;
-        if(![fManager moveItemAtPath:localPath toPath:symbolicLinkPath error:&moveSteamAppsToSymbError]){
-            NSLog(@"Unabled to rename %@ to %@ because: %@", localPath, symbolicLinkPath, [moveSteamAppsToSymbError localizedDescription]);
-            if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
-                [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                            description:@"Check the console for details."
-                                       notificationName:@"An Error occurred"
+    if(localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"SteamApps exists & SteamAppsSymb exists, suggesting everything is A-OK.");
+        if([fManager fileExistsAtPath:symbolicLinkDestination]){
+            if(![self.saController makeSymbolicSteamAppsPrimary])
+                return;
+            self.saController.steamDriveIsConnected = YES;
+            if(growlEnabled){
+                [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
+                                            description:@"You're now playing games off of your external drive."
+                                       notificationName:@"Changed SteamApps Folders"
                                                iconData:nil
-                                               priority:2
+                                               priority:0
                                                isSticky:NO
                                            clickContext:nil];
-        }
-        
-        NSError *moveLocToSteamApps;
-        if(![fManager moveItemAtPath:steamAppsLocPath toPath:localPath error:&moveLocToSteamApps]){
-            NSLog(@"Unabled to rename %@ to %@ because: %@",steamAppsLocPath, localPath, [moveLocToSteamApps localizedDescription]);
+            }
             
-            if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
-                [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                            description:@"Check the console for details."
-                                       notificationName:@"An Error occurred"
-                                               iconData:nil
-                                               priority:2
-                                               isSticky:NO
-                                           clickContext:nil];
-        }
-    }    
-    
-    if(!steamAppsExists && steamAppsSymbExists && steamAppsLocExists){
-        NSError *renameSteamAppsLocToSteamAppsError;
-        if(![fManager moveItemAtPath:steamAppsLocPath toPath:steamAppsLocalPathKey error:&renameSteamAppsLocToSteamAppsError]){
-            NSLog(@"Unabled to rename %@ to %@ because: %@", steamAppsLocPath, localPath, [renameSteamAppsLocToSteamAppsError localizedDescription]);
-            
-            if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
-                [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                            description:@"Check the console for details."
-                                       notificationName:@"An Error occurred"
-                                               iconData:nil
-                                               priority:2
-                                               isSticky:NO
-                                           clickContext:nil];
+            return;
         }
     }
     
-    if([fManager fileExistsAtPath:symbolicLinkDestination]){
-        if(![self.saController makeSymbolicSteamAppsPrimary])
-            return;
-        self.saController.steamDriveIsConnected = YES;
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
-                                        description:@"You're now playing games off of your external drive."
-                                   notificationName:@"Changed SteamApps Folders"
+    if(!localSteamAppsFolderExists && steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSError *renameSteamAppsLocToSteamApps;
+        BOOL success = [fManager moveItemAtPath:steamAppsLocPath toPath:localSteamAppsFolderPath error:&renameSteamAppsLocToSteamApps];
+        if(!success){
+            NSLog(@"I was trying to fix the SteamApps setup by renaming SteamAppsLoc to SteamApps while keeping SteamAppsSymb the same but couldn't move [%@] to [%@] because: [%@]", steamAppsLocPath, localSteamAppsFolderPath, [renameSteamAppsLocToSteamApps localizedDescription]);
+            if(growlEnabled){
+                [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                            description:@"Check the console for details."
+                                       notificationName:@"An Error Occurred"
+                                               iconData:nil
+                                               priority:0
+                                               isSticky:NO
+                                           clickContext:nil];
+            }
+        }
+        return;
+    }
+    
+    else if(!localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"A symbolic link exists but neither a SteamApps folder nor a SteamAppsLoc folder exists! I can't do anything about this.");
+        if(growlEnabled){
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
                                        clickContext:nil];
         }
- 
+        return;
     }
+    
+    else if(localSteamAppsFolderExists && !steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
+        NSLog(@"A SteamApps folder exists but there's no SteamAppsLoc or SteamAppsSymb folder. Setup probably needs to be carried out again.");
+        if(growlEnabled){
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occurred"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
+        return;
+    }
+    
+    else if(localSteamAppsFolderExists && steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"A SteamApps, SteamAppsLoc & SteamAppsSymb folder exists. I can't take this! That's too many folders. I can't do anything with this setup. Get rid of either the SteamApps or SteamAppsLoc folder and redo setup.");
+        if(growlEnabled){
+            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                        description:@"Check the console for details."
+                                   notificationName:@"An Error Occurred"
+                                           iconData:nil
+                                           priority:0
+                                           isSticky:NO
+                                       clickContext:nil];
+        }
+        return;
+    }
+    
+    else if(localSteamAppsFolderPath && steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
+        NSDictionary *steamAppsFolderAttributes = [fManager attributesOfItemAtPath:localSteamAppsFolderPath error:nil]; 
+        if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink]){
+            self.saController.steamDriveIsConnected = YES;
+            if(growlEnabled){
+                [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
+                                            description:@"You're now playing games off of your external drive."
+                                       notificationName:@"Changed SteamApps Folders"
+                                               iconData:nil
+                                               priority:0
+                                               isSticky:NO
+                                           clickContext:nil];
+            }
+        }
+        
+        else{
+            NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again. ");
+            if(growlEnabled){
+                [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
+                                            description:@"Check the console for details."
+                                       notificationName:@"An Error Occurred"
+                                               iconData:nil
+                                               priority:0
+                                               isSticky:NO
+                                           clickContext:nil];
+            }
+        }
+        return;
+    }
+
+
     
 }
 

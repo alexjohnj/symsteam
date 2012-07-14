@@ -47,7 +47,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
                 [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                             description:@"Check the console for details."
-                                       notificationName:@"An Error Occured"
+                                       notificationName:@"An Error occurred"
                                                iconData:nil
                                                priority:2
                                                isSticky:NO
@@ -61,7 +61,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
                 [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                             description:@"Check the console for details."
-                                       notificationName:@"An Error Occured"
+                                       notificationName:@"An Error occurred"
                                                iconData:nil
                                                priority:2
                                                isSticky:NO
@@ -77,7 +77,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
                 [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                             description:@"Check the console for details."
-                                       notificationName:@"An Error Occured"
+                                       notificationName:@"An Error occurred"
                                                iconData:nil
                                                priority:2
                                                isSticky:NO

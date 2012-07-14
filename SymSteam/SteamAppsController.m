@@ -45,7 +45,7 @@ static NSString * const setupComplete = @"setupComplete";
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                         description:@"Check the console for details."
-                                   notificationName:@"An Error Occured"
+                                   notificationName:@"An Error occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -123,7 +123,7 @@ static NSString * const setupComplete = @"setupComplete";
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                         description:@"Check the console for details."
-                                   notificationName:@"An Error Occured"
+                                   notificationName:@"An Error occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -143,7 +143,7 @@ static NSString * const setupComplete = @"setupComplete";
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                         description:@"Check the console for details."
-                                   notificationName:@"An Error Occured"
+                                   notificationName:@"An Error occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -171,7 +171,7 @@ static NSString * const setupComplete = @"setupComplete";
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                         description:@"Check the console for details."
-                                   notificationName:@"An Error Occured"
+                                   notificationName:@"An Error occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO
@@ -194,7 +194,7 @@ static NSString * const setupComplete = @"setupComplete";
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
                                         description:@"Check the console for details."
-                                   notificationName:@"An Error Occured"
+                                   notificationName:@"An Error occurred"
                                            iconData:nil
                                            priority:0
                                            isSticky:NO

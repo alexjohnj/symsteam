@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Sparkle/Sparkle.h>
 #import "MASPreferencesViewController.h"
 
 @interface AboutPreferencesViewController : NSViewController <MASPreferencesViewController>

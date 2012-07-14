@@ -27,6 +27,13 @@
 }
 
 -(IBAction)quitApplication:(id)sender{
+    if([NSEvent modifierFlags] == NSAlternateKeyMask){
+        NSDictionary *defaults = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+        for(NSString *key in defaults){
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+        }
+    }
+    
     [[NSApplication sharedApplication] terminate:self];
 }
 

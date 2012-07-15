@@ -52,6 +52,14 @@
     return YES;
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender{
+    BOOL setupComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    if(setupComplete)
+        return NO;
+    else
+        return YES;
+}
+
 +(void)initialize{
     NSString *setupCompleteKey = [[NSString alloc] initWithString:@"setupComplete"];
     BOOL setupComplete = NO;

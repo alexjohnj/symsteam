@@ -21,13 +21,34 @@
     return self;
 }
 
+- (MASPreferencesWindowController *)preparePreferencesWindow{
+    
+    GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" 
+                                                                                                        bundle:[NSBundle mainBundle]];
+    
+    AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView" 
+                                                                                                  bundle:[NSBundle mainBundle]];
+    
+    UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" 
+                                                                                                       bundle:[NSBundle mainBundle]];
+    NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, updatePrefs, aboutPrefs,  nil];
+    
+    MASPreferencesWindowController *preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray
+                                                                                                                            title:NSLocalizedString(@"Preferences", @"Preferences Window Name")];
+    return preferencesWindowController;
+}
+
+# pragma mark - NSApplication Delegate Methods
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    
     if(setupIsComplete == NO){
         _setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
         [self.setupController showWindow:self];
     }
+    
     [self.aController performInitialDriveScan];
     [self.aController startWatchingDrives];
 }
@@ -38,18 +59,18 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
-    if(_preferencesWindowController == nil){
-        GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" bundle:[NSBundle mainBundle]];
-        AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView" bundle:[NSBundle mainBundle]];
-        UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" bundle:[NSBundle mainBundle]];
-        NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, updatePrefs, aboutPrefs,  nil];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"])
+        return NO;
+    
+    else{
+        if(_preferencesWindowController == nil){
+            _preferencesWindowController = [self preparePreferencesWindow];
+        }
         
-        _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray title:NSLocalizedString(@"Preferences", @"Preferences Window name")];
+        [self.preferencesWindowController showWindow:self];
+        
+        return YES;
     }
-    
-    [self.preferencesWindowController showWindow:self];
-    
-    return YES;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender{
@@ -77,7 +98,7 @@
     NSNumber *growlNotificationsEnabled = [[NSNumber alloc] initWithBool:YES]; 
     
     NSUserDefaults *uDefaults = [NSUserDefaults standardUserDefaults];
-   
+    
     NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
     
     [defaultValues setValue:[NSNumber numberWithBool:setupComplete] forKey:setupCompleteKey];

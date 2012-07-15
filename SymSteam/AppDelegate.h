@@ -21,6 +21,8 @@
 
 @property (strong) AppController *aController;
 @property (strong) SetupWindowController *setupController;
-@property (strong) NSWindowController *preferencesWindowController;
+@property (strong) MASPreferencesWindowController *preferencesWindowController;
+
+- (MASPreferencesWindowController *)preparePreferencesWindow;
 
 @end

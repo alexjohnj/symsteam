@@ -67,6 +67,7 @@
             for(NSString *key in defaults){
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
             }
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [alert.window orderOut:self];
             
             NSAlert *doneAlert = [[NSAlert alloc] init];

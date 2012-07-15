@@ -102,6 +102,19 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSString *providedLocalSymbolicPath = [[NSString alloc] initWithString:self.pathToSymLinkField.stringValue];
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
+    NSDictionary *symbolicLinkAttributes = [fManager attributesOfItemAtPath:providedLocalSymbolicPath error:nil];
+    if (![[symbolicLinkAttributes fileType] isEqualToString:NSFileTypeSymbolicLink]) {
+        NSAlert *symbolicLinkNotSymbolicLinkAlert = [[NSAlert alloc] init];
+        [symbolicLinkNotSymbolicLinkAlert setMessageText:@"Invalid Symbolic Link."];
+        [symbolicLinkNotSymbolicLinkAlert setInformativeText:@"The symbolic link you provided to your SteamApps folder isn't actually a symbolic link!"];
+        [symbolicLinkNotSymbolicLinkAlert addButtonWithTitle:@"OK"];
+        [symbolicLinkNotSymbolicLinkAlert beginSheetModalForWindow:self.window
+                                                     modalDelegate:nil
+                                                    didEndSelector:NULL 
+                                                       contextInfo:NULL];
+        return;
+    }
+    
     NSString *steamAppsLocalPath = [[NSString alloc] init];
     NSString *steamAppsSymbolicLinkPath = [[NSString alloc] init];
     

@@ -38,10 +38,16 @@
         return NO;
     }
     
-    NSString *symbolicLinkPath = [[NSString alloc] initWithFormat:@"%@/Library/Application Support/Steam/SteamAppsSymb", NSHomeDirectory()];
+    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDirectory, YES);
+    NSString *applicationSupportDirectoryPath = [directories objectAtIndex:0];
+    
+    NSString *symbolicLinkPath = [[applicationSupportDirectoryPath stringByAppendingPathComponent:@"Steam"] 
+                                  stringByAppendingPathComponent:@"SteamAppsSymb"];
     
     NSError *symbolicLinkCreationError;
-    BOOL success = [fManager createSymbolicLinkAtPath:symbolicLinkPath withDestinationPath:self.symbolicLinkDestination.path error:&symbolicLinkCreationError];
+    BOOL success = [fManager createSymbolicLinkAtPath:symbolicLinkPath 
+                                  withDestinationPath:self.symbolicLinkDestination.path 
+                                                error:&symbolicLinkCreationError];
     
     if(success)
         return YES;

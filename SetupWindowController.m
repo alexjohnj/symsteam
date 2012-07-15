@@ -127,15 +127,15 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         
         if(![fManager moveItemAtPath:providedLocalPath toPath:newLocalPath.path error:&moveLocalFolderError]){
             NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder" 
-                                             defaultButton:@"Choose New Path" 
-                                           alternateButton:@"Quit" 
+                                             defaultButton:@"OK" 
+                                           alternateButton:nil 
                                                otherButton:nil 
                                  informativeTextWithFormat:[moveLocalFolderError localizedDescription]];
-            NSInteger result = [alert runModal];
-            if(result == NSAlertDefaultReturn)
-                return;
-            if(result == NSAlertAlternateReturn)
-                [[NSApplication sharedApplication] terminate:self];
+            [alert beginSheetModalForWindow:self.window
+                              modalDelegate:nil
+                             didEndSelector:NULL
+                                contextInfo:NULL];
+            return;
         }
         steamAppsLocalPath = newLocalPath.path;
     }
@@ -152,16 +152,16 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         NSError *renameSymbolicFolderError;
         if (![fManager moveItemAtPath:providedLocalSymbolicPath toPath:newSymbPath.path error:&renameSymbolicFolderError]) {
             NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Symbolic Folder" 
-                                             defaultButton:@"Choose New Path" 
-                                           alternateButton:@"Quit" 
+                                             defaultButton:@"OK" 
+                                           alternateButton:nil
                                                otherButton:nil 
                                  informativeTextWithFormat:[renameSymbolicFolderError localizedDescription]];
             
-            NSInteger result = [alert runModal];
-            if(result == NSAlertDefaultReturn)
-                return;
-            if(result == NSAlertAlternateReturn)
-                [[NSApplication sharedApplication] terminate:self];
+            [alert beginSheetModalForWindow:self.window
+                              modalDelegate:nil
+                             didEndSelector:NULL
+                                contextInfo:NULL];
+            return;
         }
         steamAppsSymbolicLinkPath = newSymbPath.path;  
     }

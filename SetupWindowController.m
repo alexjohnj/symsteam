@@ -181,23 +181,10 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSString *contextInfoString = (__bridge NSString *)contextInfo;
     
     if([contextInfoString isEqualToString:@"setupSuccessAlert"]){
-        NSFileManager *fManager = [[NSFileManager alloc] init];
         [self close];
-        if([fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]]){
-            AppDelegate *appDelegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
-            if([appDelegate.aController.saController makeSymbolicSteamAppsPrimary]){
-                if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-                    appDelegate.aController.saController.steamDriveIsConnected = YES;
-                    [GrowlApplicationBridge notifyWithTitle:@"The symbolic SteamApps Folder is now active"
-                                                description:@"Your Steam drive was plugged in."
-                                           notificationName:@"symbolicSteamAppsPrimary"
-                                                   iconData:nil
-                                                   priority:0
-                                                   isSticky:NO
-                                               clickContext:nil];
-                }
-            }
-        }
+        AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
+        [appDelegate.aController performInitialDriveScan];
+        [appDelegate.aController startWatchingDrives];
     }
 }
 @end

@@ -26,9 +26,6 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (void)didMountDrive:(NSNotification *)aNotification{
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
-        return;
-    
     if(self.steamDriveIsConnected)
         return;
     
@@ -75,9 +72,6 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (void)didUnMountDrive:(NSNotification *)aNotification{
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:setupComplete])
-        return;
-    
     if(!self.steamDriveIsConnected) // check to see if the drive unmounted was the user's Steam drive. From this point on, we assume it was.
         return;
     

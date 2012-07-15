@@ -49,8 +49,10 @@
         [self.setupController showWindow:self];
     }
     
-    [self.aController performInitialDriveScan];
-    [self.aController startWatchingDrives];
+    else{
+        [self.aController performInitialDriveScan];
+        [self.aController startWatchingDrives];
+    }
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification{

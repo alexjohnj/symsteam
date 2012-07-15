@@ -28,13 +28,23 @@
 
 -(IBAction)quitApplication:(id)sender{
     if([NSEvent modifierFlags] == NSAlternateKeyMask){
-        NSDictionary *defaults = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-        for(NSString *key in defaults){
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-        }
+        AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
+        
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Reset SymSteam"
+                                         defaultButton:@"OK"
+                                       alternateButton:@"Cancel"
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Are you sure you want to reset SymSteam? All of your settings will be deleted. You will have to carry out setup again. Your Steam folder will not be touched."];
+        
+        [alert beginSheetModalForWindow:appDelegate.preferencesWindowController.window 
+                          modalDelegate:self
+                         didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                            contextInfo:@"resetConfirmSheet"];
     }
     
-    [[NSApplication sharedApplication] terminate:self];
+    else{
+        [[NSApplication sharedApplication] terminate:self];
+    }
 }
 
 -(void)viewWillAppear{
@@ -43,6 +53,37 @@
     self.aboutDescription.textStorage.attributedString = credits;
     
     self.versionLabel.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+#pragma mark - Completion Handlers
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo{
+    AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
+    NSString *contextInfoString = (__bridge NSString *)contextInfo;
+    
+    if([contextInfoString isEqualToString:@"resetConfirmSheet"]){
+        if(returnCode == NSAlertDefaultReturn){
+            NSDictionary *defaults = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+            for(NSString *key in defaults){
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+            }
+            [alert.window orderOut:self];
+            
+            NSAlert *doneAlert = [[NSAlert alloc] init];
+            [doneAlert setMessageText:@"Done"];
+            [doneAlert addButtonWithTitle:@"Quit"];
+            [doneAlert setInformativeText:@"SymSteam has been reset."];
+            [doneAlert beginSheetModalForWindow:appDelegate.preferencesWindowController.window
+                                  modalDelegate:self
+                                 didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                                    contextInfo:@"resetCompleteSheet"];
+        }
+    }
+
+    if([contextInfoString isEqualToString:@"resetCompleteSheet"]){
+        [appDelegate.preferencesWindowController.window orderOut:alert];
+        [NSApp terminate:self];
+    }
 }
 
 #pragma mark - MASPreferences Window Setters

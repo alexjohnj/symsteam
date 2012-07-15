@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Sparkle/Sparkle.h>
 #import "MASPreferencesViewController.h"
+#import "AppDelegate.h"
 
 @interface AboutPreferencesViewController : NSViewController <MASPreferencesViewController>
 
@@ -16,5 +17,7 @@
 @property (weak) IBOutlet NSTextField *versionLabel;
 
 -(IBAction)quitApplication:(id)sender;
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 
 @end

@@ -177,12 +177,15 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:setupComplete];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSAlert *successAlert = [NSAlert alertWithMessageText:@"Success!" 
-                                            defaultButton:@"OK" 
+    NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete." 
+                                            defaultButton:@"Done" 
                                           alternateButton:nil 
                                               otherButton:nil 
-                                informativeTextWithFormat:@"Successfully setup SymSteam"];
-    [successAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) contextInfo:@"setupSuccessAlert"];
+                                informativeTextWithFormat:@"Setup has finished. In order to access SymSteam's preferences, hold down the option (⎇) key while launching SymSteam or click on SymSteam's icon once it has been launched."];
+    [successAlert beginSheetModalForWindow:self.window 
+                             modalDelegate:self 
+                            didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) 
+                               contextInfo:@"setupSuccessAlert"];
 }
 
 - (IBAction)createSymbolicLink:(id)sender {

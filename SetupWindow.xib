@@ -303,7 +303,7 @@
 						<object class="NSTextField" id="693254193">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{111, 138}, {295, 17}}</string>
+							<string key="NSFrame">{{111, 138}, {293, 17}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="222664122"/>
@@ -312,7 +312,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="201262117">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Tell me where your local SteamApps Folder is:</string>
+								<string key="NSContents">Tell me where your local SteamApps folder is:</string>
 								<reference key="NSSupport" ref="62414243"/>
 								<string key="NSCellIdentifier">_NS:1505</string>
 								<reference key="NSControlView" ref="693254193"/>
@@ -1107,7 +1107,7 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="898084174">
+							<object class="IBNSLayoutConstraint" id="7658561">
 								<reference key="firstItem" ref="6916201"/>
 								<int key="firstAttribute">3</int>
 								<int key="relation">0</int>
@@ -1339,7 +1339,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="914871772"/>
-							<object class="IBNSLayoutConstraint" id="105546572">
+							<object class="IBNSLayoutConstraint" id="14409012">
 								<reference key="firstItem" ref="6916201"/>
 								<int key="firstAttribute">8</int>
 								<int key="relation">0</int>
@@ -1524,12 +1524,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">522</int>
-						<reference key="object" ref="898084174"/>
+						<reference key="object" ref="7658561"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">523</int>
-						<reference key="object" ref="105546572"/>
+						<reference key="object" ref="14409012"/>
 						<reference key="parent" ref="6916201"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1715,7 +1715,7 @@
 						<reference ref="873636721"/>
 						<reference ref="795787914"/>
 						<reference ref="638100671"/>
-						<reference ref="898084174"/>
+						<reference ref="7658561"/>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO"/>
@@ -1746,7 +1746,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<reference ref="105546572"/>
+						<reference ref="14409012"/>
 					</object>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

@@ -20,14 +20,14 @@
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
 		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
-		FAB7696715BAAFE70076A027 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */; };
-		FAB7696815BAAFE70076A027 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
 		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
 		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
 		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FAE8391815BABF5400741C37 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */; };
+		FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8391615BABF5400741C37 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
 		FAEE703914DB2CA500BF7020 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703714DB2CA500BF7020 /* InfoPlist.strings */; };
 		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
@@ -50,6 +50,27 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
 			remoteInfo = BinaryDelta;
+		};
+		FAE8390B15BABF2700741C37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61B5F90209C4CEE200B25A18;
+			remoteInfo = "Sparkle Test App";
+		};
+		FAE8390D15BABF2700741C37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 612279D90DB5470200AB99EA;
+			remoteInfo = "Sparkle Unit Tests";
+		};
+		FAE8390F15BABF2700741C37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55C14BB7136EEF1500649790;
+			remoteInfo = finish_installation;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -85,10 +106,6 @@
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
 		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
-		FAB7696115BAAFE70076A027 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
-		FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
-		FAB7696315BAAFE70076A027 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
-		FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesView.xib; path = ../GeneralPreferencesView.xib; sourceTree = "<group>"; };
@@ -97,6 +114,10 @@
 		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		FAE8391315BABF5400741C37 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		FAE8391515BABF5400741C37 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		FAE8391615BABF5400741C37 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEE702E14DB2CA500BF7020 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAEE703114DB2CA500BF7020 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -131,7 +152,10 @@
 			isa = PBXGroup;
 			children = (
 				FA188D4815BAB31E0073D516 /* Sparkle.framework */,
+				FAE8390C15BABF2700741C37 /* Sparkle Test App.app */,
+				FAE8390E15BABF2700741C37 /* Sparkle Unit Tests.octest */,
 				FA188D4E15BAB31E0073D516 /* BinaryDelta */,
+				FAE8391015BABF2700741C37 /* finish_installation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,21 +173,10 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		FAB7695F15BAAFE70076A027 /* MASPreferences */ = {
-			isa = PBXGroup;
-			children = (
-				FAB7696115BAAFE70076A027 /* MASPreferencesViewController.h */,
-				FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */,
-				FAB7696315BAAFE70076A027 /* MASPreferencesWindowController.h */,
-				FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */,
-			);
-			path = MASPreferences;
-			sourceTree = SOURCE_ROOT;
-		};
 		FABB1BA715319B170073DD70 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				FAB7695F15BAAFE70076A027 /* MASPreferences */,
+				FAE8391215BABF5400741C37 /* MASPreferences */,
 				FABB1BBB1531A06F0073DD70 /* Views */,
 				FAA053B41531C7AA00A6FEB7 /* View Controllers */,
 			);
@@ -200,6 +213,17 @@
 			);
 			name = Windows;
 			sourceTree = "<group>";
+		};
+		FAE8391215BABF5400741C37 /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				FAE8391315BABF5400741C37 /* MASPreferencesViewController.h */,
+				FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */,
+				FAE8391515BABF5400741C37 /* MASPreferencesWindowController.h */,
+				FAE8391615BABF5400741C37 /* MASPreferencesWindowController.m */,
+			);
+			path = MASPreferences;
+			sourceTree = SOURCE_ROOT;
 		};
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
@@ -339,6 +363,27 @@
 			remoteRef = FA188D4D15BAB31E0073D516 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FAE8390C15BABF2700741C37 /* Sparkle Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Sparkle Test App.app";
+			remoteRef = FAE8390B15BABF2700741C37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FAE8390E15BABF2700741C37 /* Sparkle Unit Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Sparkle Unit Tests.octest";
+			remoteRef = FAE8390D15BABF2700741C37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FAE8391015BABF2700741C37 /* finish_installation.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = finish_installation.app;
+			remoteRef = FAE8390F15BABF2700741C37 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -356,7 +401,7 @@
 				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
 				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
 				FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */,
-				FAB7696715BAAFE70076A027 /* MASPreferencesWindow.xib in Resources */,
+				FAE8391815BABF5400741C37 /* MASPreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +422,7 @@
 				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
 				FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */,
 				FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */,
-				FAB7696815BAAFE70076A027 /* MASPreferencesWindowController.m in Sources */,
+				FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

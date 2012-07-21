@@ -20,12 +20,12 @@
 		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
 		FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
 		FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
+		FAB7696715BAAFE70076A027 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */; };
+		FAB7696815BAAFE70076A027 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
 		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
 		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
 		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
-		FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */; };
-		FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
@@ -67,16 +67,16 @@
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
 		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
 		FAA053BA1531C82000A6FEB7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		FAB7696115BAAFE70076A027 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		FAB7696315BAAFE70076A027 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesView.xib; path = ../GeneralPreferencesView.xib; sourceTree = "<group>"; };
 		FABB1BA215319B070073DD70 /* AboutPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutPreferencesViewController.h; path = ../AboutPreferencesViewController.h; sourceTree = "<group>"; };
 		FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutPreferencesViewController.m; path = ../AboutPreferencesViewController.m; sourceTree = "<group>"; };
 		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
-		FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
-		FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
-		FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
-		FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		FAEE702A14DB2CA500BF7020 /* SymSteam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SymSteam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,25 +122,25 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		FAB7695F15BAAFE70076A027 /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				FAB7696115BAAFE70076A027 /* MASPreferencesViewController.h */,
+				FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */,
+				FAB7696315BAAFE70076A027 /* MASPreferencesWindowController.h */,
+				FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */,
+			);
+			path = MASPreferences;
+			sourceTree = SOURCE_ROOT;
+		};
 		FABB1BA715319B170073DD70 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				FABB1BA815319B1D0073DD70 /* MASPreferencesController */,
+				FAB7695F15BAAFE70076A027 /* MASPreferences */,
 				FABB1BBB1531A06F0073DD70 /* Views */,
 				FAA053B41531C7AA00A6FEB7 /* View Controllers */,
 			);
 			name = Preferences;
-			sourceTree = "<group>";
-		};
-		FABB1BA815319B1D0073DD70 /* MASPreferencesController */ = {
-			isa = PBXGroup;
-			children = (
-				FABB1BAD15319B570073DD70 /* MASPreferencesViewController.h */,
-				FABB1BAE15319B570073DD70 /* MASPreferencesWindow.xib */,
-				FABB1BAF15319B570073DD70 /* MASPreferencesWindowController.h */,
-				FABB1BB015319B570073DD70 /* MASPreferencesWindowController.m */,
-			);
-			name = MASPreferencesController;
 			sourceTree = "<group>";
 		};
 		FABB1BBB1531A06F0073DD70 /* Views */ = {
@@ -304,9 +304,9 @@
 				FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */,
 				FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */,
 				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
-				FABB1BB115319B570073DD70 /* MASPreferencesWindow.xib in Resources */,
 				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
 				FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */,
+				FAB7696715BAAFE70076A027 /* MASPreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +325,9 @@
 				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
 				FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */,
 				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
-				FABB1BB215319B570073DD70 /* MASPreferencesWindowController.m in Sources */,
 				FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */,
 				FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */,
+				FAB7696815BAAFE70076A027 /* MASPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

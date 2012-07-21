@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA188D5215BAB3950073D516 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA188D4815BAB31E0073D516 /* Sparkle.framework */; };
+		FA188D5315BAB39D0073D516 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FA188D4815BAB31E0073D516 /* Sparkle.framework */; };
 		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
@@ -14,12 +16,10 @@
 		FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */; };
 		FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA485316153768F3002B3995 /* SymbolicLinkCreator.m */; };
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
-		FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
 		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
-		FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
-		FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAA053BA1531C82000A6FEB7 /* Sparkle.framework */; };
 		FAB7696715BAAFE70076A027 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */; };
 		FAB7696815BAAFE70076A027 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB7696415BAAFE70076A027 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
@@ -36,21 +36,40 @@
 		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA188D4715BAB31E0073D516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = Sparkle;
+		};
+		FA188D4D15BAB31E0073D516 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
+			remoteInfo = BinaryDelta;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		FA871C1314F00CE3009F5268 /* CopyFiles */ = {
+		FA871C1314F00CE3009F5268 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FA871C1514F00CF3009F5268 /* Growl.framework in CopyFiles */,
-				FAA053BC1531C8B700A6FEB7 /* Sparkle.framework in CopyFiles */,
+				FA188D5315BAB39D0073D516 /* Sparkle.framework in Copy Files */,
+				FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		FA23E86C1531D3F600339B54 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
@@ -66,7 +85,6 @@
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
 		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
-		FAA053BA1531C82000A6FEB7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		FAB7696115BAAFE70076A027 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		FAB7696215BAAFE70076A027 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		FAB7696315BAAFE70076A027 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -100,15 +118,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA188D5215BAB3950073D516 /* Sparkle.framework in Frameworks */,
 				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
 				FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */,
-				FAA053BB1531C82000A6FEB7 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA188D3A15BAB31D0073D516 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA188D4815BAB31E0073D516 /* Sparkle.framework */,
+				FA188D4E15BAB31E0073D516 /* BinaryDelta */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FAA053B41531C7AA00A6FEB7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +204,7 @@
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
+				FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */,
 				FAEE703414DB2CA500BF7020 /* SymSteam */,
 				FAEE702D14DB2CA500BF7020 /* Frameworks */,
 				FAEE702B14DB2CA500BF7020 /* Products */,
@@ -194,7 +222,6 @@
 		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAA053BA1531C82000A6FEB7 /* Sparkle.framework */,
 				FADB5B0314F0089300739ED3 /* Growl.framework */,
 				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
 				FAEE703014DB2CA500BF7020 /* Other Frameworks */,
@@ -255,7 +282,7 @@
 				FAEE702614DB2CA500BF7020 /* Sources */,
 				FAEE702714DB2CA500BF7020 /* Frameworks */,
 				FAEE702814DB2CA500BF7020 /* Resources */,
-				FA871C1314F00CE3009F5268 /* CopyFiles */,
+				FA871C1314F00CE3009F5268 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -284,12 +311,35 @@
 			mainGroup = FAEE701F14DB2CA500BF7020;
 			productRefGroup = FAEE702B14DB2CA500BF7020 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FA188D3A15BAB31D0073D516 /* Products */;
+					ProjectRef = FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FAEE702914DB2CA500BF7020 /* SymSteam */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FA188D4815BAB31E0073D516 /* Sparkle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sparkle.framework;
+			remoteRef = FA188D4715BAB31E0073D516 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FA188D4E15BAB31E0073D516 /* BinaryDelta */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = BinaryDelta;
+			remoteRef = FA188D4D15BAB31E0073D516 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FAEE702814DB2CA500BF7020 /* Resources */ = {

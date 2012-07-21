@@ -1,3 +1,6 @@
 [submodule "MASPreferences"]
 	path = MASPreferences
 	url = https://github.com/shpakovski/MASPreferences.git
+[submodule "Sparkle"]
+	path = Sparkle
+	url = git://github.com/andymatuschak/Sparkle.git

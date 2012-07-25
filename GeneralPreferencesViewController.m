@@ -57,7 +57,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
                                                                defaultButton:@"OK"
                                                              alternateButton:nil
                                                                  otherButton:nil
-                                                   informativeTextWithFormat:[renameError localizedDescription]];
+                                                   informativeTextWithFormat:@"%@", renameError.localizedDescription];
                     [renameFailAlert runModal];
                     return;
                 }
@@ -100,7 +100,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
                                                                defaultButton:@"OK"
                                                              alternateButton:nil
                                                                  otherButton:nil
-                                                   informativeTextWithFormat:[renameError localizedDescription]];
+                                                   informativeTextWithFormat:@"%@", renameError.localizedDescription];
                     [renameFailAlert runModal];
                     return;
                 }

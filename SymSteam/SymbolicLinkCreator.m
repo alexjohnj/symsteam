@@ -39,7 +39,7 @@
     }
     
     NSArray *directories = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDirectory, YES);
-    NSString *applicationSupportDirectoryPath = [directories objectAtIndex:0];
+    NSString *applicationSupportDirectoryPath = directories[0];
     
     NSString *symbolicLinkPath = [[applicationSupportDirectoryPath stringByAppendingPathComponent:@"Steam"] 
                                   stringByAppendingPathComponent:@"SteamAppsSymb"];
@@ -58,7 +58,6 @@
         
         return NO;
     }
-    
 }
 
 @end

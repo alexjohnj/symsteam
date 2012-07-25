@@ -31,7 +31,7 @@
     
     UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" 
                                                                                                        bundle:[NSBundle mainBundle]];
-    NSArray *viewsArray = [NSArray arrayWithObjects:generalPrefs, updatePrefs, aboutPrefs,  nil];
+    NSArray *viewsArray = @[generalPrefs, updatePrefs, aboutPrefs];
     
     MASPreferencesWindowController *preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray
                                                                                                                             title:NSLocalizedString(@"Preferences", @"Preferences Window Name")];
@@ -89,32 +89,29 @@
 }
 
 +(void)initialize{
-    NSString *setupCompleteKey = [[NSString alloc] initWithString:@"setupComplete"];
-    BOOL setupComplete = NO;
+    NSString *setupCompleteKey = @"setupComplete";
+    NSNumber *setupComplete = @NO;
     
-    NSString *steamAppsSymbolicLinkPathKey = [[NSString alloc] initWithString:@"steamAppsSymbolicLinkPath"];
-    NSString *steamAppsSymbolicLinkPath = [[NSString alloc] initWithString:@""];
+    NSString *steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
+    NSString *steamAppsSymbolicLinkPath = @"";
     
-    NSString *steamAppsLocalPathKey = [[NSString alloc] initWithString:@"steamAppsLocalPath"];
-    NSString *steamAppsLocalPath = [[NSString alloc] initWithString:@""];
+    NSString *steamAppsLocalPathKey = @"steamAppsLocalPath";
+    NSString *steamAppsLocalPath = @"";
     
-    NSString *symbolicPathDestinationKey = [[NSString alloc] initWithString:@"symbolicPathDestination"];
-    NSString *symbolicPathDestination = [[NSString alloc] initWithString:@""];
+    NSString *symbolicPathDestinationKey = @"symbolicPathDestination";
+    NSString *symbolicPathDestination = @"";
     
-    NSString *growlNotificationsEnabledKey = [[NSString alloc] initWithString:@"growlNotificationsEnabled"];
-    NSNumber *growlNotificationsEnabled = [[NSNumber alloc] initWithBool:YES]; 
+    NSString *growlNotificationsEnabledKey = @"growlNotificationsEnabled";
+    NSNumber *growlNotificationsEnabled = @YES;
     
-    NSUserDefaults *uDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *defaults = [@{ setupCompleteKey : setupComplete,
+                                     steamAppsSymbolicLinkPathKey : steamAppsSymbolicLinkPath,
+                                     steamAppsLocalPathKey : steamAppsLocalPath,
+                                     symbolicPathDestinationKey : symbolicPathDestination,
+                                     growlNotificationsEnabledKey : growlNotificationsEnabled } mutableCopy];
     
-    [defaultValues setValue:[NSNumber numberWithBool:setupComplete] forKey:setupCompleteKey];
-    [defaultValues setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
-    [defaultValues setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
-    [defaultValues setValue:growlNotificationsEnabled forKey:growlNotificationsEnabledKey];
-    [defaultValues setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
-    
-    [uDefaults registerDefaults:defaultValues];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
 
 @end

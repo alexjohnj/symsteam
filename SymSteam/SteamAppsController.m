@@ -32,7 +32,7 @@ static NSString * const setupComplete = @"setupComplete";
     NSURL *notificationDriveURL = [aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey];
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
-    if(![[notificationDriveURL.pathComponents objectAtIndex:2] isEqualToString:[[[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]pathComponents]objectAtIndex:2]])
+    if(![(notificationDriveURL.pathComponents)[2] isEqualToString:[[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]pathComponents][2]])
         return; // check to see if the name of the drive is the same as the drive the user has specified to contain the SteamApps folder. 
     
     BOOL success = NO;

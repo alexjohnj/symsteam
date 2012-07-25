@@ -49,7 +49,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     oPanel.resolvesAliases = NO;
     
     NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", [libArray objectAtIndex:0]]];
+    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
     oPanel.directoryURL = directoryURLConstruct;
     
     [oPanel beginSheetModalForWindow:self.window
@@ -76,7 +76,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     oPanel.allowsMultipleSelection = NO;
     
     NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", [libArray objectAtIndex:0]]];
+    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
     oPanel.directoryURL = directoryURLConstruct;
     
     [oPanel beginSheetModalForWindow:self.window
@@ -130,7 +130,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                              defaultButton:@"OK" 
                                            alternateButton:nil 
                                                otherButton:nil 
-                                 informativeTextWithFormat:[moveLocalFolderError localizedDescription]];
+                                 informativeTextWithFormat:@"%@", moveLocalFolderError.localizedDescription];
             [alert beginSheetModalForWindow:self.window
                               modalDelegate:nil
                              didEndSelector:NULL
@@ -155,7 +155,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                              defaultButton:@"OK" 
                                            alternateButton:nil
                                                otherButton:nil 
-                                 informativeTextWithFormat:[renameSymbolicFolderError localizedDescription]];
+                                 informativeTextWithFormat:@"%@", renameSymbolicFolderError.localizedDescription];
             
             [alert beginSheetModalForWindow:self.window
                               modalDelegate:nil
@@ -174,7 +174,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [[NSUserDefaults standardUserDefaults] setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
     [[NSUserDefaults standardUserDefaults] setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
     [[NSUserDefaults standardUserDefaults] setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:setupComplete];
+    [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:setupComplete];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete." 

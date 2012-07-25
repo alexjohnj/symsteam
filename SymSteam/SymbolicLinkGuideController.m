@@ -53,7 +53,8 @@
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:[NSString stringWithFormat:@"Successfully made a symbolic link to %@.", self.steamAppsLocation.path]];
+                             informativeTextWithFormat:@"Successfully made a symbolic link to %@.", self.steamAppsLocation.path];
+        
         [alert beginSheetModalForWindow:self.window 
                           modalDelegate:self 
                          didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) 
@@ -65,7 +66,7 @@
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
-                             informativeTextWithFormat:[symbolicLinkCreationError localizedDescription]];
+                             informativeTextWithFormat:@"%@", symbolicLinkCreationError.localizedDescription];
         [alert beginSheetModalForWindow:self.window 
                           modalDelegate:self 
                          didEndSelector:NULL 

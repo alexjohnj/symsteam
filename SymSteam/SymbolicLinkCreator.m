@@ -12,7 +12,7 @@
 
 @synthesize symbolicLinkDestination = _symbolicLinkDestination;
 
--(id)initWithSymbolicLinkDestination:(NSURL *)sDir{
+- (id)initWithSymbolicLinkDestination:(NSURL *)sDir{
     self = [super init];
     if(self){
         _symbolicLinkDestination = sDir;
@@ -20,11 +20,11 @@
     return self;
 }
 
--(id)init{
+- (id)init{
     return [self initWithSymbolicLinkDestination:nil];
 }
 
--(BOOL)createSymbolicLink:(NSError **)error{
+- (BOOL)createSymbolicLink:(NSError **)error{
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
     if(self.symbolicLinkDestination == nil){
@@ -38,17 +38,16 @@
         return NO;
     }
     
-    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDirectory, YES);
+    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDirectory, YES); // get the user's application support directory. 
     NSString *applicationSupportDirectoryPath = directories[0];
     
-    NSString *symbolicLinkPath = [[applicationSupportDirectoryPath stringByAppendingPathComponent:@"Steam"] 
-                                  stringByAppendingPathComponent:@"SteamAppsSymb"];
+    // build the path to the symbolic link
+    NSString *symbolicLinkPath = [[applicationSupportDirectoryPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
     
     NSError *symbolicLinkCreationError;
     BOOL success = [fManager createSymbolicLinkAtPath:symbolicLinkPath 
                                   withDestinationPath:self.symbolicLinkDestination.path 
                                                 error:&symbolicLinkCreationError];
-    
     if(success)
         return YES;
     

@@ -12,8 +12,8 @@
 
 @property (strong) NSURL *symbolicLinkDestination;
 
--(id)initWithSymbolicLinkDestination:(NSURL *)sDir;
+- (id)initWithSymbolicLinkDestination:(NSURL *)sDir;
 
--(BOOL)createSymbolicLink:(NSError **)error;
+- (BOOL)createSymbolicLink:(NSError **)error;
 
 @end

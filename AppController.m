@@ -16,7 +16,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 @synthesize saController = _saController;
 
 
--(id)init{
+- (id)init{
     self = [super init];
     if(self){
         _saController = [[SteamAppsController alloc] init];
@@ -24,7 +24,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     return self;
 }
 
--(void)performInitialDriveScan{
+- (void)performInitialDriveScan{
     BOOL growlEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey];
     
     NSString *symbolicSteamAppsFolderPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPathKey];
@@ -212,7 +212,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 
--(void)startWatchingDrives{
+- (void)startWatchingDrives{
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     NSNotificationCenter *center = [workspace notificationCenter];
     [center addObserver:self.saController selector:@selector(didMountDrive:) name:NSWorkspaceDidMountNotification object:nil];

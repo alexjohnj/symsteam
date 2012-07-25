@@ -12,7 +12,7 @@
 @synthesize setupController = _setupController;
 @synthesize preferencesWindowController = _preferencesWindowController;
 
--(id)init{
+- (id)init{
     self = [super init];
     if(self){
         _aController = [[AppController alloc] init];
@@ -88,7 +88,7 @@
         return YES;
 }
 
-+(void)initialize{
++ (void)initialize{
     NSString *setupCompleteKey = @"setupComplete";
     NSNumber *setupComplete = @NO;
     

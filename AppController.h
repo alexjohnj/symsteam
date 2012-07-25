@@ -13,7 +13,7 @@
 
 @property (strong) SteamAppsController *saController;
 
--(void)startWatchingDrives;
--(void)performInitialDriveScan;
+- (void)startWatchingDrives;
+- (void)performInitialDriveScan;
 
 @end

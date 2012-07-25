@@ -323,7 +323,7 @@
 		FAEE702114DB2CA500BF7020 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = FAEE702414DB2CA500BF7020 /* Build configuration list for PBXProject "SymSteam" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -506,6 +506,7 @@
 		FAEE704914DB2CA600BF7020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -521,6 +522,7 @@
 		FAEE704A14DB2CA600BF7020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

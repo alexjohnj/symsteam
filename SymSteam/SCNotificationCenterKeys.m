@@ -18,11 +18,12 @@ NSString * const SCNotificationCenterNotificationAppIcon = @"NotificationAppIcon
 NSString * const SCNotificationCenterNotificationPriority = @"NotificationPriority";
 NSString * const SCNotificationCenterNotificationSticky = @"NotificationSticky";
 NSString * const SCNotificationCenterNotificationClickContext = @"NotificationClickContext";
-NSString * const SCNotificationCenterNotificationIdentifier = @"NotificationIdentifier";
+NSString * const SCNotificationCenterNotificationIdentifier = @"GrowlNotificationIdentifier";
 NSString * const SCNotificationCenterGrowlNotificationIdentifier = @"GrowlNotificationIdentifier";
 NSString * const SCNotificationCenterNotificationSubtitle = @"NotificationSubtitle";
 NSString * const SCNotificationCenterNotificationHasActionButton = @"NotificationHasActionButton";
 NSString * const SCNotificationCenterNotificationActionButtonTitle = @"NotificationActionButtonTitle";
 NSString * const SCNotificationCenterNotificationDeliveryDate = @"NotificationDeliveryDate";
+NSString * const SCNotificationCenterNotificationUserInfo = @"NotificationUserInfo";
 
 @end

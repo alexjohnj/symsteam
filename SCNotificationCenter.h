@@ -14,7 +14,13 @@
 
 + (SCNotificationCenter *)sharedCenter;
 
+// The keys for notification dictionaries can be found in SCNotificationCenterKeys.h.
+
 - (void)notifyWithDictionary:(NSDictionary *)dictionary;
+
+// Legacy Methods
+// Avoid using these methods, they are here so that updating an app to use SCNotificationCenter would be easily done using a simple find and replace.
+// Try to use the notifyWithDictionary: method since this will allow you to make use of interactive notifications in notifications center while maintaining compatibility with Growl and older versions of OS X.
 
 - (void)notifyWithTitle:(NSString *)title
             description:(NSString *)description

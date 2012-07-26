@@ -34,66 +34,6 @@ static SCNotificationCenter *sharedNotificationCenter = nil;
     return self;
 }
 
-/* KEYS FOR DICTIONARY
- "NotificationName"
- ------------------
- A human readable name for the notification that must be declared in the Growl notification dictionary. Has no use with NSUserNotification.
- 
- "NotificationTitle"
- -------------------
- The title of the notification. The same as Growl's "NotificationName" key and the same as NSUserNotification's title property.
- 
- "NotificationDescription"
- -------------------------
- A description displayed with the notification. The same as Growl's "NotificationDescription" key and the same as NSUserNotification's informativeText property.
- 
- "NotificationIcon"
- ------------------
- An NSData object displayed with a Growl notification. The same as Growl's "NotificationIcon" key. There's no equivelent for NSUserNotification and it will be ignored.
- 
- "NotificationAppIcon"
- ---------------------
- Same as above (pretty much) see Growl docs for more information. The same as Growl's "NotificationAppIcon" key. Not available for NSUserNotification.
- 
- "NotificationPriority"
- ----------------------
- An (NSNumber) integer between -2 & 2. The same as Growl's "NotificationPriority" key. No equivelent for NSUserNotification.
- 
- "NotificationSticky"
- --------------------
- An (NSNumber) bool indicating if the notification should automatically disappear. The same as Growl's "NotificationSticky". No equivelent for NSUserNotification.
- 
- "NotificationClickContext"
- --------------------------
- A plist-encodable object that is unique to a notification and is provided in a notification clicked delegate method. The same as Growl's "NotificationClickContext". Will be placed inside a dictionary under the key "NotificationClickContext" for NSUserNotification and applied to the notification's userInfo property. The object must be small (>1KB) and its type must be specified or else notifications will not work with NSUserNotification but will work with Growl.
- 
- "NotificationIdentifier"
- ------------------------
- An identifier for the notification. Must be a string. The same as "GrowlNotificationIdentifier" for Growl. Will be placed in a dictionary under the key "GrowlNotificationIdentifier" for NSUserNotification and provided in the notification's userInfo property.
- 
- "GrowlNotificationIdentifier"
- -----------------------------
- ^^ The same as above.
- 
- "NotificationSubtitle"
- ----------------------
- A subtitle for the notification. No equvielent for Growl and so will do nothing. Used as an NSUserNotification's subtitle property.
- 
- "NotificationHasActionButton"
- -----------------------------
- Boolean value. Provides an action button for the notification. No equivalent for Growl. NSUserNotification only.
- 
- "NotificationActionButtonTitle"
- -------------------------------
- A title for an action button. No equivelent for Growl. NSUserNotification only.
- 
- "NotificationDeliveryDate"
- -------------------------
- An NSDate that dictates when the notification should be displayed. No equivelent for Growl (yet). Sets the deliveryDate property for an NSUserNotification.
- 
- */
-
-
 
 # pragma mark - "Modern" Notification Display Methods
 
@@ -129,7 +69,15 @@ static SCNotificationCenter *sharedNotificationCenter = nil;
     }
     
     // Build the userInfo dictionary.
-    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *userInfo;
+    
+    if(!details[SCNotificationCenterNotificationUserInfo]){
+        userInfo = [[NSMutableDictionary alloc] init];
+    }
+    else{
+        userInfo = [details[SCNotificationCenterNotificationUserInfo] mutableCopy];
+    }
+    
     if(details[SCNotificationCenterNotificationClickContext])
         userInfo[SCNotificationCenterNotificationClickContext] = details[SCNotificationCenterNotificationClickContext];
     
@@ -148,6 +96,10 @@ static SCNotificationCenter *sharedNotificationCenter = nil;
 }
 
 - (void)displayNotificationUsingGrowlWithDetails:(NSDictionary *)details{
+    if(!details[SCNotificationCenterNotificationClickContext] && details[SCNotificationCenterNotificationUserInfo]){
+        [details setValue:details[SCNotificationCenterNotificationUserInfo] forKey:SCNotificationCenterNotificationClickContext];
+    }
+    
     [GrowlApplicationBridge notifyWithDictionary:details];
 }
 

@@ -13,10 +13,6 @@ static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
-@interface GeneralPreferencesViewController ()
-
-@end
-
 @implementation GeneralPreferencesViewController
 
 @synthesize localPathTextField = _localPathTextField, symbolicPathTextField = _symbolicPathTextField, growlNotificationsCheckBox = _growlNotificationsCheckBox;
@@ -31,6 +27,20 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     return self;
 }
 
+- (void)awakeFromNib{
+    SCLoginController *loginController = [[SCLoginController alloc] init];
+    NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+    
+    if([loginController checkSessionLoginItemsForApplication:bundleURL]){
+        [self.startAtLoginCheckbox setState:NSOnState];
+    }
+    else{
+        [self.startAtLoginCheckbox setState:NSOffState];
+    }
+}
+
+#pragma mark -
+
 - (IBAction)chooseLocalSteamAppsPath:(id)sender{
     NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
     oPanel.canChooseFiles = NO;
@@ -40,7 +50,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     AppDelegate *appDelegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
     
     [oPanel beginSheetModalForWindow:appDelegate.preferencesWindowController.window completionHandler:^(NSInteger result) {
-        if(result == NSFileHandlingPanelCancelButton) 
+        if(result == NSFileHandlingPanelCancelButton)
             return;
         
         else if(result == NSFileHandlingPanelOKButton){
@@ -86,7 +96,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
             if([oPanel.URL.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
                 [[NSUserDefaults standardUserDefaults] setValue:oPanel.URL.path forKey:steamAppsSymbolicLinkPathKey];
                 
-                NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];  
+                NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:oPanel.URL.path error:nil];
                 [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
             }
             
@@ -109,13 +119,26 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
                 NSString *symbolicPath = [fManager destinationOfSymbolicLinkAtPath:newPath.path error:nil];
                 [[NSUserDefaults standardUserDefaults] setValue:symbolicPath forKey:symbolicPathDestinationKey];
             }
-            [[NSUserDefaults standardUserDefaults] synchronize];  
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }];
 }
 
 - (IBAction)toggleGrowlNotifications:(id)sender{
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)toggleLaunchSymSteamAtLogin:(id)sender{
+    SCLoginController *loginController = [[SCLoginController alloc] init];
+    NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+    
+    if([sender state] == NSOnState){
+        [loginController addApplicationToLoginItems:bundleURL];
+    }
+    
+    else{
+        [loginController removeApplicationFromLoginItems:bundleURL];
+    }
 }
 
 #pragma mark - Setters for MASPreferencesWindow

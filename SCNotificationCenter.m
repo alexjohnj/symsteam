@@ -97,10 +97,13 @@ static SCNotificationCenter *sharedNotificationCenter = nil;
 
 - (void)displayNotificationUsingGrowlWithDetails:(NSDictionary *)details{
     if(!details[SCNotificationCenterNotificationClickContext] && details[SCNotificationCenterNotificationUserInfo]){
-        [details setValue:details[SCNotificationCenterNotificationUserInfo] forKey:SCNotificationCenterNotificationClickContext];
+        NSMutableDictionary *newDetails = [details mutableCopy];
+        [newDetails setValue:details[SCNotificationCenterNotificationUserInfo] forKey:SCNotificationCenterNotificationClickContext];
+        [GrowlApplicationBridge notifyWithDictionary:newDetails];
     }
-    
-    [GrowlApplicationBridge notifyWithDictionary:details];
+    else{
+        [GrowlApplicationBridge notifyWithDictionary:details];
+    }
 }
 
 

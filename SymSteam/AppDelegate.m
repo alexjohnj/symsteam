@@ -8,10 +8,6 @@
 
 @implementation AppDelegate
 
-@synthesize aController = _aController;
-@synthesize setupController = _setupController;
-@synthesize preferencesWindowController = _preferencesWindowController;
-
 - (id)init{
     self = [super init];
     if(self){
@@ -26,11 +22,11 @@
     GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" 
                                                                                                         bundle:[NSBundle mainBundle]];
     
-    AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView" 
-                                                                                                  bundle:[NSBundle mainBundle]];
-    
     UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" 
                                                                                                        bundle:[NSBundle mainBundle]];
+    
+    AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView"
+                                                                                                  bundle:[NSBundle mainBundle]];
     NSArray *viewsArray = @[generalPrefs, updatePrefs, aboutPrefs];
     
     MASPreferencesWindowController *preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:viewsArray
@@ -45,7 +41,7 @@
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
     
     if(setupIsComplete == NO){
-        _setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
+        self.setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
         [self.setupController showWindow:self];
     }
     
@@ -53,8 +49,8 @@
         [self.aController performInitialDriveScan];
         [self.aController startWatchingDrives];
         if([NSEvent modifierFlags] == NSAlternateKeyMask){
-            if(!_preferencesWindowController)
-                _preferencesWindowController = [self preparePreferencesWindow];
+            if(!self.preferencesWindowController)
+                self.preferencesWindowController = [self preparePreferencesWindow];
             [self.preferencesWindowController showWindow:self];
         }
     }
@@ -70,8 +66,8 @@
         return NO;
     
     else{
-        if(_preferencesWindowController == nil){
-            _preferencesWindowController = [self preparePreferencesWindow];
+        if(self.preferencesWindowController == nil){
+            self.preferencesWindowController = [self preparePreferencesWindow];
         }
         
         [self.preferencesWindowController showWindow:self];

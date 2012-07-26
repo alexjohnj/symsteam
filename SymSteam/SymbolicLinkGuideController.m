@@ -10,9 +10,6 @@
 
 @implementation SymbolicLinkGuideController
 
-@synthesize steamAppsLocation = _steamAppsLocation;
-@synthesize createSymbolicLinkButton = _createButton;
-
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];

@@ -13,8 +13,6 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 
 @implementation AppController
-@synthesize saController = _saController;
-
 
 - (id)init{
     self = [super init];
@@ -42,7 +40,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     NSDictionary *symbolicSteamAppsFolderAttributes = [fManager attributesOfItemAtPath:symbolicSteamAppsFolderPath error:nil];
     if(!symbolicSteamAppsFolderAttributes)
-        symbolicSteamAppsFolderExists = NO;
+        symbolicSteamAppsFolderExists = NO; //we check the link exists using the attributes instead of fileExistsAtPath: since the afformentioned method will try to follow the symbolic link and return NO if the link isn't reachable, even if the actualy symbolic link exists.
     else
         symbolicSteamAppsFolderExists = YES;
     

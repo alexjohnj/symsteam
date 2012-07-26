@@ -10,8 +10,6 @@
 
 @implementation SymbolicLinkCreator
 
-@synthesize symbolicLinkDestination = _symbolicLinkDestination;
-
 - (id)initWithSymbolicLinkDestination:(NSURL *)sDir{
     self = [super init];
     if(self){
@@ -29,8 +27,7 @@
     
     if(self.symbolicLinkDestination == nil){
         if(error != NULL){
-            NSMutableDictionary *errorDetails = [NSMutableDictionary dictionary];
-            [errorDetails setValue:@"No destination was provided for the symbolic link." forKey:NSLocalizedDescriptionKey];
+            NSDictionary *errorDetails = @{ NSLocalizedDescriptionKey : @"No destination was provided for the symbolic link." };
             *error = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
                                                 code:1
                                             userInfo:errorDetails];

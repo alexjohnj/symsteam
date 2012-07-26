@@ -8,10 +8,6 @@
 #import "AppDelegate.h"
 
 @implementation SetupWindowController
-@synthesize quitSetupButton = _quitSetupButton;
-@synthesize pathToSymLinkField = _pathToSymLinkField, pathToNonSymLinkField = _pathToNonSymLinkField, continueButton = _continueButton, createSymbolicLinkButton = _createSymbolicLinkButton;
-@synthesize symLinkPathProvided = _symLinkPathProvided, nonSymLinkPathProvided = _nonSymLinkPathProvided, formComplete = _formComplete;
-@synthesize symbolicLinkGuideSheet = _symbolicLinkGuideSheet;
 
 static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
 static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
@@ -49,7 +45,9 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     oPanel.resolvesAliases = NO;
     
     NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
+    
+    //TODO: simplify to @"%@", [(libArray[0]) stringByAppendingLastPathComponent:@"Steam"];
+    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]]; 
     oPanel.directoryURL = directoryURLConstruct;
     
     [oPanel beginSheetModalForWindow:self.window
@@ -76,6 +74,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     oPanel.allowsMultipleSelection = NO;
     
     NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    
+    //TODO: simplify to @"%@", [(libArray[0]) stringByAppendingLastPathComponent:@"Steam"];
     NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
     oPanel.directoryURL = directoryURLConstruct;
     
@@ -189,8 +189,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 - (IBAction)createSymbolicLink:(id)sender {
-    if(!_symbolicLinkGuideSheet)
-        _symbolicLinkGuideSheet = [[SymbolicLinkGuideController alloc] initWithWindowNibName:@"SymbolicLinkGuideSheet"];
+    if(!self.symbolicLinkGuideSheet)
+        self.symbolicLinkGuideSheet = [[SymbolicLinkGuideController alloc] initWithWindowNibName:@"SymbolicLinkGuideSheet"];
     [NSApp beginSheet:self.symbolicLinkGuideSheet.window
        modalForWindow:self.window
         modalDelegate:self

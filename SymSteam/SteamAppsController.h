@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Growl/Growl.h>
+#import "SCNotificationCenter.h"
 
 @interface SteamAppsController : NSObject
 

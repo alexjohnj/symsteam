@@ -34,21 +34,19 @@ static NSString * const setupComplete = @"setupComplete";
     NSString *storedDriveName = ([[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents])[2];
     
     if(![notificationDriveName isEqualToString:storedDriveName])
-        return; // check to see if the name of the drive is the same as the drive the user has specified to contain the SteamApps folder. 
+        return; // check to see if the name of the drive is the same as the drive the user has specified to contain the SteamApps folder.
     
     BOOL success = NO;
     
-    success = [fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]]; // check to see if the SteamApps folder exists on the external drive where the user specified it should. 
+    success = [fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]]; // check to see if the SteamApps folder exists on the external drive where the user specified it should.
     if(!success){
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                        description:@"Check the console for details."
-                                   notificationName:@"An Error occurred"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
+                                                 description:@"Check the console for details."
+                                            notificationName:@"An Error occurred"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
         return;
     }
     
@@ -60,15 +58,15 @@ static NSString * const setupComplete = @"setupComplete";
     
     else{
         self.steamDriveIsConnected = YES;
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
-                                        description:@"You're now playing games off of your external drive."
-                                   notificationName:@"Changed SteamApps Folders"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
+        [[SCNotificationCenter sharedCenter] notifyWithDictionary:@{
+                           SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
+                     SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
+                            SCNotificationCenterNotificationName : @"Changed SteamApps Folders",
+                        SCNotificationCenterNotificationPriority : @0,
+                          SCNotificationCenterNotificationSticky : @NO,
+                  SCNotificationCenterNotificationHasActionButton : @YES,
+                SCNotificationCenterNotificationActionButtonTitle : @"OK"
+         }];
     }
 }
 
@@ -87,15 +85,13 @@ static NSString * const setupComplete = @"setupComplete";
     else{
         self.steamDriveIsConnected = NO;
         
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Updated Steam Folders"
-                                        description:@"You're now playing games off of your internal drive."
-                                   notificationName:@"Changed SteamApps Folders"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Updated Steam Folders"
+                                                 description:@"You're now playing games off of your internal drive."
+                                            notificationName:@"Changed SteamApps Folders"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
     }
 }
 
@@ -111,20 +107,17 @@ static NSString * const setupComplete = @"setupComplete";
     
     // rename the local SteamApps Folder to SteamAppsLoc:
     NSError *localSteamAppsFolderRename;
-    success = [fManager moveItemAtPath:localSteamAppsPath toPath:newLocalSteamAppsPath error:&localSteamAppsFolderRename]; 
+    success = [fManager moveItemAtPath:localSteamAppsPath toPath:newLocalSteamAppsPath error:&localSteamAppsFolderRename];
     
     if(!success){
         NSLog(@"I was trying to rename the local SteamApps folder to SteamAppsLoc but couldn't rename [%@] to [%@] because: [%@]", localSteamAppsPath, newLocalSteamAppsPath, [localSteamAppsFolderRename localizedDescription]);
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                        description:@"Check the console for details."
-                                   notificationName:@"An Error occurred"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
-        
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
+                                                 description:@"Check the console for details."
+                                            notificationName:@"An Error occurred"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
         return NO;
     }
     
@@ -135,16 +128,13 @@ static NSString * const setupComplete = @"setupComplete";
     if(!success){
         NSLog(@"I was trying to rename SteamAppsSymb to SteamApps but couldn't rename item [%@] to [%@] because [%@]", symbolicSteamAppsPath, localSteamAppsPath, [symbolicSteamAppsFolderRename localizedDescription]);
         
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                        description:@"Check the console for details."
-                                   notificationName:@"An Error occurred"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
-        
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
+                                                 description:@"Check the console for details."
+                                            notificationName:@"An Error occurred"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
         return NO;
     }
     
@@ -162,16 +152,13 @@ static NSString * const setupComplete = @"setupComplete";
     success = [fManager moveItemAtPath:localSteamAppsPath toPath:symbolicSteamAppsPath error:&renameSymbolicError];
     if(!success){
         NSLog(@"I was trying to rename SteamApps to SteamAppsSymb but couldn't rename [%@] to [%@] because [%@]", localSteamAppsPath, symbolicSteamAppsPath, [renameSymbolicError localizedDescription]);
-        
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                        description:@"Check the console for details."
-                                   notificationName:@"An Error occurred"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
+                                                 description:@"Check the console for details."
+                                            notificationName:@"An Error occurred"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
         
         return NO;
     }
@@ -185,16 +172,13 @@ static NSString * const setupComplete = @"setupComplete";
     
     if(!success){
         NSLog(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
-        
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [GrowlApplicationBridge notifyWithTitle:@"Something's Gone Wrong!"
-                                        description:@"Check the console for details."
-                                   notificationName:@"An Error occurred"
-                                           iconData:nil
-                                           priority:0
-                                           isSticky:NO
-                                       clickContext:nil];
-        }
+        [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
+                                                 description:@"Check the console for details."
+                                            notificationName:@"An Error occurred"
+                                                    iconData:nil
+                                                    priority:0
+                                                    isSticky:NO
+                                                clickContext:nil];
         
         return NO;
     }

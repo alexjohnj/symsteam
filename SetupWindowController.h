@@ -7,6 +7,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
 #import "SymbolicLinkGuideController.h"
+#import "SCLoginController.h"
 
 @interface SetupWindowController : NSWindowController
 
@@ -30,6 +31,8 @@
 - (IBAction)createSymbolicLink:(id)sender;
 - (IBAction)quitSetup:(id)sender;
 
+- (void)showStartAtLoginSheet;
 
-- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo;
+
+- (void)alertDidEnd:(NSAlert *)alert resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo;
 @end

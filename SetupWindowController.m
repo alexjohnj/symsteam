@@ -47,7 +47,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     
     //TODO: simplify to @"%@", [(libArray[0]) stringByAppendingLastPathComponent:@"Steam"];
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]]; 
+    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
     oPanel.directoryURL = directoryURLConstruct;
     
     [oPanel beginSheetModalForWindow:self.window
@@ -110,7 +110,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         [symbolicLinkNotSymbolicLinkAlert addButtonWithTitle:@"OK"];
         [symbolicLinkNotSymbolicLinkAlert beginSheetModalForWindow:self.window
                                                      modalDelegate:nil
-                                                    didEndSelector:NULL 
+                                                    didEndSelector:NULL
                                                        contextInfo:NULL];
         return;
     }
@@ -126,10 +126,10 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         newLocalPath = [newLocalPath URLByAppendingPathComponent:@"SteamApps" isDirectory:YES];
         
         if(![fManager moveItemAtPath:providedLocalPath toPath:newLocalPath.path error:&moveLocalFolderError]){
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder" 
-                                             defaultButton:@"OK" 
-                                           alternateButton:nil 
-                                               otherButton:nil 
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder"
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
                                  informativeTextWithFormat:@"%@", moveLocalFolderError.localizedDescription];
             [alert beginSheetModalForWindow:self.window
                               modalDelegate:nil
@@ -151,10 +151,10 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         
         NSError *renameSymbolicFolderError;
         if (![fManager moveItemAtPath:providedLocalSymbolicPath toPath:newSymbPath.path error:&renameSymbolicFolderError]) {
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Symbolic Folder" 
-                                             defaultButton:@"OK" 
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Symbolic Folder"
+                                             defaultButton:@"OK"
                                            alternateButton:nil
-                                               otherButton:nil 
+                                               otherButton:nil
                                  informativeTextWithFormat:@"%@", renameSymbolicFolderError.localizedDescription];
             
             [alert beginSheetModalForWindow:self.window
@@ -163,7 +163,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                 contextInfo:NULL];
             return;
         }
-        steamAppsSymbolicLinkPath = newSymbPath.path;  
+        steamAppsSymbolicLinkPath = newSymbPath.path;
     }
     else{
         steamAppsSymbolicLinkPath = providedLocalSymbolicPath;
@@ -177,14 +177,14 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:setupComplete];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete." 
-                                            defaultButton:@"Done" 
-                                          alternateButton:nil 
-                                              otherButton:nil 
+    NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete."
+                                            defaultButton:@"Done"
+                                          alternateButton:nil
+                                              otherButton:nil
                                 informativeTextWithFormat:@"Setup has finished. In order to access SymSteam's preferences, hold down the option (⎇) key while launching SymSteam or click on SymSteam's icon once it has been launched."];
-    [successAlert beginSheetModalForWindow:self.window 
-                             modalDelegate:self 
-                            didEndSelector:@selector(sheetDidEnd:resultCode:contextInfo:) 
+    [successAlert beginSheetModalForWindow:self.window
+                             modalDelegate:self
+                            didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:)
                                contextInfo:@"setupSuccessAlert"];
 }
 
@@ -210,14 +210,37 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         self.formComplete = NO;
 }
 
-- (void)sheetDidEnd:(NSWindow *)sheet resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo{
+- (void)showStartAtLoginSheet{
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Launch SymSteam on login?"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"No thanks"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Do you want SymSteam to automatically launch when you login? It is strongly recommended that you do."];
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:self
+                     didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:)
+                        contextInfo:@"startOnLoginAlert"];
+}
+
+- (void)alertDidEnd:(NSAlert *)alert resultCode:(NSInteger)resultCode contextInfo:(void *)contextInfo{
     NSString *contextInfoString = (__bridge NSString *)contextInfo;
     
     if([contextInfoString isEqualToString:@"setupSuccessAlert"]){
+        [alert.window orderOut:self];
+        [self showStartAtLoginSheet];
+    }
+    
+    if([contextInfoString isEqualToString:@"startOnLoginAlert"]){
+        if(resultCode == NSAlertDefaultReturn){
+            SCLoginController *loginController = [[SCLoginController alloc] init];
+            NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+            [loginController addApplicationToLoginItems:bundleURL];
+        }
         [self close];
         AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
         [appDelegate.aController performInitialDriveScan];
         [appDelegate.aController startWatchingDrives];
     }
+    
 }
 @end

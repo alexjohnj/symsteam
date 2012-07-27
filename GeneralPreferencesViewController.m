@@ -15,7 +15,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 @implementation GeneralPreferencesViewController
 
-@synthesize localPathTextField = _localPathTextField, symbolicPathTextField = _symbolicPathTextField, growlNotificationsCheckBox = _growlNotificationsCheckBox;
+@synthesize localPathTextField = _localPathTextField, symbolicPathTextField = _symbolicPathTextField, notificationsCheckBox = _growlNotificationsCheckBox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +36,13 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }
     else{
         [self.startAtLoginCheckbox setState:NSOffState];
+    }
+    
+    if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
+        self.notificationsInformation.stringValue = @"Notifications will be handled via Notification Center.";
+    }
+    else{
+        self.notificationsInformation.stringValue = @"Notifications are handled by Growl. If Growl isn't installed, notifications will be handled by SymSteam.";
     }
 }
 

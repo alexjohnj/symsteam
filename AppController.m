@@ -206,7 +206,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             }
         }
         return;
-    }    
+    }
 }
 
 

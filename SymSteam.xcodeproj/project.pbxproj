@@ -19,9 +19,10 @@
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
-		FA949E3315C18D3700F2EBCA /* SCNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA949E3215C18D3700F2EBCA /* SCNotificationCenter.m */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
 		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
+		FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5A1E515C2698C00B7871C /* SCNotificationCenter.m */; };
+		FAA5A1EA15C2698C00B7871C /* SCNotificationCenterKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5A1E715C2698C00B7871C /* SCNotificationCenterKeys.m */; };
 		FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */; };
 		FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */; };
 		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
@@ -36,7 +37,6 @@
 		FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703D14DB2CA500BF7020 /* Credits.rtf */; };
 		FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704114DB2CA500BF7020 /* AppDelegate.m */; };
 		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
-		FAFE41D615C1C3D500A80524 /* SCNotificationCenterKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFE41D515C1C3D500A80524 /* SCNotificationCenterKeys.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,11 +108,13 @@
 		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
 		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		FA949E3115C18D3700F2EBCA /* SCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCNotificationCenter.h; path = ../SCNotificationCenter.h; sourceTree = "<group>"; };
-		FA949E3215C18D3700F2EBCA /* SCNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCNotificationCenter.m; path = ../SCNotificationCenter.m; sourceTree = "<group>"; };
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
 		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
+		FAA5A1E415C2698C00B7871C /* SCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNotificationCenter.h; sourceTree = "<group>"; };
+		FAA5A1E515C2698C00B7871C /* SCNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNotificationCenter.m; sourceTree = "<group>"; };
+		FAA5A1E615C2698C00B7871C /* SCNotificationCenterKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNotificationCenterKeys.h; sourceTree = "<group>"; };
+		FAA5A1E715C2698C00B7871C /* SCNotificationCenterKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNotificationCenterKeys.m; sourceTree = "<group>"; };
 		FABB1B9C15319AED0073DD70 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ../GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		FABB1B9D15319AED0073DD70 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ../GeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		FABB1B9E15319AED0073DD70 /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesView.xib; path = ../GeneralPreferencesView.xib; sourceTree = "<group>"; };
@@ -139,8 +141,6 @@
 		FAEE704114DB2CA500BF7020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FAEE704B14DB2CAD00BF7020 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ../AppController.h; sourceTree = "<group>"; };
 		FAEE704C14DB2CAD00BF7020 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = ../AppController.m; sourceTree = "<group>"; };
-		FAFE41D415C1C3D500A80524 /* SCNotificationCenterKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNotificationCenterKeys.h; sourceTree = "<group>"; };
-		FAFE41D515C1C3D500A80524 /* SCNotificationCenterKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNotificationCenterKeys.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +181,18 @@
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
+		};
+		FAA5A1E215C2698C00B7871C /* SCNotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				FAA5A1E415C2698C00B7871C /* SCNotificationCenter.h */,
+				FAA5A1E515C2698C00B7871C /* SCNotificationCenter.m */,
+				FAA5A1E615C2698C00B7871C /* SCNotificationCenterKeys.h */,
+				FAA5A1E715C2698C00B7871C /* SCNotificationCenterKeys.m */,
+			);
+			name = SCNotificationCenter;
+			path = scnotificationcenter;
+			sourceTree = SOURCE_ROOT;
 		};
 		FABB1BA715319B170073DD70 /* Preferences */ = {
 			isa = PBXGroup;
@@ -275,10 +287,7 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
-				FAFE41D415C1C3D500A80524 /* SCNotificationCenterKeys.h */,
-				FAFE41D515C1C3D500A80524 /* SCNotificationCenterKeys.m */,
-				FA949E3115C18D3700F2EBCA /* SCNotificationCenter.h */,
-				FA949E3215C18D3700F2EBCA /* SCNotificationCenter.m */,
+				FAA5A1E215C2698C00B7871C /* SCNotificationCenter */,
 				FA4CE4C115C16A14000EB02F /* SCLoginController.h */,
 				FA4CE4C215C16A14000EB02F /* SCLoginController.m */,
 				FABB1BA715319B170073DD70 /* Preferences */,
@@ -439,8 +448,8 @@
 				FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */,
 				FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */,
 				FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */,
-				FA949E3315C18D3700F2EBCA /* SCNotificationCenter.m in Sources */,
-				FAFE41D615C1C3D500A80524 /* SCNotificationCenterKeys.m in Sources */,
+				FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */,
+				FAA5A1EA15C2698C00B7871C /* SCNotificationCenterKeys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

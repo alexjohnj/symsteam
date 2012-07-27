@@ -37,13 +37,6 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     else{
         [self.startAtLoginCheckbox setState:NSOffState];
     }
-    
-    if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
-        self.notificationsInformation.stringValue = @"Notifications will be handled via Notification Center.";
-    }
-    else{
-        self.notificationsInformation.stringValue = @"Notifications are handled by Growl. If Growl isn't installed, notifications will be handled by SymSteam.";
-    }
 }
 
 #pragma mark -

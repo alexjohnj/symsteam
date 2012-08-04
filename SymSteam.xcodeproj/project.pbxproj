@@ -14,6 +14,7 @@
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
 		FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */; };
 		FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */; };
+		FA46665115CD646800FBB72A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA46665015CD646800FBB72A /* icon.icns */; };
 		FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA485316153768F3002B3995 /* SymbolicLinkCreator.m */; };
 		FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CE4C215C16A14000EB02F /* SCLoginController.m */; };
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
@@ -102,6 +103,7 @@
 		FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkGuideController.h; sourceTree = "<group>"; };
 		FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkGuideController.m; sourceTree = "<group>"; };
 		FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolicLinkGuideSheet.xib; sourceTree = "<group>"; };
+		FA46665015CD646800FBB72A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FA485315153768F3002B3995 /* SymbolicLinkCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkCreator.h; sourceTree = "<group>"; };
 		FA485316153768F3002B3995 /* SymbolicLinkCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkCreator.m; sourceTree = "<group>"; };
 		FA4CE4C115C16A14000EB02F /* SCLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoginController.h; path = ../SCLoginController.h; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
+				FA46665015CD646800FBB72A /* icon.icns */,
 				FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */,
 				FAEE703414DB2CA500BF7020 /* SymSteam */,
 				FAEE702D14DB2CA500BF7020 /* Frameworks */,
@@ -431,6 +434,7 @@
 				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
 				FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */,
 				FAE8391815BABF5400741C37 /* MASPreferencesWindow.xib in Resources */,
+				FA46665115CD646800FBB72A /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

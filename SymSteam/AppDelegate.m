@@ -12,6 +12,7 @@
     self = [super init];
     if(self){
         _aController = [[AppController alloc] init];
+        _notificationCenterDelegate = [[SCUserNotificationCenterDelegate alloc] init];
     }
     
     return self;
@@ -39,6 +40,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
+        [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self.notificationCenterDelegate];
+    }
     
     if(setupIsComplete == NO){
         self.setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];

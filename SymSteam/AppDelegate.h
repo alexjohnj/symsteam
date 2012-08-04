@@ -10,6 +10,8 @@
 
 #import "AppController.h"
 #import "SetupWindowController.h"
+#import "SCUserNotificationCenterDelegate.h"
+#import "SCNotificationCenter.h"
 
 #import "MASPreferencesWindowController.h"
 #import "AboutPreferencesViewController.h"
@@ -22,6 +24,7 @@
 @property (strong) AppController *aController;
 @property (strong) SetupWindowController *setupController;
 @property (strong) MASPreferencesWindowController *preferencesWindowController;
+@property (strong) SCUserNotificationCenterDelegate *notificationCenterDelegate;
 
 - (MASPreferencesWindowController *)preparePreferencesWindow;
 

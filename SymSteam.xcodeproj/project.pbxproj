@@ -29,6 +29,7 @@
 		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
 		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FAE2896115CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */; };
 		FAE8391815BABF5400741C37 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */; };
 		FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8391615BABF5400741C37 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEE702E14DB2CA500BF7020 /* Cocoa.framework */; };
@@ -123,6 +124,8 @@
 		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		FAE2895F15CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUserNotificationCenterDelegate.h; sourceTree = "<group>"; };
+		FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUserNotificationCenterDelegate.m; sourceTree = "<group>"; };
 		FAE8391315BABF5400741C37 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		FAE8391515BABF5400741C37 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				FABB1BA715319B170073DD70 /* Preferences */,
 				FACC00D0153074C700D5FD8C /* Windows */,
 				FACC00CD1530743E00D5FD8C /* Window Controllers */,
+				FAE2895F15CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.h */,
+				FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */,
 				FA485315153768F3002B3995 /* SymbolicLinkCreator.h */,
 				FA485316153768F3002B3995 /* SymbolicLinkCreator.m */,
 				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
@@ -450,6 +455,7 @@
 				FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */,
 				FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */,
 				FAA5A1EA15C2698C00B7871C /* SCNotificationCenterKeys.m in Sources */,
+				FAE2896115CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

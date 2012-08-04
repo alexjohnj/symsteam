@@ -46,7 +46,8 @@
     
     if(setupIsComplete == NO){
         self.setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];
-        [self.setupController showWindow:self];
+        [NSApp activateIgnoringOtherApps: YES];
+        [self.setupController.window makeKeyAndOrderFront:self];
     }
     
     else{

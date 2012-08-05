@@ -30,6 +30,10 @@ static NSString * const setupComplete = @"setupComplete";
     NSURL *notificationDriveURL = [aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey];
     NSFileManager *fManager = [[NSFileManager alloc] init];
     
+    if(notificationDriveURL.pathComponents.count < 3){
+        return; // Paths for external drives have to have at least 3 components, so no point raising an out of bounds exception on the next line. 
+    }
+    
     NSString *notificationDriveName = (notificationDriveURL.pathComponents)[2];
     NSString *storedDriveName = ([[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents])[2];
     

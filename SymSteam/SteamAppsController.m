@@ -23,40 +23,44 @@ static NSString * const setupComplete = @"setupComplete";
     return self;
 }
 
+- (BOOL)connectedDriveIsSteamDrive:(NSURL *)connectedDrive{
+    NSString *steamAppsDriveName = [[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents][2];
+    NSString *connectedDriveName;
+    @try {
+        connectedDriveName = connectedDrive.pathComponents[2]; // If there's an exception here, it's probably caused on login by /home and /net mounting. 
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+        connectedDriveName = nil;
+    }
+    @finally {
+        return [steamAppsDriveName isEqualToString:connectedDriveName];
+    }
+}
+
+- (BOOL)externalSteamAppsFolderExists{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]];
+}
+
 - (void)didMountDrive:(NSNotification *)aNotification{
-    if(self.steamDriveIsConnected)
+    if(self.steamDriveIsConnected) // If a Steam Drive is connected, we can ignore this drive. 
         return;
     
-    NSURL *notificationDriveURL = [aNotification.userInfo valueForKey:NSWorkspaceVolumeURLKey];
-    NSFileManager *fManager = [[NSFileManager alloc] init];
+    if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]]) // Check the connected drive's name to see if it is the same as the one the user specified in setup.
+        return;
     
-    if(notificationDriveURL.pathComponents.count < 3){
-        return; // Paths for external drives have to have at least 3 components, so no point raising an out of bounds exception on the next line. 
-    }
-    
-    NSString *notificationDriveName = (notificationDriveURL.pathComponents)[2];
-    NSString *storedDriveName = ([[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents])[2];
-    
-    if(![notificationDriveName isEqualToString:storedDriveName])
-        return; // check to see if the name of the drive is the same as the drive the user has specified to contain the SteamApps folder.
-    
-    BOOL success = NO;
-    
-    success = [fManager fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]]; // check to see if the SteamApps folder exists on the external drive where the user specified it should.
-    if(!success){
+    if(![self externalSteamAppsFolderExists]){ // Check the SteamApps folder exists on the drive. If this fails we display an error since we're now 100% certain the connected drive is a Steam drive.
+        NSLog(@"The SteamApps folder wasn't found on the drive connected. Drive: %@", aNotification.userInfo[NSWorkspaceVolumeURLKey]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
-                                                     description:@"Check the console for details."
-                                                notificationName:@"An Error occurred"
-                                                        iconData:nil
-                                                        priority:0
-                                                        isSticky:NO
-                                                    clickContext:nil];
+            [SCNotificationCenter notifyWithDictionary:(@{
+                                                        SCNotificationCenterNotificationTitle : @"Something's Gone Wrong!",
+                                                        SCNotificationCenterNotificationDescription : @"The SteamApps folder wasn't found on the Steam drive you connected.",
+                                                        SCNotificationCenterNotificationName : @"An Error Occurred"})];
         }
         return;
     }
     
-    success = [self makeSymbolicSteamAppsPrimary];
+    BOOL success = [self makeSymbolicSteamAppsPrimary];
     
     if(!success){
         return;

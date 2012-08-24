@@ -15,8 +15,10 @@
 
 - (void)didMountDrive:(NSNotification *)aNotification;
 - (void)didUnMountDrive:(NSNotification *)aNotification;
+
 - (BOOL)makeSymbolicSteamAppsPrimary;
 - (BOOL)makeLocalSteamAppsPrimary;
-
+- (BOOL)connectedDriveIsSteamDrive:(NSURL *)connectedDrive;
+- (BOOL)externalSteamAppsFolderExists;
 
 @end

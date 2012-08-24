@@ -7,7 +7,7 @@
 	
 	<key>AllNotifications</key>
 	<array>
-		<string>An Error Occured</string>
+		<string>An Error Occurred</string>
 		<string>Changed SteamApps Folders</string>
 </array>
 </dict>

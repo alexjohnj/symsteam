@@ -134,6 +134,8 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (BOOL)makeLocalSteamAppsPrimary{
+    self.steamDriveIsConnected = NO; // Update this here since the Steam drive will have been disconnected regardless of if this method completes successfully.
+    
     NSString *localSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey];
     NSString *symbolicSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey];
     NSFileManager *fManager = [[NSFileManager alloc] init];
@@ -146,39 +148,37 @@ static NSString * const setupComplete = @"setupComplete";
         NSLog(@"I was trying to rename SteamApps to SteamAppsSymb but couldn't rename [%@] to [%@] because [%@]", localSteamAppsPath, symbolicSteamAppsPath, [renameSymbolicError localizedDescription]);
         
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
-                                                     description:@"Check the console for details."
-                                                notificationName:@"An Error occurred"
-                                                        iconData:nil
-                                                        priority:0
-                                                        isSticky:NO
-                                                    clickContext:nil];
+            [SCNotificationCenter notifyWithDictionary:(@{
+                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
+                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
+                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
         }
-        
         return NO;
     }
     
+    // Attempt to rename SteamAppsLoc to SteamApps
     NSError *renameLocalError;
-    
-    NSString *currentLocalSteamAppsFolderPath = [localSteamAppsPath stringByDeletingLastPathComponent];
-    currentLocalSteamAppsFolderPath = [currentLocalSteamAppsFolderPath stringByAppendingPathComponent:@"SteamAppsLoc"];
+    NSString *currentLocalSteamAppsFolderPath = [[localSteamAppsPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SteamAppsLoc"];
     
     success = [fManager moveItemAtPath:currentLocalSteamAppsFolderPath toPath:localSteamAppsPath error:&renameLocalError];
-    
     if(!success){
         NSLog(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Something's Gone Wrong!"
-                                                     description:@"Check the console for details."
-                                                notificationName:@"An Error occurred"
-                                                        iconData:nil
-                                                        priority:0
-                                                        isSticky:NO
-                                                    clickContext:nil];
+            [SCNotificationCenter notifyWithDictionary:(@{
+                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
+                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
+                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
         }
-        
         return NO;
     }
+    
+    // If we make it to this point then everything will have been succesful and we can notify the user (assuming they want us to).
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+        [SCNotificationCenter notifyWithDictionary:(@{
+                                                    SCNotificationCenterNotificationTitle: @"Updated Steam Folders",
+                                                    SCNotificationCenterNotificationDescription: @"You're now playing games off of your internal drive.",
+                                                    SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
     
     return YES;
 }

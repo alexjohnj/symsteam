@@ -24,18 +24,15 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (BOOL)connectedDriveIsSteamDrive:(NSURL *)connectedDrive{
+    if(!connectedDrive)
+        return NO;
+    
     NSString *steamAppsDriveName = [[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents][2];
-    NSString *connectedDriveName;
-    @try {
-        connectedDriveName = connectedDrive.pathComponents[2]; // If there's an exception here, it's probably caused on login by /home and /net mounting.
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@", exception);
-        connectedDriveName = nil;
-    }
-    @finally {
-        return [steamAppsDriveName isEqualToString:connectedDriveName];
-    }
+    
+    if (connectedDrive.pathComponents.count < 3)
+        return NO; // External drives must have at least 3 components and we need the third component anyway so lets just avoid an out of bounds exception.
+    else
+        return [steamAppsDriveName isEqualToString:connectedDrive.pathComponents[2]];
 }
 
 - (BOOL)externalSteamAppsFolderExists{

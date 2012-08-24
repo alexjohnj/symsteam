@@ -83,27 +83,24 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (void)didUnMountDrive:(NSNotification *)aNotification{
-    if(!self.steamDriveIsConnected) // check to see if the drive unmounted was the user's Steam drive. From this point on, we assume it was.
+    if(!self.steamDriveIsConnected)
         return;
     
-    BOOL success = NO;
+    else if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]])
+        return;
     
-    success = [self makeLocalSteamAppsPrimary];
     
-    if(!success){
+    if(![self makeLocalSteamAppsPrimary]){
         self.steamDriveIsConnected = NO;
-        return;
     }
+    
     else{
         self.steamDriveIsConnected = NO;
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [[SCNotificationCenter sharedCenter] notifyWithTitle:@"Updated Steam Folders"
-                                                     description:@"You're now playing games off of your internal drive."
-                                                notificationName:@"Changed SteamApps Folders"
-                                                        iconData:nil
-                                                        priority:0
-                                                        isSticky:NO
-                                                    clickContext:nil];
+            [SCNotificationCenter notifyWithDictionary:(@{
+                                                        SCNotificationCenterNotificationTitle: @"Updated Steam Folders",
+                                                        SCNotificationCenterNotificationDescription: @"You're now playing games off of your internal drive.",
+                                                        SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
         }
     }
 }

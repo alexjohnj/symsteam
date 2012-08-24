@@ -27,7 +27,7 @@ static NSString * const setupComplete = @"setupComplete";
     NSString *steamAppsDriveName = [[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents][2];
     NSString *connectedDriveName;
     @try {
-        connectedDriveName = connectedDrive.pathComponents[2]; // If there's an exception here, it's probably caused on login by /home and /net mounting. 
+        connectedDriveName = connectedDrive.pathComponents[2]; // If there's an exception here, it's probably caused on login by /home and /net mounting.
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception);
@@ -43,7 +43,7 @@ static NSString * const setupComplete = @"setupComplete";
 }
 
 - (void)didMountDrive:(NSNotification *)aNotification{
-    if(self.steamDriveIsConnected) // If a Steam Drive is connected, we can ignore this drive. 
+    if(self.steamDriveIsConnected) // If a Steam Drive is connected, we can ignore this drive.
         return;
     
     if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]]) // Check the connected drive's name to see if it is the same as the one the user specified in setup.
@@ -59,27 +59,7 @@ static NSString * const setupComplete = @"setupComplete";
         }
         return;
     }
-    
-    BOOL success = [self makeSymbolicSteamAppsPrimary];
-    
-    if(!success){
-        return;
-    }
-    
-    else{
-        self.steamDriveIsConnected = YES;
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [[SCNotificationCenter sharedCenter] notifyWithDictionary:@{
-                               SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
-                         SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
-                                SCNotificationCenterNotificationName : @"Changed SteamApps Folders",
-                            SCNotificationCenterNotificationPriority : @0,
-                              SCNotificationCenterNotificationSticky : @NO,
-                     SCNotificationCenterNotificationHasActionButton : @YES,
-                   SCNotificationCenterNotificationActionButtonTitle : @"OK"
-             }];
-        }
-    }
+    [self makeSymbolicSteamAppsPrimary];
 }
 
 - (void)didUnMountDrive:(NSNotification *)aNotification{
@@ -143,7 +123,7 @@ static NSString * const setupComplete = @"setupComplete";
     }
     
     // If we get to this point, everything went A-OK, so we can notify the user that the folders have changed and set steamDriveIsConnected to YES.
-   
+    
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle : @"Updated Steam Folders",

@@ -15,5 +15,6 @@
 
 - (void)startWatchingDrives;
 - (void)performInitialDriveScan;
+- (void)displayGenericErrorNotification; // Displays the default error message "Something's gone wrong! Check the console". I'll be getting rid of this at some stage and adding detailed errors.
 
 @end

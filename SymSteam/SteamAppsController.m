@@ -69,20 +69,7 @@ static NSString * const setupComplete = @"setupComplete";
     else if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]])
         return;
     
-    
-    if(![self makeLocalSteamAppsPrimary]){
-        self.steamDriveIsConnected = NO;
-    }
-    
-    else{
-        self.steamDriveIsConnected = NO;
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle: @"Updated Steam Folders",
-                                                        SCNotificationCenterNotificationDescription: @"You're now playing games off of your internal drive.",
-                                                        SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
-        }
-    }
+    [self makeLocalSteamAppsPrimary];
 }
 
 - (BOOL)makeSymbolicSteamAppsPrimary{

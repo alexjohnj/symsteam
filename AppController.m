@@ -115,7 +115,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
     NSNotificationCenter *center = [workspace notificationCenter];
     [center addObserver:self.saController selector:@selector(didMountDrive:) name:NSWorkspaceDidMountNotification object:nil];
-    [center addObserver:self.saController selector:@selector(didUnMountDrive:) name:NSWorkspaceDidUnmountNotification object:nil];
+    [center addObserver:self.saController selector:@selector(didUnMountDrive:) name:NSWorkspaceWillUnmountNotification object:nil];
 }
 
 @end

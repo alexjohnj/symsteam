@@ -17,6 +17,8 @@
 		FA46665115CD646800FBB72A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA46665015CD646800FBB72A /* icon.icns */; };
 		FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA485316153768F3002B3995 /* SymbolicLinkCreator.m */; };
 		FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CE4C215C16A14000EB02F /* SCLoginController.m */; };
+		FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA76458E15E8D4190032DCA1 /* SCSetupController.m */; };
+		FA76459115E8D69A0032DCA1 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */; };
 		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
@@ -108,6 +110,9 @@
 		FA485316153768F3002B3995 /* SymbolicLinkCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkCreator.m; sourceTree = "<group>"; };
 		FA4CE4C115C16A14000EB02F /* SCLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoginController.h; path = ../SCLoginController.h; sourceTree = "<group>"; };
 		FA4CE4C215C16A14000EB02F /* SCLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCLoginController.m; path = ../SCLoginController.m; sourceTree = "<group>"; };
+		FA76458D15E8D4190032DCA1 /* SCSetupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSetupController.h; sourceTree = SOURCE_ROOT; };
+		FA76458E15E8D4190032DCA1 /* SCSetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSetupController.m; sourceTree = SOURCE_ROOT; };
+		FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
 		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
 		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA76459115E8D69A0032DCA1 /* DiskArbitration.framework in Frameworks */,
 				FA188D5215BAB3950073D516 /* Sparkle.framework in Frameworks */,
 				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
 				FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */,
@@ -254,6 +260,7 @@
 		FAEE701F14DB2CA500BF7020 = {
 			isa = PBXGroup;
 			children = (
+				FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */,
 				FA46665015CD646800FBB72A /* icon.icns */,
 				FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */,
 				FAEE703414DB2CA500BF7020 /* SymSteam */,
@@ -299,6 +306,8 @@
 				FABB1BA715319B170073DD70 /* Preferences */,
 				FACC00D0153074C700D5FD8C /* Windows */,
 				FACC00CD1530743E00D5FD8C /* Window Controllers */,
+				FA76458D15E8D4190032DCA1 /* SCSetupController.h */,
+				FA76458E15E8D4190032DCA1 /* SCSetupController.m */,
 				FAE2895F15CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.h */,
 				FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */,
 				FA485315153768F3002B3995 /* SymbolicLinkCreator.h */,
@@ -460,6 +469,7 @@
 				FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */,
 				FAA5A1EA15C2698C00B7871C /* SCNotificationCenterKeys.m in Sources */,
 				FAE2896115CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m in Sources */,
+				FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

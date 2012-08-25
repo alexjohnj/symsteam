@@ -32,7 +32,7 @@ static NSString * const setupComplete = @"setupComplete";
     if (connectedDrive.pathComponents.count < 3)
         return NO; // External drives must have at least 3 components and we need the third component anyway so lets just avoid an out of bounds exception.
     else
-        return [steamAppsDriveName isEqualToString:connectedDrive.pathComponents[2]];
+        return [steamAppsDriveName isEqualToString:connectedDrive.pathComponents[2]]; // path components will produce /, Volumes, DriveName
 }
 
 - (BOOL)externalSteamAppsFolderExists{

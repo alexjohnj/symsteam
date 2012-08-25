@@ -21,193 +21,105 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 {
     self = [super initWithWindow:window];
     if (self) {
-        _symLinkPathProvided = NO;
-        _nonSymLinkPathProvided = NO;
-        _formComplete = NO;
     }
-    
     return self;
 }
 
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
-    NSLog(@"Loaded");
 }
 
-#pragma mark - UI Code
+///////////////////////////////////////
 
-- (IBAction)choosePathToSymLink:(id)sender{
+- (IBAction)chooseSymbolicLinkDestination:(id)sender{
     NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
+    oPanel.canChooseFiles = NO;
     oPanel.canChooseDirectories = YES;
-    oPanel.allowsMultipleSelection = NO;
-    oPanel.resolvesAliases = NO;
+    oPanel.canCreateDirectories = YES;
     
-    NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    
-    //TODO: simplify to @"%@", [(libArray[0]) stringByAppendingLastPathComponent:@"Steam"];
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
-    oPanel.directoryURL = directoryURLConstruct;
-    
-    [oPanel beginSheetModalForWindow:self.window
-                   completionHandler:^(NSInteger result) {
-                       switch (result) {
-                           case NSFileHandlingPanelOKButton:
-                               self.pathToSymLinkField.stringValue = oPanel.URL.path;
-                               self.symLinkPathProvided = YES;
-                               [self checkPathsProvided];
-                               break;
-                               
-                           default:
-                               if(self.symLinkPathProvided == YES)
-                                   self.symLinkPathProvided = NO;
-                               [self checkPathsProvided];
-                               break;
-                       }
-                   }];
+    [oPanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+        if(result == NSFileHandlingPanelOKButton){
+            [oPanel orderOut:self];
+            if([self checkSymbolicLinkDestinationProvided:oPanel.URL]){
+                self.symbolicLinkDestination = oPanel.URL;
+                [self.nextButton setEnabled:YES];
+            }
+        }
+    }];
 }
 
-- (IBAction)choosePathToNonSymLink:(id)sender{
-    NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
-    oPanel.canChooseDirectories = YES;
-    oPanel.allowsMultipleSelection = NO;
+- (BOOL)checkSymbolicLinkDestinationProvided:(NSURL *)url{
+    SCSetupController *setupController = [[SCSetupController alloc] init];
     
-    NSArray *libArray = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    // Check that the provided path is on an external drive
     
-    //TODO: simplify to @"%@", [(libArray[0]) stringByAppendingLastPathComponent:@"Steam"];
-    NSURL *directoryURLConstruct = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Steam", libArray[0]]];
-    oPanel.directoryURL = directoryURLConstruct;
+    if(url.pathComponents.count < 3 || ![url.pathComponents[1] isEqualToString:@"Volumes"]){
+        NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:@"Error"
+                                                           defaultButton:@"OK"
+                                                         alternateButton:nil
+                                                             otherButton:nil
+                                               informativeTextWithFormat:@"The folder you provided is not on an external drive."];
+        [invalidDestinationAlert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
+        return NO;
+    }
     
-    [oPanel beginSheetModalForWindow:self.window
-                   completionHandler:^(NSInteger result) {
-                       switch (result) {
-                           case NSFileHandlingPanelOKButton:
-                               self.pathToNonSymLinkField.stringValue = oPanel.URL.path;
-                               self.nonSymLinkPathProvided = YES;
-                               [self checkPathsProvided];
-                               break;
-                               
-                           default:
-                               if(self.nonSymLinkPathProvided = YES)
-                                   self.nonSymLinkPathProvided = NO;
-                               [self checkPathsProvided];
-                               break;
-                       }
-                   }];
+    // Check that the drive the folder is on is HFS formatted.
+    
+    NSURL *driveURL = [NSURL fileURLWithPathComponents:@[url.pathComponents[0], url.pathComponents[1], url.pathComponents[2]]]; //Should produce /Volumes/DriveName
+    DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)driveURL);
+    if(![setupController verifyDriveFilesystemIsHFS:drive]){
+        NSAlert *invalidFileSystemAlert = [NSAlert alertWithMessageText:@"Error"
+                                                          defaultButton:@"OK"
+                                                        alternateButton:nil
+                                                            otherButton:nil
+                                              informativeTextWithFormat:@"The drive which the SteamApps folder is on is not HFS formatted. Please reformat the drive so that it is."];
+        [invalidFileSystemAlert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
+        CFRelease(drive);
+        return NO;
+    }
+    
+    // Check the drive has a UUID
+    if(![setupController getDriveUUID:drive]){
+        NSAlert *noUUIDFound = [NSAlert alertWithMessageText:@"Error"
+                                               defaultButton:@"OK"
+                                             alternateButton:nil
+                                                 otherButton:nil
+                                   informativeTextWithFormat:@"The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted."];
+        [noUUIDFound beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
+        CFRelease(drive);
+        return NO;
+    }
+    
+    CFRelease(drive);
+    return YES;
 }
 
-- (IBAction)doneButtonPressed:(id)sender{
-    NSString *providedLocalPath = [[NSString alloc] initWithString:self.pathToNonSymLinkField.stringValue];
-    NSString *providedLocalSymbolicPath = [[NSString alloc] initWithString:self.pathToSymLinkField.stringValue];
-    NSFileManager *fManager = [[NSFileManager alloc] init];
-    
-    NSDictionary *symbolicLinkAttributes = [fManager attributesOfItemAtPath:providedLocalSymbolicPath error:nil];
-    if (![[symbolicLinkAttributes fileType] isEqualToString:NSFileTypeSymbolicLink]) {
-        NSAlert *symbolicLinkNotSymbolicLinkAlert = [[NSAlert alloc] init];
-        [symbolicLinkNotSymbolicLinkAlert setMessageText:@"Invalid Symbolic Link."];
-        [symbolicLinkNotSymbolicLinkAlert setInformativeText:@"The symbolic link you provided to your SteamApps folder isn't actually a symbolic link!"];
-        [symbolicLinkNotSymbolicLinkAlert addButtonWithTitle:@"OK"];
-        [symbolicLinkNotSymbolicLinkAlert beginSheetModalForWindow:self.window
-                                                     modalDelegate:nil
-                                                    didEndSelector:NULL
-                                                       contextInfo:NULL];
-        return;
+- (IBAction)nextButtonPressed:(id)sender{
+    SCSetupController *setupController = [[SCSetupController alloc] init];
+    if(![setupController createSymbolicLinkToFolder:self.symbolicLinkDestination]){
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Error"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:@"Could not create a symbolic link to your SteamApps folder. Please check the console for details."];
+        [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
     }
-    
-    NSString *steamAppsLocalPath = [[NSString alloc] init];
-    NSString *steamAppsSymbolicLinkPath = [[NSString alloc] init];
-    
-    if(![providedLocalPath.lastPathComponent isEqualToString:@"SteamApps"]){
-        NSError *moveLocalFolderError;
-        
-        NSURL *newLocalPath = [[NSURL alloc] initFileURLWithPath:providedLocalPath isDirectory:YES];
-        newLocalPath = [newLocalPath URLByDeletingLastPathComponent];
-        newLocalPath = [newLocalPath URLByAppendingPathComponent:@"SteamApps" isDirectory:YES];
-        
-        if(![fManager moveItemAtPath:providedLocalPath toPath:newLocalPath.path error:&moveLocalFolderError]){
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Folder"
-                                             defaultButton:@"OK"
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"%@", moveLocalFolderError.localizedDescription];
-            [alert beginSheetModalForWindow:self.window
-                              modalDelegate:nil
-                             didEndSelector:NULL
-                                contextInfo:NULL];
-            return;
-        }
-        steamAppsLocalPath = newLocalPath.path;
-    }
-    
-    else{
-        steamAppsLocalPath = providedLocalPath;
-    }
-    
-    if(![providedLocalSymbolicPath.lastPathComponent isEqualToString:@"SteamAppsSymb"]){
-        NSURL *newSymbPath = [[NSURL alloc] initFileURLWithPath:providedLocalSymbolicPath isDirectory:YES];
-        newSymbPath = [newSymbPath URLByDeletingLastPathComponent];
-        newSymbPath = [newSymbPath URLByAppendingPathComponent:@"SteamAppsSymb"];
-        
-        NSError *renameSymbolicFolderError;
-        if (![fManager moveItemAtPath:providedLocalSymbolicPath toPath:newSymbPath.path error:&renameSymbolicFolderError]) {
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Error Renaming SteamApps Symbolic Folder"
-                                             defaultButton:@"OK"
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"%@", renameSymbolicFolderError.localizedDescription];
-            
-            [alert beginSheetModalForWindow:self.window
-                              modalDelegate:nil
-                             didEndSelector:NULL
-                                contextInfo:NULL];
-            return;
-        }
-        steamAppsSymbolicLinkPath = newSymbPath.path;
-    }
-    else{
-        steamAppsSymbolicLinkPath = providedLocalSymbolicPath;
-    }
-    
-    NSString *symbolicPathDestination = [fManager destinationOfSymbolicLinkAtPath:steamAppsSymbolicLinkPath error:nil];
-    
-    [[NSUserDefaults standardUserDefaults] setValue:steamAppsLocalPath forKey:steamAppsLocalPathKey];
-    [[NSUserDefaults standardUserDefaults] setValue:steamAppsSymbolicLinkPath forKey:steamAppsSymbolicLinkPathKey];
-    [[NSUserDefaults standardUserDefaults] setValue:symbolicPathDestination forKey:symbolicPathDestinationKey];
-    [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:setupComplete];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    DADiskRef disk = [setupController getDADiskFromDrivePath:[NSURL fileURLWithPathComponents:@[self.symbolicLinkDestination.pathComponents[0], self.symbolicLinkDestination.pathComponents[1], self.symbolicLinkDestination.pathComponents[2]]]];
+    [setupController saveSymbolicLinkDestinationToUserDefaults:self.symbolicLinkDestination];
+    [setupController saveDriveUUIDToUserDefaults:disk];
+    CFRelease(disk);
     
     NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete."
                                             defaultButton:@"Done"
                                           alternateButton:nil
                                               otherButton:nil
                                 informativeTextWithFormat:@"Setup has finished. In order to access SymSteam's preferences, hold down the option (⎇) key while launching SymSteam or click on SymSteam's icon once it has been launched."];
-    [successAlert beginSheetModalForWindow:self.window
-                             modalDelegate:self
-                            didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:)
-                               contextInfo:@"setupSuccessAlert"];
-}
-
-- (IBAction)createSymbolicLink:(id)sender {
-    if(!self.symbolicLinkGuideSheet)
-        self.symbolicLinkGuideSheet = [[SymbolicLinkGuideController alloc] initWithWindowNibName:@"SymbolicLinkGuideSheet"];
-    [NSApp beginSheet:self.symbolicLinkGuideSheet.window
-       modalForWindow:self.window
-        modalDelegate:self
-       didEndSelector:NULL
-          contextInfo:NULL];
+    [successAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:) contextInfo:@"setupSuccessAlert"];
 }
 
 - (IBAction)quitSetup:(id)sender {
     [[NSApplication sharedApplication] terminate:self];
-}
-
-- (void)checkPathsProvided{
-    if(self.symLinkPathProvided == YES && self.nonSymLinkPathProvided == YES)
-        self.formComplete = YES;
-    
-    else
-        self.formComplete = NO;
 }
 
 - (void)showStartAtLoginSheet{
@@ -226,6 +138,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSString *contextInfoString = (__bridge NSString *)contextInfo;
     
     if([contextInfoString isEqualToString:@"setupSuccessAlert"]){
+        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"setupComplete"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [alert.window orderOut:self];
         [self showStartAtLoginSheet];
     }

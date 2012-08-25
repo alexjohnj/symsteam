@@ -20,10 +20,10 @@
 
 - (MASPreferencesWindowController *)preparePreferencesWindow{
     
-    GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView" 
+    GeneralPreferencesViewController *generalPrefs = [[GeneralPreferencesViewController alloc] initWithNibName:@"GeneralPreferencesView"
                                                                                                         bundle:[NSBundle mainBundle]];
     
-    UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView" 
+    UpdatesPreferencesViewController *updatePrefs = [[UpdatesPreferencesViewController alloc] initWithNibName:@"UpdatesPreferencesView"
                                                                                                        bundle:[NSBundle mainBundle]];
     
     AboutPreferencesViewController *aboutPrefs = [[AboutPreferencesViewController alloc] initWithNibName:@"AboutPreferencesView"
@@ -105,12 +105,17 @@
     NSString *growlNotificationsEnabledKey = @"growlNotificationsEnabled";
     NSNumber *growlNotificationsEnabled = @YES;
     
+    NSString *steamDriveUUIDKey = @"steamDriveUUID";
+    NSString *steamDriveUUID = @"";
     
-    NSMutableDictionary *defaults = [@{ setupCompleteKey : setupComplete,
-                                     steamAppsSymbolicLinkPathKey : steamAppsSymbolicLinkPath,
-                                     steamAppsLocalPathKey : steamAppsLocalPath,
-                                     symbolicPathDestinationKey : symbolicPathDestination,
-                                     growlNotificationsEnabledKey : growlNotificationsEnabled } mutableCopy];
+    
+    NSMutableDictionary *defaults = [@{
+                                     setupCompleteKey: setupComplete,
+                                     steamAppsSymbolicLinkPathKey: steamAppsSymbolicLinkPath,
+                                     steamAppsLocalPathKey: steamAppsLocalPath,
+                                     symbolicPathDestinationKey: symbolicPathDestination,
+                                     growlNotificationsEnabledKey: growlNotificationsEnabled,
+                                     steamDriveUUIDKey: steamDriveUUID} mutableCopy];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }

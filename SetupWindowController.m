@@ -64,22 +64,10 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         return NO;
     }
     
-    // Check that the drive the folder is on is HFS formatted.
+    // Check that the drive has a UUID
     
     NSURL *driveURL = [NSURL fileURLWithPathComponents:@[url.pathComponents[0], url.pathComponents[1], url.pathComponents[2]]]; //Should produce /Volumes/DriveName
     DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)driveURL);
-    if(![setupController verifyDriveFilesystemIsHFS:drive]){
-        NSAlert *invalidFileSystemAlert = [NSAlert alertWithMessageText:@"Error"
-                                                          defaultButton:@"OK"
-                                                        alternateButton:nil
-                                                            otherButton:nil
-                                              informativeTextWithFormat:@"The drive which the SteamApps folder is on is not HFS formatted. Please reformat the drive so that it is."];
-        [invalidFileSystemAlert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
-        CFRelease(drive);
-        return NO;
-    }
-    
-    // Check the drive has a UUID
     if(![setupController getDriveUUID:drive]){
         NSAlert *noUUIDFound = [NSAlert alertWithMessageText:@"Error"
                                                defaultButton:@"OK"

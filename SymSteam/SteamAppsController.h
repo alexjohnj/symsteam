@@ -18,7 +18,7 @@
 
 - (BOOL)makeSymbolicSteamAppsPrimary;
 - (BOOL)makeLocalSteamAppsPrimary;
-- (BOOL)connectedDriveIsSteamDrive:(NSURL *)connectedDrive;
+- (BOOL)suspectDriveIsSteamDrive:(NSURL *)suspectDrive;
 - (BOOL)externalSteamAppsFolderExists;
 
 @end

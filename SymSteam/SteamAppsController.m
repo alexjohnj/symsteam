@@ -7,8 +7,7 @@
 
 #import "SteamAppsController.h"
 
-static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
-static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
+static NSString * const steamDriveUUIDKey = @"steamDriveUUID";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 static NSString * const setupComplete = @"setupComplete";
@@ -23,16 +22,24 @@ static NSString * const setupComplete = @"setupComplete";
     return self;
 }
 
-- (BOOL)connectedDriveIsSteamDrive:(NSURL *)connectedDrive{
-    if(!connectedDrive)
+- (BOOL)suspectDriveIsSteamDrive:(NSURL *)suspectDrive{
+    if(!suspectDrive)
         return NO;
-    
-    NSString *steamAppsDriveName = [[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey] pathComponents][2];
-    
-    if (connectedDrive.pathComponents.count < 3)
-        return NO; // External drives must have at least 3 components and we need the third component anyway so lets just avoid an out of bounds exception.
+    DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)suspectDrive);
+    CFDictionaryRef driveDetails = DADiskCopyDescription(drive);
+    if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
+        CFRelease(drive);
+        CFRelease(driveDetails);
+        return NO;
+    }
+    NSString *suspectDriveUUID = (__bridge NSString *)CFUUIDCreateString(kCFAllocatorDefault, (CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey)));
+    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:steamDriveUUIDKey];
+    CFRelease(drive);
+    CFRelease(driveDetails);
+    if([steamDriveUUID isEqualToString:suspectDriveUUID])
+        return YES;
     else
-        return [steamAppsDriveName isEqualToString:connectedDrive.pathComponents[2]]; // path components will produce /, Volumes, DriveName
+        return NO;
 }
 
 - (BOOL)externalSteamAppsFolderExists{
@@ -43,7 +50,7 @@ static NSString * const setupComplete = @"setupComplete";
     if(self.steamDriveIsConnected) // If a Steam Drive is connected, we can ignore this drive.
         return;
     
-    if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]]) // Check the connected drive's name to see if it is the same as the one the user specified in setup.
+    if(![self suspectDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]]) // Check the connected drive's UUID to see if it's the same as the one we obtained during setup. 
         return;
     
     if(![self externalSteamAppsFolderExists]){ // Check the SteamApps folder exists on the drive. If this fails we display an error since we're now 100% certain the connected drive is a Steam drive.
@@ -63,16 +70,17 @@ static NSString * const setupComplete = @"setupComplete";
     if(!self.steamDriveIsConnected)
         return;
     
-    else if(![self connectedDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]])
+    else if(![self suspectDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]])
         return;
     
     [self makeLocalSteamAppsPrimary];
 }
 
 - (BOOL)makeSymbolicSteamAppsPrimary{
-    NSString *localSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey];
-    NSString *symbolicSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey];
-    NSString *newLocalSteamAppsPath = [[localSteamAppsPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SteamAppsLoc"];
+    NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
+    NSString *localSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
+    NSString *symbolicSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
+    NSString *newLocalSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsLoc"];
     NSFileManager *fManager = [[NSFileManager alloc] init];
     BOOL success = YES;
     
@@ -120,8 +128,10 @@ static NSString * const setupComplete = @"setupComplete";
 - (BOOL)makeLocalSteamAppsPrimary{
     self.steamDriveIsConnected = NO; // Update this here since the Steam drive will have been disconnected regardless of if this method completes successfully.
     
-    NSString *localSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsLocalPathKey];
-    NSString *symbolicSteamAppsPath = [[NSUserDefaults standardUserDefaults] valueForKey:steamAppsSymbolicLinkPathKey];
+    NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
+    NSString *localSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
+    NSString *symbolicSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
+    
     NSFileManager *fManager = [[NSFileManager alloc] init];
     BOOL success = YES;
     

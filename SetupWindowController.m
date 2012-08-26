@@ -67,7 +67,9 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     // Check that the drive has a UUID
     
     NSURL *driveURL = [NSURL fileURLWithPathComponents:@[url.pathComponents[0], url.pathComponents[1], url.pathComponents[2]]]; //Should produce /Volumes/DriveName
-    DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)driveURL);
+    DASessionRef session = DASessionCreate(kCFAllocatorDefault);
+    DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, session, (__bridge CFURLRef)driveURL);
+    CFRelease(session);
     if(![setupController getDriveUUID:drive]){
         NSAlert *noUUIDFound = [NSAlert alertWithMessageText:@"Error"
                                                defaultButton:@"OK"
@@ -93,11 +95,12 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                              informativeTextWithFormat:@"Could not create a symbolic link to your SteamApps folder. Please check the console for details."];
         [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
     }
-    DADiskRef disk = [setupController getDADiskFromDrivePath:[NSURL fileURLWithPathComponents:@[self.symbolicLinkDestination.pathComponents[0], self.symbolicLinkDestination.pathComponents[1], self.symbolicLinkDestination.pathComponents[2]]]];
+    DADiskRef disk = [setupController createDADiskFromDrivePath:[NSURL fileURLWithPathComponents:(@[self.symbolicLinkDestination.pathComponents[0],
+                                                                                                  self.symbolicLinkDestination.pathComponents[1],
+                                                                                                  self.symbolicLinkDestination.pathComponents[2]])]];
     [setupController saveSymbolicLinkDestinationToUserDefaults:self.symbolicLinkDestination];
     [setupController saveDriveUUIDToUserDefaults:disk];
     CFRelease(disk);
-    
     NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete."
                                             defaultButton:@"Done"
                                           alternateButton:nil

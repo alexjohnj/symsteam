@@ -10,8 +10,11 @@
 
 @implementation SCSetupController
 
-- (DADiskRef)getDADiskFromDrivePath:(NSURL *)drive{
-    return DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)drive);
+- (DADiskRef)createDADiskFromDrivePath:(NSURL *)drive{
+    DASessionRef session = DASessionCreate(kCFAllocatorDefault);
+    DADiskRef disk = DADiskCreateFromVolumePath(kCFAllocatorDefault, session, (__bridge CFURLRef)drive);
+    CFRelease(session);
+    return disk;
 }
 
 - (BOOL)verifyDriveFilesystemIsHFS:(DADiskRef)drive{
@@ -33,7 +36,7 @@
         return nil;
     }
     else{
-        NSString *uuid = (__bridge NSString *)CFUUIDCreateString(kCFAllocatorDefault, CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey));
+        NSString *uuid = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey));
         CFRelease(driveDetails);
         return uuid;
     }

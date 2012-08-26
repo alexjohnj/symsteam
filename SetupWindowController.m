@@ -141,7 +141,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
         [self close];
         AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
         [appDelegate.aController performInitialDriveScan];
-        [appDelegate.aController startWatchingDrives];
+        [appDelegate.aController startWatchingForDrives];
     }
     
 }

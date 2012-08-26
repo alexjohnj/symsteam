@@ -110,12 +110,8 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
                                                     SCNotificationCenterNotificationName: @"An Error Occurred"})];
 }
 
-
-- (void)startWatchingDrives{
-    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-    NSNotificationCenter *center = [workspace notificationCenter];
-    [center addObserver:self.saController selector:@selector(didMountDrive:) name:NSWorkspaceDidMountNotification object:nil];
-    [center addObserver:self.saController selector:@selector(didUnMountDrive:) name:NSWorkspaceWillUnmountNotification object:nil];
+- (void)startWatchingForDrives{
+    [self.saController startWatchingForDrives];
 }
 
 @end

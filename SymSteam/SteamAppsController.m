@@ -12,6 +12,72 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 static NSString * const setupComplete = @"setupComplete";
 
+DADissenterRef diskWillMount(DADiskRef disk, void *context){
+    if(context == NULL){
+        NSLog(@"A drive wanted to mount but the context was NULL, it can't be.");
+        return NULL;
+    } if(disk == NULL){
+        NSLog(@"A drive wanted to mount and the providied drive was NULL for some reason.");
+        return NULL;
+    }
+    
+    SteamAppsController *controller = (__bridge SteamAppsController *)context;
+    if(controller.steamDriveIsConnected)
+        return NULL;
+    if([controller suspectDriveIsSteamDrive:disk])
+        [controller makeSymbolicSteamAppsPrimary];
+    return NULL;
+}
+
+DADissenterRef diskWillUnmount(DADiskRef disk, void *context){
+    if(context == NULL){
+        NSLog(@"The context was NULL, it can't be.");
+        return NULL;
+    } if(disk == NULL){
+        NSLog(@"The disk provided was NULL");
+        return NULL;
+    }
+    
+    SteamAppsController *controller = (__bridge SteamAppsController *)context;
+    if(!controller.steamDriveIsConnected)
+        return NULL;
+    if([controller suspectDriveIsSteamDrive:disk])
+        [controller makeLocalSteamAppsPrimary];
+    return NULL;
+}
+
+void diskDidDisappear(DADiskRef disk, void *context){
+    if(context == NULL){
+        NSLog(@"The context was NULL, it can't be.");
+        return;
+    } if(disk == NULL){
+        NSLog(@"The provided DADiskref was NULL");
+        return;
+    }
+    SteamAppsController *controller = (__bridge SteamAppsController *)context;
+    if(controller.steamDriveIsConnected && [controller suspectDriveIsSteamDrive:disk])
+        [controller makeLocalSteamAppsPrimary];
+}
+
+void registerForDADiskCallbacks(void *context){
+    dispatch_queue_t daQueue = dispatch_queue_create("com.simplecode", NULL);
+    DASessionRef session = DASessionCreate(kCFAllocatorDefault);
+    DAApprovalSessionRef approvalSession = DAApprovalSessionCreate(kCFAllocatorDefault);
+    
+    DARegisterDiskMountApprovalCallback(approvalSession, NULL, diskWillMount, context);
+    DARegisterDiskDisappearedCallback(session, NULL, diskDidDisappear, context);
+    DARegisterDiskUnmountApprovalCallback(approvalSession, NULL, diskWillUnmount, context);
+    DASessionSetDispatchQueue(session, daQueue);
+    DAApprovalSessionScheduleWithRunLoop(approvalSession, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+    
+    if(session != NULL)
+        CFRelease(session);
+    if(approvalSession != NULL)
+        CFRelease(approvalSession);
+    if(daQueue != NULL)
+        dispatch_release(daQueue);
+}
+
 @implementation SteamAppsController
 
 - (id)init{
@@ -22,20 +88,28 @@ static NSString * const setupComplete = @"setupComplete";
     return self;
 }
 
-- (BOOL)suspectDriveIsSteamDrive:(NSURL *)suspectDrive{
-    if(!suspectDrive)
+- (void)startWatchingForDrives{
+    registerForDADiskCallbacks((__bridge void*)self);
+}
+
+- (BOOL)suspectDriveIsSteamDrive:(DADiskRef)suspectDrive{
+    if(suspectDrive == NULL)
         return NO;
-    DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, DASessionCreate(kCFAllocatorDefault), (__bridge CFURLRef)suspectDrive);
-    CFDictionaryRef driveDetails = DADiskCopyDescription(drive);
-    if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
-        CFRelease(drive);
+    CFDictionaryRef driveDetails = DADiskCopyDescription(suspectDrive);
+    if(driveDetails == NULL){
+        NSLog(@"The drive details provided from the suspect drive where NULL");
+        return NO;
+    } if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
         CFRelease(driveDetails);
-        return NO;
+        return NO; // No need to log anything here, some drives won't have a UUID.
     }
-    NSString *suspectDriveUUID = (__bridge NSString *)CFUUIDCreateString(kCFAllocatorDefault, (CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey)));
-    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:steamDriveUUIDKey];
-    CFRelease(drive);
+    
+    CFUUIDRef cfUUID = CFRetain(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey));
     CFRelease(driveDetails);
+    CFStringRef cfSuspectDriveUUID = CFUUIDCreateString(kCFAllocatorDefault, cfUUID);
+    CFRelease(cfUUID);
+    NSString *suspectDriveUUID = (__bridge_transfer NSString *)cfSuspectDriveUUID;
+    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:steamDriveUUIDKey];
     if([steamDriveUUID isEqualToString:suspectDriveUUID])
         return YES;
     else
@@ -44,36 +118,6 @@ static NSString * const setupComplete = @"setupComplete";
 
 - (BOOL)externalSteamAppsFolderExists{
     return [[NSFileManager defaultManager] fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]];
-}
-
-- (void)didMountDrive:(NSNotification *)aNotification{
-    if(self.steamDriveIsConnected) // If a Steam Drive is connected, we can ignore this drive.
-        return;
-    
-    if(![self suspectDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]]) // Check the connected drive's UUID to see if it's the same as the one we obtained during setup. 
-        return;
-    
-    if(![self externalSteamAppsFolderExists]){ // Check the SteamApps folder exists on the drive. If this fails we display an error since we're now 100% certain the connected drive is a Steam drive.
-        NSLog(@"The SteamApps folder wasn't found on the drive connected. Drive: %@", aNotification.userInfo[NSWorkspaceVolumeURLKey]);
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
-            [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle : @"Something's Gone Wrong!",
-                                                        SCNotificationCenterNotificationDescription : @"The SteamApps folder wasn't found on the Steam drive you connected.",
-                                                        SCNotificationCenterNotificationName : @"An Error Occurred"})];
-        }
-        return;
-    }
-    [self makeSymbolicSteamAppsPrimary];
-}
-
-- (void)didUnMountDrive:(NSNotification *)aNotification{
-    if(!self.steamDriveIsConnected)
-        return;
-    
-    else if(![self suspectDriveIsSteamDrive:aNotification.userInfo[NSWorkspaceVolumeURLKey]])
-        return;
-    
-    [self makeLocalSteamAppsPrimary];
 }
 
 - (BOOL)makeSymbolicSteamAppsPrimary{

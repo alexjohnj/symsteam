@@ -52,7 +52,7 @@
     
     else{
         [self.aController performInitialDriveScan];
-        [self.aController startWatchingDrives];
+        [self.aController startWatchingForDrives];
         if([NSEvent modifierFlags] == NSAlternateKeyMask){
             if(!self.preferencesWindowController)
                 self.preferencesWindowController = [self preparePreferencesWindow];

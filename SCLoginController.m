@@ -11,53 +11,62 @@
 @implementation SCLoginController
 
 - (BOOL)checkSessionLoginItemsForApplication:(NSURL *)applicationURL{
-    CFURLRef appURL = (__bridge CFURLRef)applicationURL;
+    CFURLRef appURL = (__bridge_retained CFURLRef)applicationURL;
     UInt32 copySeed;
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     CFArrayRef loginItemsCopySnapshot = LSSharedFileListCopySnapshot(loginItems, &copySeed);
-    NSArray *loginItemsArray = (__bridge NSArray *)loginItemsCopySnapshot;
-    CFRelease(loginItemsCopySnapshot);
+    NSArray *loginItemsArray = (__bridge_transfer NSArray *)loginItemsCopySnapshot;
     
     for(id loginItem in loginItemsArray){
-        LSSharedFileListItemRef currentItem = (__bridge LSSharedFileListItemRef)(loginItem);
+        LSSharedFileListItemRef currentItem = (__bridge_retained LSSharedFileListItemRef)(loginItem);
         if(LSSharedFileListItemResolve(currentItem, 0, &appURL, NULL) == noErr){
             NSString *currentPath = [(__bridge NSURL *)appURL path];
             if([currentPath isEqualToString:applicationURL.path]){
+                CFRelease(loginItems);
                 CFRelease(appURL);
+                CFRelease(currentItem);
                 return YES;
             }
         }
+        CFRelease(currentItem);
     }
-    
     CFRelease(appURL);
+    CFRelease(loginItems);
     return NO;
 }
 
 - (void)removeApplicationFromLoginItems:(NSURL *)applicationURL{
-    CFURLRef appURL = (__bridge CFURLRef)applicationURL;
+    CFURLRef appURL = (__bridge_retained CFURLRef)applicationURL;
     UInt32 copySeed;
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     
     CFArrayRef loginItemsCopySnapshot = LSSharedFileListCopySnapshot(loginItems, &copySeed);
-    NSArray *loginItemsArray = (__bridge NSArray *)loginItemsCopySnapshot;
-    CFRelease(loginItemsCopySnapshot);
+    NSArray *loginItemsArray = (__bridge_transfer NSArray *)loginItemsCopySnapshot;
     
     for(id loginItem in loginItemsArray){
-        LSSharedFileListItemRef currentItem = (__bridge LSSharedFileListItemRef)(loginItem);
+        LSSharedFileListItemRef currentItem = (__bridge_retained LSSharedFileListItemRef)(loginItem);
         if(LSSharedFileListItemResolve(currentItem, 0, &appURL, NULL) == noErr){
             NSString *currentPath = [(__bridge NSURL *)appURL path];
             if([currentPath isEqualToString:applicationURL.path]){
                 LSSharedFileListItemRemove(loginItems, currentItem);
             }
         }
+        CFRelease(currentItem);
     }
+    CFRelease(loginItems);
     CFRelease(appURL);
 }
 
 - (void)addApplicationToLoginItems:(NSURL *)applicationURL{
-    CFURLRef appURL = (__bridge CFURLRef)applicationURL;
+    if(applicationURL == nil){
+        NSLog(@"SCLoginController: The provided application URL was nil, so I couldn't add anything to the login items list");
+        return;
+    }
+    CFURLRef appURL = (__bridge_retained CFURLRef)applicationURL;
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if(loginItems == NULL)
+        return;
     LSSharedFileListInsertItemURL(loginItems,
                                   kLSSharedFileListItemLast,
                                   NULL,
@@ -65,6 +74,7 @@
                                   appURL,
                                   NULL,
                                   NULL);
+    CFRelease(loginItems);
     CFRelease(appURL);
 }
 

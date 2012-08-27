@@ -23,11 +23,10 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 - (void)performInitialDriveScan{
-    NSString *symbolicSteamAppsFolderPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsSymbolicLinkPathKey];
-    NSString *localSteamAppsFolderPath = [[NSUserDefaults standardUserDefaults] stringForKey:steamAppsLocalPathKey];
-    
-    NSString *steamAppsLocPath = [localSteamAppsFolderPath stringByDeletingLastPathComponent];
-    steamAppsLocPath = [steamAppsLocPath stringByAppendingPathComponent:@"SteamAppsLoc"];
+    NSString *applicationSupportDirectory = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
+    NSString *symbolicSteamAppsFolderPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
+    NSString *localSteamAppsFolderPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
+    NSString *steamAppsLocPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsLoc"];
     
     NSFileManager *fManager = [[NSFileManager alloc] init];
     

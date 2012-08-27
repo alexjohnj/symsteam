@@ -17,9 +17,10 @@
 		FA46665115CD646800FBB72A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA46665015CD646800FBB72A /* icon.icns */; };
 		FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA485316153768F3002B3995 /* SymbolicLinkCreator.m */; };
 		FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CE4C215C16A14000EB02F /* SCLoginController.m */; };
+		FA519AF615EBAE390059C6AA /* SCSteamAppsFoldersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA519AF515EBAE390059C6AA /* SCSteamAppsFoldersController.m */; };
+		FA519AF915EBAE5C0059C6AA /* SCSteamDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA519AF815EBAE5C0059C6AA /* SCSteamDiskManager.m */; };
 		FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA76458E15E8D4190032DCA1 /* SCSetupController.m */; };
 		FA76459115E8D69A0032DCA1 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */; };
-		FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E4766152DFE6F005E4336 /* SteamAppsController.m */; };
 		FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
@@ -40,7 +41,6 @@
 		FAEE703B14DB2CA500BF7020 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE703A14DB2CA500BF7020 /* main.m */; };
 		FAEE703F14DB2CA500BF7020 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAEE703D14DB2CA500BF7020 /* Credits.rtf */; };
 		FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704114DB2CA500BF7020 /* AppDelegate.m */; };
-		FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEE704C14DB2CAD00BF7020 /* AppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,11 +110,13 @@
 		FA485316153768F3002B3995 /* SymbolicLinkCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkCreator.m; sourceTree = "<group>"; };
 		FA4CE4C115C16A14000EB02F /* SCLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoginController.h; path = ../SCLoginController.h; sourceTree = "<group>"; };
 		FA4CE4C215C16A14000EB02F /* SCLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCLoginController.m; path = ../SCLoginController.m; sourceTree = "<group>"; };
+		FA519AF415EBAE390059C6AA /* SCSteamAppsFoldersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSteamAppsFoldersController.h; sourceTree = "<group>"; };
+		FA519AF515EBAE390059C6AA /* SCSteamAppsFoldersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSteamAppsFoldersController.m; sourceTree = "<group>"; };
+		FA519AF715EBAE5C0059C6AA /* SCSteamDiskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSteamDiskManager.h; sourceTree = "<group>"; };
+		FA519AF815EBAE5C0059C6AA /* SCSteamDiskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSteamDiskManager.m; sourceTree = "<group>"; };
 		FA76458D15E8D4190032DCA1 /* SCSetupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSetupController.h; sourceTree = SOURCE_ROOT; };
 		FA76458E15E8D4190032DCA1 /* SCSetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSetupController.m; sourceTree = SOURCE_ROOT; };
 		FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
-		FA7E4765152DFE6F005E4336 /* SteamAppsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteamAppsController.h; sourceTree = "<group>"; };
-		FA7E4766152DFE6F005E4336 /* SteamAppsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SteamAppsController.m; sourceTree = "<group>"; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
@@ -149,8 +151,6 @@
 		FAEE703E14DB2CA500BF7020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		FAEE704014DB2CA500BF7020 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAEE704114DB2CA500BF7020 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAEE704B14DB2CAD00BF7020 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ../AppController.h; sourceTree = "<group>"; };
-		FAEE704C14DB2CAD00BF7020 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = ../AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +300,10 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
+				FA519AF415EBAE390059C6AA /* SCSteamAppsFoldersController.h */,
+				FA519AF515EBAE390059C6AA /* SCSteamAppsFoldersController.m */,
+				FA519AF715EBAE5C0059C6AA /* SCSteamDiskManager.h */,
+				FA519AF815EBAE5C0059C6AA /* SCSteamDiskManager.m */,
 				FAA5A1E215C2698C00B7871C /* SCNotificationCenter */,
 				FA4CE4C115C16A14000EB02F /* SCLoginController.h */,
 				FA4CE4C215C16A14000EB02F /* SCLoginController.m */,
@@ -312,10 +316,6 @@
 				FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */,
 				FA485315153768F3002B3995 /* SymbolicLinkCreator.h */,
 				FA485316153768F3002B3995 /* SymbolicLinkCreator.m */,
-				FA7E4765152DFE6F005E4336 /* SteamAppsController.h */,
-				FA7E4766152DFE6F005E4336 /* SteamAppsController.m */,
-				FAEE704B14DB2CAD00BF7020 /* AppController.h */,
-				FAEE704C14DB2CAD00BF7020 /* AppController.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
 				FAEE704114DB2CA500BF7020 /* AppDelegate.m */,
 				FAEE703514DB2CA500BF7020 /* Supporting Files */,
@@ -456,9 +456,7 @@
 			files = (
 				FAEE703B14DB2CA500BF7020 /* main.m in Sources */,
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
-				FAEE704D14DB2CAD00BF7020 /* AppController.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
-				FA7E4767152DFE6F005E4336 /* SteamAppsController.m in Sources */,
 				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
 				FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */,
 				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
@@ -470,6 +468,8 @@
 				FAA5A1EA15C2698C00B7871C /* SCNotificationCenterKeys.m in Sources */,
 				FAE2896115CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m in Sources */,
 				FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */,
+				FA519AF615EBAE390059C6AA /* SCSteamAppsFoldersController.m in Sources */,
+				FA519AF915EBAE5C0059C6AA /* SCSteamDiskManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

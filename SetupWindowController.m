@@ -9,8 +9,6 @@
 
 @implementation SetupWindowController
 
-static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
-static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const setupComplete = @"setupComplete";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
@@ -142,9 +140,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
             [loginController addApplicationToLoginItems:bundleURL];
         }
         [self close];
-        AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
-        [appDelegate.aController performInitialDriveScan];
-        [appDelegate.aController startWatchingForDrives];
+        [[SCSteamDiskManager steamDiskManager] startWatchingForDrives];
     }
     
 }

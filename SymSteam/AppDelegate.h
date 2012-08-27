@@ -8,7 +8,8 @@
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
 
-#import "AppController.h"
+#import "SCSteamDiskManager.h"
+#import "SCSteamAppsFoldersController.h"
 #import "SetupWindowController.h"
 #import "SCUserNotificationCenterDelegate.h"
 #import "SCNotificationCenter.h"
@@ -18,10 +19,8 @@
 #import "GeneralPreferencesViewController.h"
 #import "UpdatesPreferencesViewController.h"
 
-
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (strong) AppController *aController;
 @property (strong) SetupWindowController *setupController;
 @property (strong) MASPreferencesWindowController *preferencesWindowController;
 @property (strong) SCUserNotificationCenterDelegate *notificationCenterDelegate;

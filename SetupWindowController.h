@@ -8,6 +8,7 @@
 #import <Growl/Growl.h>
 #import "SCSetupController.h"
 #import "SCLoginController.h"
+#import "SCSteamDiskManager.h"
 
 @interface SetupWindowController : NSWindowController
 

@@ -1,124 +1,26 @@
 //
-//  SteamAppsController.m
+//  SCSteamAppsFoldersController.m
 //  SymSteam
 //
-//  Created by Alex Jackson on 05/04/2012.
+//  Created by Alex Jackson on 27/08/2012.
+//
+//
 
-
-#import "SteamAppsController.h"
+#import "SCSteamAppsFoldersController.h"
 
 static NSString * const steamDriveUUIDKey = @"steamDriveUUID";
 static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
-static NSString * const setupComplete = @"setupComplete";
 
-DADissenterRef diskWillMount(DADiskRef disk, void *context){
-    if(context == NULL){
-        NSLog(@"A drive wanted to mount but the context was NULL, it can't be.");
-        return NULL;
-    } if(disk == NULL){
-        NSLog(@"A drive wanted to mount and the providied drive was NULL for some reason.");
-        return NULL;
-    }
-    
-    SteamAppsController *controller = (__bridge SteamAppsController *)context;
-    if(controller.steamDriveIsConnected)
-        return NULL;
-    if([controller suspectDriveIsSteamDrive:disk])
-        [controller makeSymbolicSteamAppsPrimary];
-    return NULL;
-}
+@implementation SCSteamAppsFoldersController
 
-DADissenterRef diskWillUnmount(DADiskRef disk, void *context){
-    if(context == NULL){
-        NSLog(@"The context was NULL, it can't be.");
-        return NULL;
-    } if(disk == NULL){
-        NSLog(@"The disk provided was NULL");
-        return NULL;
-    }
-    
-    SteamAppsController *controller = (__bridge SteamAppsController *)context;
-    if(!controller.steamDriveIsConnected)
-        return NULL;
-    if([controller suspectDriveIsSteamDrive:disk])
-        [controller makeLocalSteamAppsPrimary];
-    return NULL;
-}
-
-void diskDidDisappear(DADiskRef disk, void *context){
-    if(context == NULL){
-        NSLog(@"The context was NULL, it can't be.");
-        return;
-    } if(disk == NULL){
-        NSLog(@"The provided DADiskref was NULL");
-        return;
-    }
-    SteamAppsController *controller = (__bridge SteamAppsController *)context;
-    if(controller.steamDriveIsConnected && [controller suspectDriveIsSteamDrive:disk])
-        [controller makeLocalSteamAppsPrimary];
-}
-
-void registerForDADiskCallbacks(void *context){
-    dispatch_queue_t daQueue = dispatch_queue_create("com.simplecode", NULL);
-    DASessionRef session = DASessionCreate(kCFAllocatorDefault);
-    DAApprovalSessionRef approvalSession = DAApprovalSessionCreate(kCFAllocatorDefault);
-    
-    DARegisterDiskMountApprovalCallback(approvalSession, NULL, diskWillMount, context);
-    DARegisterDiskDisappearedCallback(session, NULL, diskDidDisappear, context);
-    DARegisterDiskUnmountApprovalCallback(approvalSession, NULL, diskWillUnmount, context);
-    DASessionSetDispatchQueue(session, daQueue);
-    DAApprovalSessionScheduleWithRunLoop(approvalSession, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-    
-    if(session != NULL)
-        CFRelease(session);
-    if(approvalSession != NULL)
-        CFRelease(approvalSession);
-    if(daQueue != NULL)
-        dispatch_release(daQueue);
-}
-
-@implementation SteamAppsController
-
-- (id)init{
-    self = [super init];
-    if(self){
-        _steamDriveIsConnected = NO;
-    }
-    return self;
-}
-
-- (void)startWatchingForDrives{
-    registerForDADiskCallbacks((__bridge void*)self);
-}
-
-- (BOOL)suspectDriveIsSteamDrive:(DADiskRef)suspectDrive{
-    if(suspectDrive == NULL)
-        return NO;
-    CFDictionaryRef driveDetails = DADiskCopyDescription(suspectDrive);
-    if(driveDetails == NULL){
-        NSLog(@"The drive details provided from the suspect drive where NULL");
-        return NO;
-    } if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
-        CFRelease(driveDetails);
-        return NO; // No need to log anything here, some drives won't have a UUID.
-    }
-    
-    CFUUIDRef cfUUID = CFRetain(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey));
-    CFRelease(driveDetails);
-    CFStringRef cfSuspectDriveUUID = CFUUIDCreateString(kCFAllocatorDefault, cfUUID);
-    CFRelease(cfUUID);
-    NSString *suspectDriveUUID = (__bridge_transfer NSString *)cfSuspectDriveUUID;
-    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:steamDriveUUIDKey];
-    if([steamDriveUUID isEqualToString:suspectDriveUUID])
-        return YES;
-    else
-        return NO;
-}
+#pragma mark -
 
 - (BOOL)externalSteamAppsFolderExists{
     return [[NSFileManager defaultManager] fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]];
 }
+
+#pragma mark - Folder Updating Methods
 
 - (BOOL)makeSymbolicSteamAppsPrimary{
     NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
@@ -165,12 +67,12 @@ void registerForDADiskCallbacks(void *context){
                                                     SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
                                                     SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
                                                     SCNotificationCenterNotificationName : @"Changed SteamApps Folders"})];
-    self.steamDriveIsConnected = YES;
+    [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:YES];
     return YES;
 }
 
 - (BOOL)makeLocalSteamAppsPrimary{
-    self.steamDriveIsConnected = NO; // Update this here since the Steam drive will have been disconnected regardless of if this method completes successfully.
+    [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:NO]; // Update this here since the Steam drive will have been disconnected regardless of if this method completes successfully.
     
     NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
     NSString *localSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
@@ -219,6 +121,98 @@ void registerForDADiskCallbacks(void *context){
                                                     SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
     
     return YES;
+}
+
+#pragma mark - Folder Error Checking
+
+/* WARNING!! MEGA METHOD BELOW */
+/* TODO: Break mega method into smaller methods */
+
+- (void)performInitialDriveScan{
+    NSString *applicationSupportDirectory = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
+    NSString *symbolicSteamAppsFolderPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
+    NSString *localSteamAppsFolderPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
+    NSString *steamAppsLocPath = [[applicationSupportDirectory stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsLoc"];
+    
+    NSFileManager *fManager = [[NSFileManager alloc] init];
+    
+    BOOL symbolicSteamAppsFolderExists = NO;
+    BOOL localSteamAppsFolderExists = [fManager fileExistsAtPath:localSteamAppsFolderPath];
+    BOOL steamAppsLocFolderExists = [fManager fileExistsAtPath:steamAppsLocPath];
+    
+    NSDictionary *symbolicSteamAppsFolderAttributes = [fManager attributesOfItemAtPath:symbolicSteamAppsFolderPath error:nil];
+    if(!symbolicSteamAppsFolderAttributes)
+        symbolicSteamAppsFolderExists = NO; //we check the link exists using the attributes instead of fileExistsAtPath: since the afformentioned method will try to follow the symbolic link and return NO if the link isn't reachable, even if the actual symbolic link exists.
+    else
+        symbolicSteamAppsFolderExists = YES;
+    
+    if(localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"SteamApps exists & SteamAppsSymb exists, suggesting everything is A-OK.");
+        if([self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]) //check the external SteamApps folder exists and a Steam Drive isn't registered as connected.
+            [self makeSymbolicSteamAppsPrimary];
+        return;
+    }
+    
+    if(!localSteamAppsFolderExists && steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSError *renameSteamAppsLocToSteamApps;
+        BOOL success = [fManager moveItemAtPath:steamAppsLocPath toPath:localSteamAppsFolderPath error:&renameSteamAppsLocToSteamApps];
+        if(!success){
+            NSLog(@"I was trying to fix the SteamApps setup by renaming SteamAppsLoc to SteamApps while keeping SteamAppsSymb the same but couldn't move [%@] to [%@] because: [%@]", steamAppsLocPath, localSteamAppsFolderPath, [renameSteamAppsLocToSteamApps localizedDescription]);
+            [self displayGenericErrorNotification];
+        }
+        else{ // if SymSteam was able to fix this configuration issue, check to see if a drive is connected and if it is, update the Steam Folders.
+            if([self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected])
+                [self makeSymbolicSteamAppsPrimary];
+        }
+        return;
+    }
+    
+    else if(!localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"A symbolic link exists but neither a SteamApps folder nor a SteamAppsLoc folder exists! I can't do anything about this.");
+        [self displayGenericErrorNotification];
+        return;
+    }
+    
+    else if(localSteamAppsFolderExists && !steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
+        NSLog(@"A SteamApps folder exists but there's no SteamAppsLoc or SteamAppsSymb folder. Setup probably needs to be carried out again.");
+        [self displayGenericErrorNotification];
+        return;
+    }
+    
+    else if(localSteamAppsFolderExists && steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
+        NSLog(@"A SteamApps, SteamAppsLoc & SteamAppsSymb folder exists. I can't take this! That's too many folders. I can't do anything with this setup. Get rid of either the SteamApps or SteamAppsLoc folder.");
+        [self displayGenericErrorNotification];
+        return;
+    }
+    
+    else if(localSteamAppsFolderPath && steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
+        NSDictionary *steamAppsFolderAttributes = [fManager attributesOfItemAtPath:localSteamAppsFolderPath error:nil];
+        if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && [self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]){
+            [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:YES];
+            if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+                [SCNotificationCenter notifyWithDictionary:(@{
+                                                            SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
+                                                            SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
+                                                            SCNotificationCenterNotificationName : @"Changed SteamApps Folders"})];
+        }
+        
+        else if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && ![self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected])
+            [self makeLocalSteamAppsPrimary];
+        
+        else{
+            NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again. ");
+            [self displayGenericErrorNotification];
+        }
+        return;
+    }
+}
+
+- (void)displayGenericErrorNotification{
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+        [SCNotificationCenter notifyWithDictionary:(@{
+                                                    SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
+                                                    SCNotificationCenterNotificationDescription: @"Check the console for details.",
+                                                    SCNotificationCenterNotificationName: @"An Error Occurred"})];
 }
 
 @end

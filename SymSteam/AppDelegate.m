@@ -11,7 +11,6 @@
 - (id)init{
     self = [super init];
     if(self){
-        _aController = [[AppController alloc] init];
         _notificationCenterDelegate = [[SCUserNotificationCenterDelegate alloc] init];
     }
     
@@ -51,8 +50,7 @@
     }
     
     else{
-        [self.aController performInitialDriveScan];
-        [self.aController startWatchingForDrives];
+        [[SCSteamDiskManager steamDiskManager] startWatchingForDrives];
         if([NSEvent modifierFlags] == NSAlternateKeyMask){
             if(!self.preferencesWindowController)
                 self.preferencesWindowController = [self preparePreferencesWindow];
@@ -62,8 +60,12 @@
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification{
-    if(self.aController.saController.steamDriveIsConnected)
-        [self.aController.saController makeLocalSteamAppsPrimary];
+    if([[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]){
+        SCSteamAppsFoldersController *folderController = [[SCSteamAppsFoldersController alloc] init];
+        [folderController makeLocalSteamAppsPrimary];
+    }
+    if([[SCSteamDiskManager steamDiskManager] isRegisteredForDACallbacks])
+        [[SCSteamDiskManager steamDiskManager] stopWatchingForDrives];
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
@@ -71,10 +73,8 @@
         return NO;
     
     else{
-        if(self.preferencesWindowController == nil){
-            self.preferencesWindowController = [self preparePreferencesWindow];
-        }
-        
+        if(self.preferencesWindowController == nil)
+            self.preferencesWindowController = [self preparePreferencesWindow];        
         [self.preferencesWindowController showWindow:self];
         
         return YES;

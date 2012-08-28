@@ -95,12 +95,10 @@ void unregisterForDADiskCallbacks(void *context){
         return;
     if(diskManager.diskMonitoringSession != NULL){
         DAUnregisterCallback(diskManager.diskMonitoringSession, diskDidDisappear, NULL);
-        CFRelease(diskManager.diskMonitoringSession);
     }
     if(diskManager.diskApprovalSession != NULL){
         DAUnregisterApprovalCallback(diskManager.diskApprovalSession, diskWillMount, NULL);
         DAUnregisterApprovalCallback(diskManager.diskApprovalSession, diskWillUnmount, NULL);
-        CFRelease(diskManager.diskApprovalSession);
     }
     diskManager.isRegisteredForDACallbacks = NO;
 }
@@ -142,6 +140,10 @@ void unregisterForDADiskCallbacks(void *context){
 }
 
 - (void)stopWatchingForDrives{
+    if(self.steamDriveIsConnected){
+        SCSteamAppsFoldersController *folderController = [[SCSteamAppsFoldersController alloc] init];
+        [folderController makeLocalSteamAppsPrimary];
+    }
     unregisterForDADiskCallbacks((__bridge void*)self);
 }
 

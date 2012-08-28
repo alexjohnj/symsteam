@@ -60,10 +60,6 @@
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification{
-    if([[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]){
-        SCSteamAppsFoldersController *folderController = [[SCSteamAppsFoldersController alloc] init];
-        [folderController makeLocalSteamAppsPrimary];
-    }
     if([[SCSteamDiskManager steamDiskManager] isRegisteredForDACallbacks])
         [[SCSteamDiskManager steamDiskManager] stopWatchingForDrives];
 }

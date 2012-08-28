@@ -10,18 +10,17 @@
 #import "MASPreferencesViewController.h"
 #import "SCLoginController.h"
 #import "SCNotificationCenter.h"
+#import "SCSetupController.h"
 
 @interface GeneralPreferencesViewController : NSViewController <MASPreferencesViewController>
 
-@property (weak) IBOutlet NSTextField *localPathTextField;
-@property (weak) IBOutlet NSTextField *symbolicPathTextField;
 @property (weak) IBOutlet NSButton *startAtLoginCheckbox;
+@property (weak) IBOutlet NSPathControl *externalSteamAppsFolderPathControl;
 
 @property (weak) IBOutlet NSButton *notificationsCheckBox;
 @property (weak) IBOutlet NSTextField *notificationsInformation;
 
-- (IBAction)chooseLocalSteamAppsPath:(id)sender;
-- (IBAction)chooseSymbolicSteamAppsPath:(id)sender;
+- (IBAction)chooseExternalSteamAppsFolderLocation:(id)sender;
 - (IBAction)toggleGrowlNotifications:(id)sender;
 - (IBAction)toggleLaunchSymSteamAtLogin:(id)sender;
 

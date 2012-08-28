@@ -52,7 +52,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     
     // Check that the provided path is on an external drive
     
-    if(url.pathComponents.count < 3 || ![url.pathComponents[1] isEqualToString:@"Volumes"]){
+    if(![setupController folderIsOnExternalDrive:url]){
         NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:@"Error"
                                                            defaultButton:@"OK"
                                                          alternateButton:nil

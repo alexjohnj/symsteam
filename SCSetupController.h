@@ -11,9 +11,10 @@
 @interface SCSetupController : NSObject
 
 - (DADiskRef)createDADiskFromDrivePath:(NSURL *)drive CF_RETURNS_RETAINED;
-- (BOOL)verifyDriveFilesystemIsHFS:(DADiskRef)drive;
+- (BOOL)driveFilesystemIsHFS:(DADiskRef)drive;
 - (NSString *)getDriveUUID:(DADiskRef)drive;
 - (BOOL)createSymbolicLinkToFolder:(NSURL *)folder;
+- (BOOL)folderIsOnExternalDrive:(NSURL *)pathToFolder;
 
 //////////////////////////////////////////////////////////////////////
 

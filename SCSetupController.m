@@ -17,7 +17,7 @@
     return disk;
 }
 
-- (BOOL)verifyDriveFilesystemIsHFS:(DADiskRef)drive{
+- (BOOL)driveFilesystemIsHFS:(DADiskRef)drive{
     CFDictionaryRef driveDetails = DADiskCopyDescription(drive);
     NSString *driveFileSystem = (__bridge NSString *)CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeKindKey);
     CFRelease(driveDetails);
@@ -26,6 +26,10 @@
         return YES;
     else
         return NO;
+}
+
+- (BOOL)folderIsOnExternalDrive:(NSURL *)pathToFolder{
+    return (pathToFolder.pathComponents.count >= 3 && [pathToFolder.pathComponents[1] isEqualToString:@"Volumes"]);
 }
 
 - (NSString *)getDriveUUID:(DADiskRef)drive{

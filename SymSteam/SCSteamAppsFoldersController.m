@@ -205,7 +205,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         }
         
         else if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && ![self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected])
-            [self makeLocalSteamAppsPrimary];
+            [self makeLocalSteamAppsPrimaryWithSuccessNotifications:NO];
         
         else{
             NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again. ");

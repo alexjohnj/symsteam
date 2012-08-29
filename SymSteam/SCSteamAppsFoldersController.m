@@ -22,7 +22,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 #pragma mark - Folder Updating Methods
 
-- (BOOL)makeSymbolicSteamAppsPrimary{
+- (BOOL)makeSymbolicSteamAppsPrimaryWithSuccessNotifications:(BOOL)showSuccessNotifications{
     NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
     NSString *localSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamApps"];
     NSString *symbolicSteamAppsPath = [[applicationSupportPath stringByAppendingPathComponent:@"Steam"] stringByAppendingPathComponent:@"SteamAppsSymb"];
@@ -62,7 +62,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     // If we get to this point, everything went A-OK, so we can notify the user that the folders have changed and set steamDriveIsConnected to YES.
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
                                                     SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
@@ -71,7 +71,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     return YES;
 }
 
-- (BOOL)makeLocalSteamAppsPrimary{
+- (BOOL)makeLocalSteamAppsPrimaryWithSuccessNotifications:(BOOL)showSuccessNotifications{
     [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:NO]; // Update this here since the Steam drive will have been disconnected regardless of if this method completes successfully.
     
     NSString *applicationSupportPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)[0];
@@ -114,13 +114,21 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     // If we make it to this point then everything will have been succesful and we can notify the user (assuming they want us to).
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle: @"Updated Steam Folders",
                                                     SCNotificationCenterNotificationDescription: @"You're now playing games off of your internal drive.",
                                                     SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
     
     return YES;
+}
+
+- (BOOL)makeSymbolicSteamAppsPrimary{
+    return [self makeSymbolicSteamAppsPrimaryWithSuccessNotifications:YES];
+}
+
+- (BOOL)makeLocalSteamAppsPrimary{
+    return [self makeLocalSteamAppsPrimaryWithSuccessNotifications:YES];
 }
 
 #pragma mark - Folder Error Checking

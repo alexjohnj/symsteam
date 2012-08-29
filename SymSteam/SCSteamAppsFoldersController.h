@@ -12,8 +12,11 @@
 
 @interface SCSteamAppsFoldersController : NSObject
 
+- (BOOL)makeSymbolicSteamAppsPrimaryWithSuccessNotifications:(BOOL)showSuccessNotifications; // still respects the user's notification settings.
+- (BOOL)makeLocalSteamAppsPrimaryWithSuccessNotifications:(BOOL)showSuccessNotifications;
 - (BOOL)makeSymbolicSteamAppsPrimary;
 - (BOOL)makeLocalSteamAppsPrimary;
+
 - (BOOL)externalSteamAppsFolderExists;
 - (void)performInitialDriveScan;
 

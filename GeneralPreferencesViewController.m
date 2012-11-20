@@ -12,6 +12,8 @@
 static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
 static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
 static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
+static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
+
 
 @implementation GeneralPreferencesViewController
 
@@ -29,10 +31,29 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     SCLoginController *loginController = [[SCLoginController alloc] init];
     NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
     
-    if([loginController checkSessionLoginItemsForApplication:bundleURL]){
+    if (![[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]) {
+        [self.notificationOptions removeRow:0];
+        [self.notificationOptions sizeToCells];
+        
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:notificationsEnabledKey])
+            [self.notificationOptions selectCellAtRow:1 column:0];
+        else
+            [self.notificationOptions selectCellAtRow:0 column:0];
+    }
+    
+    else {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:notificationsEnabledKey])
+            [self.notificationOptions selectCellAtRow:2 column:0];
+        else if ([[SCNotificationCenter sharedCenter] getNotificationMethod] == SCNotificationCenterNotifyWithNotificationCenter || [[SCNotificationCenter sharedCenter] getNotificationMethod] == SCNotificationCenterNotifyByAvailability)
+            [self.notificationOptions selectCellAtRow:0 column:0];
+        else if ([[SCNotificationCenter sharedCenter] getNotificationMethod] == SCNotificationCenterNotifyWithGrowl)
+            [self.notificationOptions selectCellAtRow:1 column:0];
+    }
+    
+    if ([loginController checkSessionLoginItemsForApplication:bundleURL]) {
         [self.startAtLoginCheckbox setState:NSOnState];
     }
-    else{
+    else {
         [self.startAtLoginCheckbox setState:NSOffState];
     }
 }
@@ -63,8 +84,25 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }];
 }
 
-- (IBAction)toggleGrowlNotifications:(id)sender{
-    [[NSUserDefaults standardUserDefaults] synchronize];
+- (IBAction)changeNotificationOptions:(id)sender{
+    if ([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
+        if (self.notificationOptions.selectedRow == 0 || self.notificationOptions.selectedRow == 1){
+            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:notificationsEnabledKey];
+            [[SCNotificationCenter sharedCenter] setNotificationMethodPreference:self.notificationOptions.selectedRow];
+        }
+        else {
+            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:notificationsEnabledKey];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    else {
+        if (self.notificationOptions.selectedRow == 0)
+            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:notificationsEnabledKey];
+        else
+            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:notificationsEnabledKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (IBAction)toggleLaunchSymSteamAtLogin:(id)sender{

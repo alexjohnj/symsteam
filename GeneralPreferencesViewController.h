@@ -17,11 +17,11 @@
 @property (weak) IBOutlet NSButton *startAtLoginCheckbox;
 @property (weak) IBOutlet NSPathControl *externalSteamAppsFolderPathControl;
 
-@property (weak) IBOutlet NSButton *notificationsCheckBox;
+@property (weak) IBOutlet NSMatrix *notificationOptions;
 @property (weak) IBOutlet NSTextField *notificationsInformation;
 
 - (IBAction)chooseExternalSteamAppsFolderLocation:(id)sender;
-- (IBAction)toggleGrowlNotifications:(id)sender;
+- (IBAction)changeNotificationOptions:(id)sender;
 - (IBAction)toggleLaunchSymSteamAtLogin:(id)sender;
 
 @end

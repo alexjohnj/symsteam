@@ -20,10 +20,40 @@
 	</head>
 	<body>
 		<h1>Ch-Ch-Changes</h1>
+		
+		<h2 id="beta20.3">Beta 2 (0.3)</h2>
+		
+		<h3 id="monday3rdofdecember">Monday 3rd of December</h3>
+		
+		<ul>
+		<li>(Yet another) total rewrite of the application. The Steam drive is now detected based on the drive&#8217;s UUID, rather than on the drive&#8217;s name so drive&#8217;s with the same name as the Steam drive won&#8217;t cause SymSteam to switch SteamApps folders. (N.B. You will have to re-run setup).</li>
+		<li>Icon!</li>
+		<li>Shortened messages in notifications so that they aren&#8217;t truncated.</li>
+		<li>Much more reliable detection &amp; repairing of issues with your SteamApps folders that would prevent SymSteam from working.</li>
+		<li>Fixed a crash that would occur if SymSteam was started on login.</li>
+		<li>Added the ability to reset SymSteam&#8217;s settings by holding down the option (⌥) key when quitting SymSteam via the quit button.</li>
+		<li>Holding down the option (⌥) key while launching SymSteam will now show the preferences window.</li>
+		<li>Added a preference to launch SymSteam on login (highly recommended!).</li>
+		<li>Added support for Notification Centre on Mac OS 10.8 (Growl is still used on OS 10.7 and can be selected instead of Notification Centre on OS 10.8).</li>
+		<li>Significantly more detailed messages are logged to the console now. If you receive an error, check the console for some details.</li>
+		</ul>
+		
+		<h3 id="setupimprovements">Setup Improvements</h3>
+		
+		<ul>
+		<li>Setup has been greatly simplified. You no longer need to specify the location of the symbolic and local SteamApps folders, instead you just need to tell SymSteam where the SteamApps folder is on the external hard drive.</li>
+		<li>SymSteam will now quit if you close the setup window without finishing setup.</li>
+		<li>It&#8217;s not longer possible to open the preferences window before finishing setup.</li>
+		<li>SymSteam will no longer watch for drives being plugged in before setup is finished.</li>
+		<li>Fixed a bug where setup would report that it was successful after reporting that it wasn&#8217;t.</li>
+		<li>Added a title to the setup window.</li>
+		<li>Fixed the alignment of the &#8220;Quit&#8221; button in the setup window. It was a few points too far from the window&#8217;s frame.</li>
+		</ul>
+		
 		<h2 id="beta10.2">Beta 1 (0.2)</h2>
-
-		<h3 id="sunday8supthsupofapril">Sunday 8<sup>th</sup> of April</h3>
-
+		
+		<h3 id="sunday8thofapril">Sunday 8th of April</h3>
+		
 		<ul>
 		<li>Growl notifications for a variety of events in the application.</li>
 		<li>A total rewrite of the underlying application has taken place. SymSteam no longer scans drives, rather it will resolve the symbolic link you point it to and only scan at that path for the SteamApps folder. This makes SymSteam substantially faster now.</li>
@@ -37,15 +67,16 @@
 		<li>If SymSteam is quit while a Steam drive is connected, it will revert the SteamApps folders so that it is better prepared for when it&#8217;s relaunched.</li>
 		</ul>
 		
-		<h2>0.1.5</h2>
+		<h2 id="">0.1.5</h2>
+		
 		<ul>
-			<li>Added a basic, potentially buggy, preferences window that allows you to change the location of the local and symbolic SteamApps folders.</li>
-			<li>Improved drive management. SymSteam now keeps track of which drives aren't steam drives far better and won't rename the SteamApps folder if a non steam drive is unplugged whilst a steam drive is still plugged in.</li>
-			<li>Slightly sped up searching of drives for a SteamApps folder.</li>
+		<li>Added a basic, potentially buggy, preferences window that allows you to change the location of the local and symbolic SteamApps folders.</li>
+		<li>Improved drive management. SymSteam now keeps track of which drives aren&#8217;t steam drives far better and won&#8217;t rename the SteamApps folder if a non steam drive is unplugged whilst a steam drive is still plugged in.</li>
+		<li>Slightly sped up searching of drives for a SteamApps folder.</li>
 		</ul>
-		<h2>0.1</h2>
-		<ul>
-			<li>First release</li>
-			</ul>
+		
+		<h2 id="">0.1</h2>
+		
+		<p>First release</p>
 	</body>
 </html>

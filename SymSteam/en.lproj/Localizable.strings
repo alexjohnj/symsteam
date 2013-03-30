@@ -1,0 +1,65 @@
+/* 
+  localize.strings
+  SymSteam
+
+  Created by Alex Jackson on 30/03/2013.
+
+*/
+
+// **** Generic Terms ****
+
+"OK" = "OK";
+"Cancel" = "Cancel";
+"No" = "No";
+"Done" = "Done";
+"Quit" = "Quit";
+"Error" = "Error";
+"No thanks" = "No thanks";
+
+// **** Preferences ****
+
+// General Preferences
+
+"General Preference Pane Title" = "General";
+
+// Update Preferences
+
+"updatePreferencePaneTitle" = "Update";
+
+// About Preferences
+
+"aboutPreferencePaneTitle" = "About";
+"Reset SymSteam" = "Reset SymSteam";
+"Reset SymSteam Confirmation" = "Are you sure you want to reset SymSteam? All of your settings will be deleted. You will have to carry out setup again. Your Steam folder will not be touched.";
+"SymSteam Reset Success" = "SymSteam has been reset.";
+
+// **** Setup Window ****
+
+"The folder you provided is not on an external drive." = "The folder you provided is not on an external drive.";
+"No UUID Message" = "The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted.";
+"The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted." = "The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted.";
+
+"Symbolic Link Exists Message" = "A Symbolic Link Already Exists!";
+"Symbolic Link Delete Confirmation" = "Can I delete it? I can't proceed with setup while it's there.";
+"Symbolic Link Delete Failed Message" = "There was already a symbolic link present but I couldn't remove it.";
+"Symbolic Link Delete Failed Fix" = "Allow me to delete the symbolic link to continue.";
+
+"Setup Complete" = "Setup Complete.";
+"Setup Complete Message" = "Setup has finished. In order to access SymSteam's preferences, hold down the option (⎇) key while launching SymSteam or click on SymSteam's icon once it has been launched.";
+"Launch SymSteam on login?" = "Launch SymSteam on login?";
+"Launch at login information" = "Do you want SymSteam to automatically launch when you login? It is strongly recommended that you do.";
+
+// **** Notification strings displayed when something happens ****
+
+// Failures
+
+"failedUpdatedSteamFoldersNotificationTitle" = "Something's Gone Wrong!";
+"failedUpdatedSteamFoldersNotificationDescription" = "Check the console for details.";
+"errorOccuredGrowlTitle" = "An Error Occurred";
+
+// Successes
+
+"updatedSteamFoldersNotificationTitle" = "Updated Steam Folders";
+"updatedSteamFoldersNotificationDescriptionExternal" = "You're now playing games off of your external drive.";
+"updatedSteamFoldersNotificationDescriptionInternal" = "You're now playing games off of your internal drive.";
+"updatedSteamFoldersNotificationGrowlTitle" = "Changed SteamApps Folders";

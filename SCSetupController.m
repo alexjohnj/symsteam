@@ -34,11 +34,11 @@
 
 - (BOOL)verifyProvidedFolderIsUsable:(NSURL *)folder{
     if(![self folderIsOnExternalDrive:folder]){
-        NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:@"Error"
-                                                           defaultButton:@"OK"
+        NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:NSLocalizedString(@"Error", nil)
+                                                           defaultButton:NSLocalizedString(@"OK", nil)
                                                          alternateButton:nil
                                                              otherButton:nil
-                                               informativeTextWithFormat:@"The folder you provided is not on an external drive."];
+                                               informativeTextWithFormat:NSLocalizedString(@"The folder you provided is not on an external drive.", nil)];
         if([NSApp mainWindow])
             [invalidDestinationAlert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:nil didEndSelector:nil contextInfo:NULL];
         else
@@ -48,11 +48,11 @@
     
     DADiskRef drive = [self createDADiskFromDrivePath:[self getDrivePathFromFolderPath:folder]];
     if([self getDriveUUID:drive] == NULL){
-        NSAlert *noUUIDFound = [NSAlert alertWithMessageText:@"Error"
-                                               defaultButton:@"OK"
+        NSAlert *noUUIDFound = [NSAlert alertWithMessageText:NSLocalizedString(@"Error", nil)
+                                               defaultButton:NSLocalizedString(@"OK", nil)
                                              alternateButton:nil
                                                  otherButton:nil
-                                   informativeTextWithFormat:@"The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted."];
+                                   informativeTextWithFormat:NSLocalizedString(@"No UUID Message", nil)];
         if([NSApp mainWindow])
             [noUUIDFound beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:nil didEndSelector:nil contextInfo:NULL];
         else
@@ -102,11 +102,11 @@
         symbolicLinkPath = [[directories[0] stringByAppendingPathComponent:@"Steam"]  stringByAppendingPathComponent:@"SteamApps"];
     
     if([fManager attributesOfItemAtPath:symbolicLinkPath error:nil] && [[fManager attributesOfItemAtPath:symbolicLinkPath error:nil] fileType] == NSFileTypeSymbolicLink){
-        NSAlert *alert = [NSAlert alertWithMessageText:@"A Symbolic Link Already Exists!"
-                                         defaultButton:@"Yes"
-                                       alternateButton:@"No"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Symbolic Link Exists Message", nil)
+                                         defaultButton:NSLocalizedString(@"OK", nil)
+                                       alternateButton:NSLocalizedString(@"No", nil)
                                            otherButton:nil
-                             informativeTextWithFormat:@"Can I delete it? I can't procede with setup while it's there."];
+                             informativeTextWithFormat:NSLocalizedString(@"Symbolic Link Delete Confirmation", nil)];
         if([alert runModal] == NSAlertDefaultReturn) {
             if(![fManager removeItemAtPath:symbolicLinkPath error:&symbolicLinkCreationError]){
                 *error = symbolicLinkCreationError;
@@ -114,8 +114,8 @@
             }
         }
         else{
-            NSString *errorDescription = @"There was already a symbolic link present but I couldn't remove it.";
-            NSString *errorRecoveryString = @"Allow me to delete the symbolic link to continue.";
+            NSString *errorDescription = NSLocalizedString(@"Symbolic Link Delete Failed Message", nil);
+            NSString *errorRecoveryString = NSLocalizedString(@"Symbolic Link Delete Failed Fix", nil);
             
             symbolicLinkCreationError = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
                                                                    code:1

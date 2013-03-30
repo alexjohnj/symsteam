@@ -28,8 +28,6 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [super windowDidLoad];
 }
 
-///////////////////////////////////////
-
 - (IBAction)chooseSymbolicLinkDestination:(id)sender{
     NSOpenPanel *oPanel = [[NSOpenPanel alloc] init];
     oPanel.canChooseFiles = NO;
@@ -53,11 +51,11 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     // Check that the provided path is on an external drive
     
     if(![setupController folderIsOnExternalDrive:url]){
-        NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:@"Error"
-                                                           defaultButton:@"OK"
+        NSAlert *invalidDestinationAlert = [NSAlert alertWithMessageText:NSLocalizedString(@"Error", nil)
+                                                           defaultButton:NSLocalizedString(@"OK", nil)
                                                          alternateButton:nil
                                                              otherButton:nil
-                                               informativeTextWithFormat:@"The folder you provided is not on an external drive."];
+                                               informativeTextWithFormat:NSLocalizedString(@"The folder you provided is not on an external drive.", nil)];
         [invalidDestinationAlert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
         return NO;
     }
@@ -69,11 +67,11 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     DADiskRef drive = DADiskCreateFromVolumePath(kCFAllocatorDefault, session, (__bridge CFURLRef)driveURL);
     CFRelease(session);
     if(![setupController getDriveUUID:drive]){
-        NSAlert *noUUIDFound = [NSAlert alertWithMessageText:@"Error"
-                                               defaultButton:@"OK"
+        NSAlert *noUUIDFound = [NSAlert alertWithMessageText:NSLocalizedString(@"Error", nil)
+                                               defaultButton:NSLocalizedString(@"OK", nil)
                                              alternateButton:nil
                                                  otherButton:nil
-                                   informativeTextWithFormat:@"The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted."];
+                                   informativeTextWithFormat:NSLocalizedString(@"The drive which the SteamApps folder is on does not have a UUID. Please ensure that the drive is HFS formatted.", nil)];
         [noUUIDFound beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
         CFRelease(drive);
         return NO;
@@ -96,11 +94,11 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     [setupController saveSymbolicLinkDestinationToUserDefaults:self.symbolicLinkDestination];
     [setupController saveDriveUUIDToUserDefaults:disk];
     CFRelease(disk);
-    NSAlert *successAlert = [NSAlert alertWithMessageText:@"Setup Complete."
-                                            defaultButton:@"Done"
+    NSAlert *successAlert = [NSAlert alertWithMessageText:NSLocalizedString(@"Setup Complete", nil)
+                                            defaultButton:NSLocalizedString(@"Done", nil)
                                           alternateButton:nil
                                               otherButton:nil
-                                informativeTextWithFormat:@"Setup has finished. In order to access SymSteam's preferences, hold down the option (⎇) key while launching SymSteam or click on SymSteam's icon once it has been launched."];
+                                informativeTextWithFormat:NSLocalizedString(@"Setup Complete Message", nil)];
     [successAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:) contextInfo:@"setupSuccessAlert"];
 }
 
@@ -109,11 +107,11 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 }
 
 - (void)showStartAtLoginSheet{
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Launch SymSteam on login?"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"No thanks"
+    NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Launch SymSteam on login?", nil)
+                                     defaultButton:NSLocalizedString(@"OK", nil)
+                                   alternateButton:NSLocalizedString(@"No thanks", nil)
                                        otherButton:nil
-                         informativeTextWithFormat:@"Do you want SymSteam to automatically launch when you login? It is strongly recommended that you do."];
+                         informativeTextWithFormat:NSLocalizedString(@"Launch at login information", nil)];
     [alert beginSheetModalForWindow:self.window
                       modalDelegate:self
                      didEndSelector:@selector(alertDidEnd:resultCode:contextInfo:)

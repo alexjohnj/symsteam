@@ -29,7 +29,7 @@
 }
 
 -(NSString *)toolbarItemLabel{
-    return @"Update";
+    return NSLocalizedString(@"updatePreferencePaneTitle", nil);
 }
 
 -(NSImage *)toolbarItemImage{

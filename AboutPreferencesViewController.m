@@ -30,11 +30,11 @@
     if([NSEvent modifierFlags] == NSAlternateKeyMask){
         AppDelegate *appDelegate = (AppDelegate *)[NSApp delegate];
         
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Reset SymSteam"
-                                         defaultButton:@"OK"
-                                       alternateButton:@"Cancel"
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Reset SymSteam", nil)
+                                         defaultButton:NSLocalizedString(@"OK", nil)
+                                       alternateButton:NSLocalizedString(@"Cancel", nil)
                                            otherButton:nil
-                             informativeTextWithFormat:@"Are you sure you want to reset SymSteam? All of your settings will be deleted. You will have to carry out setup again. Your Steam folder will not be touched."];
+                             informativeTextWithFormat:NSLocalizedString(@"Reset SymSteam Confirmation", nil)];
         
         [alert beginSheetModalForWindow:appDelegate.preferencesWindowController.window 
                           modalDelegate:self
@@ -48,7 +48,7 @@
 }
 
 -(void)viewWillAppear{
-    NSData *creditsRTF = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle]URLForResource:@"Credits" withExtension:@"rtf"]];
+    NSData *creditsRTF = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Credits" withExtension:@"rtf"]];
     NSAttributedString *credits = [[NSAttributedString alloc] initWithRTF:creditsRTF documentAttributes:NULL];
     self.aboutDescription.textStorage.attributedString = credits;
     
@@ -71,9 +71,9 @@
             [alert.window orderOut:self];
             
             NSAlert *doneAlert = [[NSAlert alloc] init];
-            [doneAlert setMessageText:@"Done"];
-            [doneAlert addButtonWithTitle:@"Quit"];
-            [doneAlert setInformativeText:@"SymSteam has been reset."];
+            [doneAlert setMessageText:NSLocalizedString(@"Done", nil)];
+            [doneAlert addButtonWithTitle:NSLocalizedString(@"Quit", nil)];
+            [doneAlert setInformativeText:NSLocalizedString(@"SymSteam Reset Success", nil)];
             [doneAlert beginSheetModalForWindow:appDelegate.preferencesWindowController.window
                                   modalDelegate:self
                                  didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
@@ -94,7 +94,7 @@
 }
 
 -(NSString *)toolbarItemLabel{
-    return NSLocalizedString(@"About", @"About label for preferences toolbar");
+    return NSLocalizedString(@"aboutPreferencePaneTitle", @"About label for preferences toolbar");
 }
 
 -(NSImage *)toolbarItemImage{

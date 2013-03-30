@@ -38,9 +38,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSLog(@"I was trying to rename the local SteamApps folder to SteamAppsLoc but couldn't rename [%@] to [%@] because: [%@]", localSteamAppsPath, newLocalSteamAppsPath, [localSteamAppsFolderRename localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
-                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
-                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
+                                                        SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
+                                                        SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
+                                                        SCNotificationCenterNotificationName: NSLocalizedString(@"errorOccuredGrowlTitle", nil)})];
         }
         return NO;
     }
@@ -53,9 +53,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSLog(@"I was trying to rename SteamAppsSymb to SteamApps but couldn't rename item [%@] to [%@] because [%@]", symbolicSteamAppsPath, localSteamAppsPath, [symbolicSteamAppsFolderRename localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
-                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
-                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
+                                                        SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
+                                                        SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
+                                                        SCNotificationCenterNotificationName: NSLocalizedString(@"errorOccuredGrowlTitle", nil)})];
         }
         return NO;
     }
@@ -64,9 +64,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
-                                                    SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
-                                                    SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
-                                                    SCNotificationCenterNotificationName : @"Changed SteamApps Folders"})];
+                                                    SCNotificationCenterNotificationTitle : NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
+                                                    SCNotificationCenterNotificationDescription : NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionExternal", nil),
+                                                    SCNotificationCenterNotificationName : NSLocalizedString(@"updatedSteamFoldersNotificationGrowlTitle", nil)})];
     [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:YES];
     return YES;
 }
@@ -89,9 +89,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
-                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
-                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
+                                                        SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
+                                                        SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
+                                                        SCNotificationCenterNotificationName: NSLocalizedString(@"errorOccuredGrowlTitle", nil)})];
         }
         return NO;
     }
@@ -105,9 +105,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSLog(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
-                                                        SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
-                                                        SCNotificationCenterNotificationDescription: @"Check the console for details.",
-                                                        SCNotificationCenterNotificationName: @"An Error Occurred"})];
+                                                        SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
+                                                        SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
+                                                        SCNotificationCenterNotificationName: NSLocalizedString(@"errorOccuredGrowlTitle", nil)})];
         }
         return NO;
     }
@@ -116,9 +116,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
-                                                    SCNotificationCenterNotificationTitle: @"Updated Steam Folders",
-                                                    SCNotificationCenterNotificationDescription: @"You're now playing games off of your internal drive.",
-                                                    SCNotificationCenterNotificationName: @"Changed SteamApps Folders"})];
+                                                    SCNotificationCenterNotificationTitle: NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
+                                                    SCNotificationCenterNotificationDescription: NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionInternal", nil),
+                                                    SCNotificationCenterNotificationName: NSLocalizedString(@"updatedSteamFoldersNotificationGrowlTitle", nil)})];
     
     return YES;
 }
@@ -199,16 +199,16 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
             [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:YES];
             if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
                 [SCNotificationCenter notifyWithDictionary:(@{
-                                                            SCNotificationCenterNotificationTitle : @"Updated Steam Folders",
-                                                            SCNotificationCenterNotificationDescription : @"You're now playing games off of your external drive.",
-                                                            SCNotificationCenterNotificationName : @"Changed SteamApps Folders"})];
+                                                            SCNotificationCenterNotificationTitle : NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
+                                                            SCNotificationCenterNotificationDescription : NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionExternal", nil),
+                                                            SCNotificationCenterNotificationName : NSLocalizedString(@"updatedSteamFoldersNotificationGrowlTitle", nil)})];
         }
         
         else if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && ![self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected])
             [self makeLocalSteamAppsPrimaryWithSuccessNotifications:NO];
         
         else{
-            NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again. ");
+            NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again.");
             [self displayGenericErrorNotification];
         }
         return;
@@ -218,9 +218,9 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 - (void)displayGenericErrorNotification{
     if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
         [SCNotificationCenter notifyWithDictionary:(@{
-                                                    SCNotificationCenterNotificationTitle: @"Something's Gone Wrong!",
-                                                    SCNotificationCenterNotificationDescription: @"Check the console for details.",
-                                                    SCNotificationCenterNotificationName: @"An Error Occurred"})];
+                                                    SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
+                                                    SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
+                                                    SCNotificationCenterNotificationName: NSLocalizedString(@"errorOccuredGrowlTitle", nil)})];
 }
 
 @end

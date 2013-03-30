@@ -137,7 +137,7 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
 }
 
 -(NSString *)toolbarItemLabel{
-    return NSLocalizedString(@"General", @"Toolbar label for the general preference tab");
+    return NSLocalizedString(@"General Preference Pane Title", @"Toolbar label for the general preference tab");
 }
 
 -(NSImage *)toolbarItemImage{

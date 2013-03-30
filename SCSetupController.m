@@ -90,8 +90,9 @@
     return [NSURL fileURLWithPathComponents:(@[folderPath.pathComponents[0], folderPath.pathComponents[1], folderPath.pathComponents[2]])];
 }
 
-- (BOOL)createSymbolicLinkToFolder:(NSURL *)folder{ // Creates a symbolic link at /Application Support/Steam/SteamAppsSymb
+- (BOOL)createSymbolicLinkToFolder:(NSURL *)folder error:(NSError *__autoreleasing*)error{ // Creates a symbolic link at /Application Support/Steam/SteamAppsSymb
     NSFileManager *fManager = [[NSFileManager alloc] init];
+    NSError __autoreleasing *symbolicLinkCreationError;
     
     NSArray *directories = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDirectory, YES);
     NSString *symbolicLinkPath;
@@ -106,20 +107,30 @@
                                        alternateButton:@"No"
                                            otherButton:nil
                              informativeTextWithFormat:@"Can I delete it? I can't procede with setup while it's there."];
-        if([alert runModal] == NSAlertDefaultReturn)
-            [fManager removeItemAtPath:symbolicLinkPath error:nil];
+        if([alert runModal] == NSAlertDefaultReturn) {
+            if(![fManager removeItemAtPath:symbolicLinkPath error:&symbolicLinkCreationError]){
+                *error = symbolicLinkCreationError;
+                return NO;
+            }
+        }
         else{
-            NSLog(@"There was a symbolic link already present at %@ and the user wouldn't let me remove it.", symbolicLinkPath);
+            NSString *errorDescription = @"There was already a symbolic link present but I couldn't remove it.";
+            NSString *errorRecoveryString = @"Allow me to delete the symbolic link to continue.";
+            
+            symbolicLinkCreationError = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
+                                                                   code:1
+                                                               userInfo:@{NSLocalizedDescriptionKey: errorDescription, NSLocalizedRecoverySuggestionErrorKey: errorRecoveryString}];
+            *error = symbolicLinkCreationError;
             return NO;
         }
     }
     
-    NSError *symbolicLinkCreationError;
     if([fManager createSymbolicLinkAtPath:symbolicLinkPath withDestinationPath:folder.path error:&symbolicLinkCreationError]){
         return YES;
     }
     else{
         NSLog(@"Unabled to create symbolic link to %@ because %@", folder.path, symbolicLinkCreationError.localizedDescription);
+        *error = symbolicLinkCreationError;
         return NO;
     }
 }

@@ -12,10 +12,7 @@
 		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
-		FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */; };
-		FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */; };
 		FA46665115CD646800FBB72A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA46665015CD646800FBB72A /* icon.icns */; };
-		FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = FA485316153768F3002B3995 /* SymbolicLinkCreator.m */; };
 		FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4CE4C215C16A14000EB02F /* SCLoginController.m */; };
 		FA519AF615EBAE390059C6AA /* SCSteamAppsFoldersController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA519AF515EBAE390059C6AA /* SCSteamAppsFoldersController.m */; };
 		FA519AF915EBAE5C0059C6AA /* SCSteamDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA519AF815EBAE5C0059C6AA /* SCSteamDiskManager.m */; };
@@ -102,12 +99,7 @@
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
-		FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkGuideController.h; sourceTree = "<group>"; };
-		FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkGuideController.m; sourceTree = "<group>"; };
-		FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolicLinkGuideSheet.xib; sourceTree = "<group>"; };
 		FA46665015CD646800FBB72A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		FA485315153768F3002B3995 /* SymbolicLinkCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolicLinkCreator.h; sourceTree = "<group>"; };
-		FA485316153768F3002B3995 /* SymbolicLinkCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolicLinkCreator.m; sourceTree = "<group>"; };
 		FA4CE4C115C16A14000EB02F /* SCLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCLoginController.h; path = ../SCLoginController.h; sourceTree = "<group>"; };
 		FA4CE4C215C16A14000EB02F /* SCLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCLoginController.m; path = ../SCLoginController.m; sourceTree = "<group>"; };
 		FA519AF415EBAE390059C6AA /* SCSteamAppsFoldersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSteamAppsFoldersController.h; sourceTree = "<group>"; };
@@ -228,8 +220,6 @@
 		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA451ED11530C09F0055C539 /* SymbolicLinkGuideController.h */,
-				FA451ED21530C09F0055C539 /* SymbolicLinkGuideController.m */,
 				FA359C5814DC7D4400010221 /* SetupWindowController.h */,
 				FA359C5914DC7D4400010221 /* SetupWindowController.m */,
 			);
@@ -239,7 +229,6 @@
 		FACC00D0153074C700D5FD8C /* Windows */ = {
 			isa = PBXGroup;
 			children = (
-				FA451ED31530C09F0055C539 /* SymbolicLinkGuideSheet.xib */,
 				FABBF7BB14DC81AD0060F879 /* MainMenu.xib */,
 				FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */,
 			);
@@ -314,8 +303,6 @@
 				FA76458E15E8D4190032DCA1 /* SCSetupController.m */,
 				FAE2895F15CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.h */,
 				FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */,
-				FA485315153768F3002B3995 /* SymbolicLinkCreator.h */,
-				FA485316153768F3002B3995 /* SymbolicLinkCreator.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
 				FAEE704114DB2CA500BF7020 /* AppDelegate.m */,
 				FAEE703514DB2CA500BF7020 /* Supporting Files */,
@@ -437,7 +424,6 @@
 				FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */,
 				FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */,
 				FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */,
-				FA451ED51530C09F0055C539 /* SymbolicLinkGuideSheet.xib in Resources */,
 				FABB1BA015319AED0073DD70 /* GeneralPreferencesView.xib in Resources */,
 				FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */,
 				FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */,
@@ -457,11 +443,9 @@
 				FAEE703B14DB2CA500BF7020 /* main.m in Sources */,
 				FAEE704214DB2CA500BF7020 /* AppDelegate.m in Sources */,
 				FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */,
-				FA451ED41530C09F0055C539 /* SymbolicLinkGuideController.m in Sources */,
 				FABB1B9F15319AED0073DD70 /* GeneralPreferencesViewController.m in Sources */,
 				FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */,
 				FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */,
-				FA485317153768F3002B3995 /* SymbolicLinkCreator.m in Sources */,
 				FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */,
 				FA4CE4C315C16A15000EB02F /* SCLoginController.m in Sources */,
 				FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */,

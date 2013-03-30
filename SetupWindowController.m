@@ -85,12 +85,9 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
 
 - (IBAction)nextButtonPressed:(id)sender{
     SCSetupController *setupController = [[SCSetupController alloc] init];
-    if(![setupController createSymbolicLinkToFolder:self.symbolicLinkDestination]){
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Error"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"Could not create a symbolic link to your SteamApps folder. Please check the console for details."];
+    NSError __autoreleasing *symbolicLinkCreationError;
+    if(![setupController createSymbolicLinkToFolder:self.symbolicLinkDestination error:&symbolicLinkCreationError]){
+        NSAlert *alert = [NSAlert alertWithError:symbolicLinkCreationError];
         [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:NULL];
     }
     DADiskRef disk = [setupController createDADiskFromDrivePath:[NSURL fileURLWithPathComponents:(@[self.symbolicLinkDestination.pathComponents[0],

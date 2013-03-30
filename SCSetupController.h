@@ -15,11 +15,9 @@
 - (BOOL)driveFilesystemIsHFS:(DADiskRef)drive;
 - (NSString *)getDriveUUID:(DADiskRef)drive;
 - (NSURL *)getDrivePathFromFolderPath:(NSURL *)folderPath;
-- (BOOL)createSymbolicLinkToFolder:(NSURL *)folder;
+- (BOOL)createSymbolicLinkToFolder:(NSURL *)folder error:(__autoreleasing NSError **)error;
 - (BOOL)folderIsOnExternalDrive:(NSURL *)pathToFolder;
 - (BOOL)verifyProvidedFolderIsUsable:(NSURL *)folder;
-
-//////////////////////////////////////////////////////////////////////
 
 - (void)saveSymbolicLinkDestinationToUserDefaults:(NSURL *)destination;
 - (void)saveDriveUUIDToUserDefaults:(DADiskRef)drive;

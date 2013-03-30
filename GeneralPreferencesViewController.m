@@ -72,13 +72,19 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
             SCSetupController *setupController = [[SCSetupController alloc] init];
             if([setupController verifyProvidedFolderIsUsable:oPanel.URL]){
                 [[SCSteamDiskManager steamDiskManager] stopWatchingForDrives];
-                if([setupController createSymbolicLinkToFolder:oPanel.URL]){
+                NSError __autoreleasing *symbolicLinkCreationError;
+                
+                if([setupController createSymbolicLinkToFolder:oPanel.URL error:&symbolicLinkCreationError]){
                     [setupController saveSymbolicLinkDestinationToUserDefaults:oPanel.URL];
                     DADiskRef disk = [setupController createDADiskFromDrivePath:[setupController getDrivePathFromFolderPath:oPanel.URL]];
                     [setupController saveDriveUUIDToUserDefaults:disk];
                     CFRelease(disk);
-                    [[SCSteamDiskManager steamDiskManager] startWatchingForDrives];
                 }
+                else {
+                    NSAlert *alert = [NSAlert alertWithError:symbolicLinkCreationError];
+                    [alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(symbolicLinkCreationAlertDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+                }
+                [[SCSteamDiskManager steamDiskManager] startWatchingForDrives];
             }
         }
     }];
@@ -116,6 +122,12 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
     else{
         [loginController removeApplicationFromLoginItems:bundleURL];
     }
+}
+
+#pragma mark Alert Completion Handlers
+
+- (void)symbolicLinkCreationAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+	[alert.window orderOut:self];
 }
 
 #pragma mark - Setters for MASPreferencesWindow

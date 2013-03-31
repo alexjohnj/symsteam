@@ -6,12 +6,17 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Beta 2.1</title>
+            <pubDate>Sun, 31 Mar 2013 12:18:59 +0100</pubDate>
+            <sparkle:releaseNotesLink>http://alexjohnj.github.com/symsteam/changelog.html</sparkle:releaseNotesLink>
+            <enclosure sparkle:version="18" sparkle:shortVersionString="Beta 2.1" length="1527189" url="http://application-downloads.s3.amazonaws.com/symsteam-beta-2.1.zip" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCI/GiewJ+feuIaTR5yiy75AVD+fgIUM1hKM22TKsDIf8wq6i4k8AKDLKM="></enclosure>
+        </item>
+        <item>
             <title>Beta 2</title>
             <pubDate>Mon, 31 Dec 2012 16:16:22 +0000</pubDate>
             <sparkle:releaseNotesLink>http://alexjohnj.github.com/symsteam/changelog.html</sparkle:releaseNotesLink>
             <sparkle:minimumSystemVersion>10.7.0</sparkle:minimumSystemVersion>
-            <enclosure sparkle:version="14" sparkle:shortVersionString="Beta 2" length="1504240" url="http://application-downloads.s3.amazonaws.com/SymSteam-Beta-2.zip" type="application/octet-stream" sparkle:dsaSignature="MCwCFG3Iy2B9UUyrBBLIwZY2muJfHtWoAhRSErUvIaX2LGJbFa1YebW2g0SMCQ==
-"></enclosure>
+            <enclosure sparkle:version="14" sparkle:shortVersionString="Beta 2" length="1504240" url="http://application-downloads.s3.amazonaws.com/SymSteam-Beta-2.zip" type="application/octet-stream" sparkle:dsaSignature="MCwCFG3Iy2B9UUyrBBLIwZY2muJfHtWoAhRSErUvIaX2LGJbFa1YebW2g0SMCQ=="></enclosure>
         </item>
         <item>
             <title>Beta 1</title>

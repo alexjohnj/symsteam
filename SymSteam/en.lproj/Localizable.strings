@@ -24,11 +24,11 @@
 
 // Update Preferences
 
-"updatePreferencePaneTitle" = "Update";
+"Update Preference Pane Title" = "Update";
 
 // About Preferences
 
-"aboutPreferencePaneTitle" = "About";
+"About Preference Pane Title" = "About";
 "Reset SymSteam" = "Reset SymSteam";
 "Reset SymSteam Confirmation" = "Are you sure you want to reset SymSteam? All of your settings will be deleted. You will have to carry out setup again. Your Steam folder will not be touched.";
 "SymSteam Reset Success" = "SymSteam has been reset.";

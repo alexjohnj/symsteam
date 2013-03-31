@@ -94,7 +94,7 @@
 }
 
 -(NSString *)toolbarItemLabel{
-    return NSLocalizedString(@"aboutPreferencePaneTitle", @"About label for preferences toolbar");
+    return NSLocalizedString(@"About Preference Pane Title", @"About label for preferences toolbar");
 }
 
 -(NSImage *)toolbarItemImage{

@@ -109,7 +109,8 @@
                              informativeTextWithFormat:NSLocalizedString(@"Symbolic Link Delete Confirmation", nil)];
         if([alert runModal] == NSAlertDefaultReturn) {
             if(![fManager removeItemAtPath:symbolicLinkPath error:&symbolicLinkCreationError]){
-                *error = symbolicLinkCreationError;
+                if(error)
+                    *error = symbolicLinkCreationError;
                 return NO;
             }
         }
@@ -117,10 +118,12 @@
             NSString *errorDescription = NSLocalizedString(@"Symbolic Link Delete Failed Message", nil);
             NSString *errorRecoveryString = NSLocalizedString(@"Symbolic Link Delete Failed Fix", nil);
             
-            symbolicLinkCreationError = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
+            if(error){
+                symbolicLinkCreationError = [[NSError alloc] initWithDomain:@"com.simplecode.symsteam"
                                                                    code:1
                                                                userInfo:@{NSLocalizedDescriptionKey: errorDescription, NSLocalizedRecoverySuggestionErrorKey: errorRecoveryString}];
-            *error = symbolicLinkCreationError;
+                *error = symbolicLinkCreationError;
+            }
             return NO;
         }
     }
@@ -130,7 +133,8 @@
     }
     else{
         NSLog(@"Unabled to create symbolic link to %@ because %@", folder.path, symbolicLinkCreationError.localizedDescription);
-        *error = symbolicLinkCreationError;
+        if(error)
+            *error = symbolicLinkCreationError;
         return NO;
     }
 }

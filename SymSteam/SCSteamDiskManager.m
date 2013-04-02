@@ -17,10 +17,10 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 
 DADissenterRef diskWillMount(DADiskRef disk, void *context){
     if(context == NULL){
-        NSLog(@"A drive wanted to mount but the context was NULL, it can't be.");
+        DDLogCInfo(@"A drive wanted to mount but the context was NULL, it can't be.");
         return NULL;
     } if(disk == NULL){
-        NSLog(@"A drive wanted to mount and the providied drive was NULL for some reason.");
+        DDLogCError(@"A drive wanted to mount and the providied drive was NULL for some reason.");
         return NULL;
     }
     
@@ -36,10 +36,10 @@ DADissenterRef diskWillMount(DADiskRef disk, void *context){
 
 DADissenterRef diskWillUnmount(DADiskRef disk, void *context){
     if(context == NULL){
-        NSLog(@"The context was NULL, it can't be.");
+        DDLogCError(@"The context was NULL, it can't be.");
         return NULL;
     } if(disk == NULL){
-        NSLog(@"The disk provided was NULL");
+        DDLogCError(@"The disk provided was NULL");
         return NULL;
     }
     
@@ -57,10 +57,10 @@ DADissenterRef diskWillUnmount(DADiskRef disk, void *context){
 
 void diskDidDisappear(DADiskRef disk, void *context){
     if(context == NULL){
-        NSLog(@"The context was NULL, it can't be.");
+        DDLogCError(@"The context was NULL, it can't be.");
         return;
     } if(disk == NULL){
-        NSLog(@"The provided DADiskref was NULL");
+        DDLogCError(@"The provided DADiskref was NULL");
         return;
     }
     SCSteamDiskManager *diskManager = (__bridge SCSteamDiskManager *)context;
@@ -154,7 +154,7 @@ void unregisterForDADiskCallbacks(void *context){
         return NO;
     CFDictionaryRef driveDetails = DADiskCopyDescription(suspectDrive);
     if(driveDetails == NULL){
-        NSLog(@"The drive details provided from the suspect drive where NULL");
+        DDLogCError(@"The drive details provided from the suspect drive where NULL");
         return NO;
     } if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
         CFRelease(driveDetails);

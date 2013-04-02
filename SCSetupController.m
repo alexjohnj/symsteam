@@ -80,11 +80,11 @@
 
 - (NSURL *)getDrivePathFromFolderPath:(NSURL *)folderPath{
     if(folderPath == nil){
-        NSLog(@"getDrivePathFromFolderPath: The provided folderPath was nil");
+        DDLogError(@"getDrivePathFromFolderPath: The provided folderPath was nil");
         return nil;
     }
     if(folderPath.pathComponents.count < 3){
-        NSLog(@"getDrivePathFromFolderPath: The provided folderPath was too short to create a drive path");
+        DDLogError(@"getDrivePathFromFolderPath: The provided folderPath was too short to create a drive path");
         return nil;
     }
     return [NSURL fileURLWithPathComponents:(@[folderPath.pathComponents[0], folderPath.pathComponents[1], folderPath.pathComponents[2]])];
@@ -132,7 +132,7 @@
         return YES;
     }
     else{
-        NSLog(@"Unabled to create symbolic link to %@ because %@", folder.path, symbolicLinkCreationError.localizedDescription);
+        DDLogError(@"Unabled to create symbolic link to %@ because %@", folder.path, symbolicLinkCreationError.localizedDescription);
         if(error)
             *error = symbolicLinkCreationError;
         return NO;
@@ -151,7 +151,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else{
-        NSLog(@"Could not save the drive's UUID to the user defaults because the UUID returned by getDriveUUID: was nil");
+        DDLogError(@"Could not save the drive's UUID to the user defaults because the UUID returned by getDriveUUID: was nil");
     }
 }
 

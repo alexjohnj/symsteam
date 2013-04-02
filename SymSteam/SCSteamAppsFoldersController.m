@@ -35,7 +35,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     success = [fManager moveItemAtPath:localSteamAppsPath toPath:newLocalSteamAppsPath error:&localSteamAppsFolderRename];
     
     if(!success){
-        NSLog(@"I was trying to rename the local SteamApps folder to SteamAppsLoc but couldn't rename [%@] to [%@] because: [%@]", localSteamAppsPath, newLocalSteamAppsPath, [localSteamAppsFolderRename localizedDescription]);
+        DDLogError(@"I was trying to rename the local SteamApps folder to SteamAppsLoc but couldn't rename [%@] to [%@] because: [%@]", localSteamAppsPath, newLocalSteamAppsPath, [localSteamAppsFolderRename localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
@@ -50,7 +50,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     success = [fManager moveItemAtPath:symbolicSteamAppsPath toPath:localSteamAppsPath error:&symbolicSteamAppsFolderRename];
     
     if(!success){
-        NSLog(@"I was trying to rename SteamAppsSymb to SteamApps but couldn't rename item [%@] to [%@] because [%@]", symbolicSteamAppsPath, localSteamAppsPath, [symbolicSteamAppsFolderRename localizedDescription]);
+        DDLogError(@"I was trying to rename SteamAppsSymb to SteamApps but couldn't rename item [%@] to [%@] because [%@]", symbolicSteamAppsPath, localSteamAppsPath, [symbolicSteamAppsFolderRename localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
@@ -85,7 +85,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     NSError *renameSymbolicError;
     success = [fManager moveItemAtPath:localSteamAppsPath toPath:symbolicSteamAppsPath error:&renameSymbolicError];
     if(!success){
-        NSLog(@"I was trying to rename SteamApps to SteamAppsSymb but couldn't rename [%@] to [%@] because [%@]", localSteamAppsPath, symbolicSteamAppsPath, [renameSymbolicError localizedDescription]);
+        DDLogError(@"I was trying to rename SteamApps to SteamAppsSymb but couldn't rename [%@] to [%@] because [%@]", localSteamAppsPath, symbolicSteamAppsPath, [renameSymbolicError localizedDescription]);
         
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
@@ -102,7 +102,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     success = [fManager moveItemAtPath:currentLocalSteamAppsFolderPath toPath:localSteamAppsPath error:&renameLocalError];
     if(!success){
-        NSLog(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
+        DDLogError(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
         if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
@@ -155,7 +155,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         symbolicSteamAppsFolderExists = YES;
     
     if(localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
-        NSLog(@"SteamApps exists & SteamAppsSymb exists, suggesting everything is A-OK.");
+        DDLogVerbose(@"SteamApps exists & SteamAppsSymb exists, suggesting everything is A-OK.");
         if([self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]) //check the external SteamApps folder exists and a Steam Drive isn't registered as connected.
             [self makeSymbolicSteamAppsPrimary];
         return;
@@ -165,7 +165,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSError *renameSteamAppsLocToSteamApps;
         BOOL success = [fManager moveItemAtPath:steamAppsLocPath toPath:localSteamAppsFolderPath error:&renameSteamAppsLocToSteamApps];
         if(!success){
-            NSLog(@"I was trying to fix the SteamApps setup by renaming SteamAppsLoc to SteamApps while keeping SteamAppsSymb the same but couldn't move [%@] to [%@] because: [%@]", steamAppsLocPath, localSteamAppsFolderPath, [renameSteamAppsLocToSteamApps localizedDescription]);
+            DDLogError(@"I was trying to fix the SteamApps setup by renaming SteamAppsLoc to SteamApps while keeping SteamAppsSymb the same but couldn't move [%@] to [%@] because: [%@]", steamAppsLocPath, localSteamAppsFolderPath, [renameSteamAppsLocToSteamApps localizedDescription]);
             [self displayGenericErrorNotification];
         }
         else{ // if SymSteam was able to fix this configuration issue, check to see if a drive is connected and if it is, update the Steam Folders.
@@ -176,19 +176,19 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     }
     
     else if(!localSteamAppsFolderExists && !steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
-        NSLog(@"A symbolic link exists but neither a SteamApps folder nor a SteamAppsLoc folder exists! I can't do anything about this.");
+        DDLogError(@"A symbolic link exists but neither a SteamApps folder nor a SteamAppsLoc folder exists! I can't do anything about this.");
         [self displayGenericErrorNotification];
         return;
     }
     
     else if(localSteamAppsFolderExists && !steamAppsLocFolderExists && !symbolicSteamAppsFolderExists){
-        NSLog(@"A SteamApps folder exists but there's no SteamAppsLoc or SteamAppsSymb folder. Setup probably needs to be carried out again.");
+        DDLogError(@"A SteamApps folder exists but there's no SteamAppsLoc or SteamAppsSymb folder. Setup probably needs to be carried out again.");
         [self displayGenericErrorNotification];
         return;
     }
     
     else if(localSteamAppsFolderExists && steamAppsLocFolderExists && symbolicSteamAppsFolderExists){
-        NSLog(@"A SteamApps, SteamAppsLoc & SteamAppsSymb folder exists. I can't take this! That's too many folders. I can't do anything with this setup. Get rid of either the SteamApps or SteamAppsLoc folder.");
+        DDLogError(@"A SteamApps, SteamAppsLoc & SteamAppsSymb folder exists. I can't take this! That's too many folders. I can't do anything with this setup. Get rid of either the SteamApps or SteamAppsLoc folder.");
         [self displayGenericErrorNotification];
         return;
     }
@@ -208,7 +208,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
             [self makeLocalSteamAppsPrimaryWithSuccessNotifications:NO];
         
         else{
-            NSLog(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again.");
+            DDLogError(@"A SteamApps & SteamAppsLoc folder exists but a SteamAppsSymb folder doesn't. I checked to see if the SteamApps folder is a symbolic link and it wasn't, so SteamAppsSymb has gone missing and needs to be recreated and setup needs to be run again.");
             [self displayGenericErrorNotification];
         }
         return;

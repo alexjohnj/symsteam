@@ -60,7 +60,7 @@
 
 - (void)addApplicationToLoginItems:(NSURL *)applicationURL{
     if(applicationURL == nil){
-        NSLog(@"SCLoginController: The provided application URL was nil, so I couldn't add anything to the login items list");
+        DDLogCError(@"SCLoginController: The provided application URL was nil, so I couldn't add anything to the login items list");
         return;
     }
     CFURLRef appURL = (__bridge_retained CFURLRef)applicationURL;

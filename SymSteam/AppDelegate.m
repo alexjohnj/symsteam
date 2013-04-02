@@ -38,6 +38,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
     if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
         [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self.notificationCenterDelegate];
@@ -57,8 +59,6 @@
             [self.preferencesWindowController showWindow:self];
         }
     }
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification{

@@ -57,6 +57,8 @@
             [self.preferencesWindowController showWindow:self];
         }
     }
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
 }
 
 -(void)applicationWillTerminate:(NSNotification *)notification{

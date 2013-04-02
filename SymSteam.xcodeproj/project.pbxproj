@@ -11,6 +11,9 @@
 		FA188D5315BAB39D0073D516 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FA188D4815BAB31E0073D516 /* Sparkle.framework */; };
 		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
 		FA28FC8B17078B0600E6D8A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA28FC8917078B0600E6D8A0 /* Localizable.strings */; };
+		FA2C139C170B2D5C00CC81ED /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1397170B2D5C00CC81ED /* DDASLLogger.m */; };
+		FA2C139D170B2D5C00CC81ED /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1399170B2D5C00CC81ED /* DDLog.m */; };
+		FA2C139E170B2D5C00CC81ED /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2C139B170B2D5C00CC81ED /* DDTTYLogger.m */; };
 		FA359C5A14DC7D4400010221 /* SetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA359C5914DC7D4400010221 /* SetupWindowController.m */; };
 		FA3AEC0514DC7D1F00A99A40 /* SetupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */; };
 		FA46665115CD646800FBB72A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FA46665015CD646800FBB72A /* icon.icns */; };
@@ -107,6 +110,12 @@
 		FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		FA23E86C1531D3F600339B54 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FA28FC8A17078B0600E6D8A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA2C1396170B2D5C00CC81ED /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		FA2C1397170B2D5C00CC81ED /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		FA2C1398170B2D5C00CC81ED /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		FA2C1399170B2D5C00CC81ED /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		FA2C139A170B2D5C00CC81ED /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		FA2C139B170B2D5C00CC81ED /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
 		FA359C5814DC7D4400010221 /* SetupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupWindowController.h; path = ../SetupWindowController.h; sourceTree = "<group>"; };
 		FA359C5914DC7D4400010221 /* SetupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupWindowController.m; path = ../SetupWindowController.m; sourceTree = "<group>"; };
 		FA3AEC0414DC7D1F00A99A40 /* SetupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupWindow.xib; path = ../SetupWindow.xib; sourceTree = "<group>"; };
@@ -181,6 +190,19 @@
 				FAE8391015BABF2700741C37 /* finish_installation.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FA2C1390170B2D4A00CC81ED /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				FA2C1396170B2D5C00CC81ED /* DDASLLogger.h */,
+				FA2C1397170B2D5C00CC81ED /* DDASLLogger.m */,
+				FA2C1398170B2D5C00CC81ED /* DDLog.h */,
+				FA2C1399170B2D5C00CC81ED /* DDLog.m */,
+				FA2C139A170B2D5C00CC81ED /* DDTTYLogger.h */,
+				FA2C139B170B2D5C00CC81ED /* DDTTYLogger.m */,
+			);
+			name = CocoaLumberjack;
 			sourceTree = "<group>";
 		};
 		FAA053B41531C7AA00A6FEB7 /* View Controllers */ = {
@@ -279,6 +301,7 @@
 		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA2C1390170B2D4A00CC81ED /* CocoaLumberjack */,
 				FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */,
 				FADB5B0314F0089300739ED3 /* Growl.framework */,
 				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
@@ -476,6 +499,9 @@
 				FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */,
 				FA519AF615EBAE390059C6AA /* SCSteamAppsFoldersController.m in Sources */,
 				FA519AF915EBAE5C0059C6AA /* SCSteamDiskManager.m in Sources */,
+				FA2C139C170B2D5C00CC81ED /* DDASLLogger.m in Sources */,
+				FA2C139D170B2D5C00CC81ED /* DDLog.m in Sources */,
+				FA2C139E170B2D5C00CC81ED /* DDTTYLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

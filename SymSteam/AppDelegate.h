@@ -7,6 +7,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
 
 #import "SCSteamDiskManager.h"
 #import "SCSteamAppsFoldersController.h"

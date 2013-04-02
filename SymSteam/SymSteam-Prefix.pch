@@ -4,4 +4,10 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
+    #import "DDLog.h"
+#endif
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_ERROR;
 #endif

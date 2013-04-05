@@ -5,6 +5,8 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import "DDLog.h"
+    #import "SCNotificationCenter+ErrorNotification.h"
+    #import "SCSymSteamConstants.h"
 #endif
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;

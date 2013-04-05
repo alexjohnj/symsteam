@@ -54,7 +54,9 @@
 // Failures
 
 "failedUpdatedSteamFoldersNotificationTitle" = "Something's Gone Wrong!";
+"Something's Gone Wrong" = "Something's Gone Wrong!";
 "failedUpdatedSteamFoldersNotificationDescription" = "Check the console for details.";
+"Click for more information" = "Click for more information";
 "errorOccuredGrowlTitle" = "An Error Occurred";
 
 // Successes

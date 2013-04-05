@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA07E6A6170EFF60007B2D20 /* SCSymSteamConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FA07E6A5170EFF60007B2D20 /* SCSymSteamConstants.m */; };
 		FA188D5215BAB3950073D516 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA188D4815BAB31E0073D516 /* Sparkle.framework */; };
 		FA188D5315BAB39D0073D516 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FA188D4815BAB31E0073D516 /* Sparkle.framework */; };
 		FA23E86D1531D3F600339B54 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FA23E86C1531D3F600339B54 /* dsa_pub.pem */; };
@@ -22,8 +23,9 @@
 		FA519AF915EBAE5C0059C6AA /* SCSteamDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA519AF815EBAE5C0059C6AA /* SCSteamDiskManager.m */; };
 		FA76458F15E8D4190032DCA1 /* SCSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA76458E15E8D4190032DCA1 /* SCSetupController.m */; };
 		FA76459115E8D69A0032DCA1 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */; };
-		FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
 		FA871C1714F00FBD009F5268 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */; };
+		FA96C572170F11AB0041E4DC /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA96C571170F11AB0041E4DC /* Growl.framework */; };
+		FA96C573170F11AD0041E4DC /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FA96C571170F11AB0041E4DC /* Growl.framework */; };
 		FAA053B81531C7C400A6FEB7 /* UpdatesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */; };
 		FAA053B91531C7C400A6FEB7 /* UpdatesPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */; };
 		FAA5A1E915C2698C00B7871C /* SCNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5A1E515C2698C00B7871C /* SCNotificationCenter.m */; };
@@ -33,7 +35,7 @@
 		FABB1BA515319B070073DD70 /* AboutPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */; };
 		FABB1BA615319B070073DD70 /* AboutPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */; };
 		FABBF7BD14DC81AD0060F879 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABBF7BB14DC81AD0060F879 /* MainMenu.xib */; };
-		FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADB5B0314F0089300739ED3 /* Growl.framework */; };
+		FAC791D3170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC791D2170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.m */; };
 		FAE2896115CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */; };
 		FAE8391815BABF5400741C37 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE8391415BABF5400741C37 /* MASPreferencesWindow.xib */; };
 		FAE8391915BABF5400741C37 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8391615BABF5400741C37 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -99,7 +101,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				FA188D5315BAB39D0073D516 /* Sparkle.framework in Copy Files */,
-				FA871C1514F00CF3009F5268 /* Growl.framework in Copy Files */,
+				FA96C573170F11AD0041E4DC /* Growl.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA07E6A4170EFF60007B2D20 /* SCSymSteamConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSymSteamConstants.h; sourceTree = "<group>"; };
+		FA07E6A5170EFF60007B2D20 /* SCSymSteamConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSymSteamConstants.m; sourceTree = "<group>"; };
 		FA188D3915BAB31D0073D516 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		FA23E86C1531D3F600339B54 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FA28FC8A17078B0600E6D8A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		FA76458E15E8D4190032DCA1 /* SCSetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSetupController.m; sourceTree = SOURCE_ROOT; };
 		FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
 		FA871C1614F00FBD009F5268 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Growl Registration Ticket.growlRegDict"; path = "SymSteam/Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		FA96C571170F11AB0041E4DC /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		FAA053B51531C7C400A6FEB7 /* UpdatesPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdatesPreferencesViewController.h; sourceTree = "<group>"; };
 		FAA053B61531C7C400A6FEB7 /* UpdatesPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdatesPreferencesViewController.m; sourceTree = "<group>"; };
 		FAA053B71531C7C400A6FEB7 /* UpdatesPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdatesPreferencesView.xib; sourceTree = "<group>"; };
@@ -144,7 +149,8 @@
 		FABB1BA315319B070073DD70 /* AboutPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutPreferencesViewController.m; path = ../AboutPreferencesViewController.m; sourceTree = "<group>"; };
 		FABB1BA415319B070073DD70 /* AboutPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutPreferencesView.xib; path = ../AboutPreferencesView.xib; sourceTree = "<group>"; };
 		FABBF7BC14DC81AD0060F879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FADB5B0314F0089300739ED3 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		FAC791D1170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCNotificationCenter+ErrorNotification.h"; sourceTree = "<group>"; };
+		FAC791D2170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCNotificationCenter+ErrorNotification.m"; sourceTree = "<group>"; };
 		FAE2895F15CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUserNotificationCenterDelegate.h; sourceTree = "<group>"; };
 		FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUserNotificationCenterDelegate.m; sourceTree = "<group>"; };
 		FAE8391315BABF5400741C37 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
@@ -173,7 +179,7 @@
 				FA76459115E8D69A0032DCA1 /* DiskArbitration.framework in Frameworks */,
 				FA188D5215BAB3950073D516 /* Sparkle.framework in Frameworks */,
 				FAEE702F14DB2CA500BF7020 /* Cocoa.framework in Frameworks */,
-				FADB5B0414F0089300739ED3 /* Growl.framework in Frameworks */,
+				FA96C572170F11AB0041E4DC /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +256,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		FAC791C8170E18F3001EF5E6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FAC791D1170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.h */,
+				FAC791D2170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		FACC00CD1530743E00D5FD8C /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,9 +316,9 @@
 		FAEE702D14DB2CA500BF7020 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA96C571170F11AB0041E4DC /* Growl.framework */,
 				FA2C1390170B2D4A00CC81ED /* CocoaLumberjack */,
 				FA76459015E8D69A0032DCA1 /* DiskArbitration.framework */,
-				FADB5B0314F0089300739ED3 /* Growl.framework */,
 				FAEE702E14DB2CA500BF7020 /* Cocoa.framework */,
 				FAEE703014DB2CA500BF7020 /* Other Frameworks */,
 			);
@@ -323,6 +338,7 @@
 		FAEE703414DB2CA500BF7020 /* SymSteam */ = {
 			isa = PBXGroup;
 			children = (
+				FAC791C8170E18F3001EF5E6 /* Categories */,
 				FA519AF415EBAE390059C6AA /* SCSteamAppsFoldersController.h */,
 				FA519AF515EBAE390059C6AA /* SCSteamAppsFoldersController.m */,
 				FA519AF715EBAE5C0059C6AA /* SCSteamDiskManager.h */,
@@ -339,6 +355,8 @@
 				FAE2896015CD5C1400AA9CF1 /* SCUserNotificationCenterDelegate.m */,
 				FAEE704014DB2CA500BF7020 /* AppDelegate.h */,
 				FAEE704114DB2CA500BF7020 /* AppDelegate.m */,
+				FA07E6A4170EFF60007B2D20 /* SCSymSteamConstants.h */,
+				FA07E6A5170EFF60007B2D20 /* SCSymSteamConstants.m */,
 				FAEE703514DB2CA500BF7020 /* Supporting Files */,
 			);
 			path = SymSteam;
@@ -502,6 +520,8 @@
 				FA2C139C170B2D5C00CC81ED /* DDASLLogger.m in Sources */,
 				FA2C139D170B2D5C00CC81ED /* DDLog.m in Sources */,
 				FA2C139E170B2D5C00CC81ED /* DDTTYLogger.m in Sources */,
+				FAC791D3170E19FE001EF5E6 /* SCNotificationCenter+ErrorNotification.m in Sources */,
+				FA07E6A6170EFF60007B2D20 /* SCSymSteamConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

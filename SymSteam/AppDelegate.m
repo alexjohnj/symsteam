@@ -40,10 +40,13 @@
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [DDLog addLogger:[DDASLLogger sharedInstance]];
+    
     BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
     if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
         [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self.notificationCenterDelegate];
     }
+    
+    [GrowlApplicationBridge setGrowlDelegate:self.notificationCenterDelegate]; // Set this regardless of if we're using Growl or NSUserNotificationCenter as the user could change it later on.
     
     if(setupIsComplete == NO){
         self.setupController = [[SetupWindowController alloc] initWithWindowNibName:@"SetupWindow"];

@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCUserNotificationCenterDelegate : NSObject <NSUserNotificationCenterDelegate>
+@interface SCUserNotificationCenterDelegate : NSObject <NSUserNotificationCenterDelegate, GrowlApplicationBridgeDelegate>
 
 @end

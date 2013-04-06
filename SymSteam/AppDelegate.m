@@ -41,7 +41,7 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     
-    BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    BOOL setupIsComplete = [[NSUserDefaults standardUserDefaults] boolForKey:SCSetupCompleteKey];
     if([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
         [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self.notificationCenterDelegate];
     }
@@ -70,7 +70,7 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"])
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:SCSetupCompleteKey])
         return NO;
     
     else{
@@ -83,40 +83,22 @@
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender{
-    BOOL setupComplete = [[NSUserDefaults standardUserDefaults] boolForKey:@"setupComplete"];
+    BOOL setupComplete = [[NSUserDefaults standardUserDefaults] boolForKey:SCSetupCompleteKey];
     if(setupComplete)
         return NO;
     else
         return YES;
 }
 
-+ (void)initialize{
-    NSString *setupCompleteKey = @"setupComplete";
-    NSNumber *setupComplete = @NO;
-    
-    NSString *steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
-    NSString *steamAppsSymbolicLinkPath = @"";
-    
-    NSString *steamAppsLocalPathKey = @"steamAppsLocalPath";
-    NSString *steamAppsLocalPath = @"";
-    
-    NSString *symbolicPathDestinationKey = @"symbolicPathDestination";
-    NSString *symbolicPathDestination = @"";
-    
-    NSString *growlNotificationsEnabledKey = @"growlNotificationsEnabled";
-    NSNumber *growlNotificationsEnabled = @YES;
-    
-    NSString *steamDriveUUIDKey = @"steamDriveUUID";
-    NSString *steamDriveUUID = @"";
-    
-    
-    NSMutableDictionary *defaults = [@{
-                                     setupCompleteKey: setupComplete,
-                                     steamAppsSymbolicLinkPathKey: steamAppsSymbolicLinkPath,
-                                     steamAppsLocalPathKey: steamAppsLocalPath,
-                                     symbolicPathDestinationKey: symbolicPathDestination,
-                                     growlNotificationsEnabledKey: growlNotificationsEnabled,
-                                     steamDriveUUIDKey: steamDriveUUID} mutableCopy];
++ (void)initialize {
+    NSDictionary *defaults = @{
+                               SCSetupCompleteKey: @NO,
+                               SCSteamAppsSymbolicLinkLocationKey: @"",
+                               SCSteamAppsLocalLocationKey: @"",
+                               SCSteamAppsSymbolicLinkDestinationKey: @"",
+                               SCNotificationsEnabledKey: @YES,
+                               SCSteamDriveUUIDKey: @""
+                               };
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }

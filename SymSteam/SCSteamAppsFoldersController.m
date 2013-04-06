@@ -8,16 +8,12 @@
 
 #import "SCSteamAppsFoldersController.h"
 
-static NSString * const steamDriveUUIDKey = @"steamDriveUUID";
-static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
-static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
-
 @implementation SCSteamAppsFoldersController
 
 #pragma mark -
 
 - (BOOL)externalSteamAppsFolderExists{
-    return [[NSFileManager defaultManager] fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:symbolicPathDestinationKey]];
+    return [[NSFileManager defaultManager] fileExistsAtPath:[[NSUserDefaults standardUserDefaults] stringForKey:SCSteamAppsSymbolicLinkDestinationKey]];
 }
 
 #pragma mark - Folder Updating Methods
@@ -36,7 +32,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     if(!success){
         DDLogError(@"I was trying to rename the local SteamApps folder to SteamAppsLoc but couldn't rename [%@] to [%@] because: [%@]", localSteamAppsPath, newLocalSteamAppsPath, [localSteamAppsFolderRename localizedDescription]);
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
                                                         SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
@@ -51,7 +47,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     if(!success){
         DDLogError(@"I was trying to rename SteamAppsSymb to SteamApps but couldn't rename item [%@] to [%@] because [%@]", symbolicSteamAppsPath, localSteamAppsPath, [symbolicSteamAppsFolderRename localizedDescription]);
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
                                                         SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
@@ -62,7 +58,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     // If we get to this point, everything went A-OK, so we can notify the user that the folders have changed and set steamDriveIsConnected to YES.
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
+    if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle : NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
                                                     SCNotificationCenterNotificationDescription : NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionExternal", nil),
@@ -87,7 +83,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     if(!success){
         DDLogError(@"I was trying to rename SteamApps to SteamAppsSymb but couldn't rename [%@] to [%@] because [%@]", localSteamAppsPath, symbolicSteamAppsPath, [renameSymbolicError localizedDescription]);
         
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
                                                         SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
@@ -103,7 +99,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     success = [fManager moveItemAtPath:currentLocalSteamAppsFolderPath toPath:localSteamAppsPath error:&renameLocalError];
     if(!success){
         DDLogError(@"I was trying to rename SteamAppsLoc to SteamApps but couldn't rename [%@] to [%@] because [%@]", currentLocalSteamAppsFolderPath,localSteamAppsPath, [renameLocalError localizedDescription]);
-        if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey]){
+        if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]){
             [SCNotificationCenter notifyWithDictionary:(@{
                                                         SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
                                                         SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),
@@ -114,7 +110,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
     
     // If we make it to this point then everything will have been succesful and we can notify the user (assuming they want us to).
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey] && showSuccessNotifications)
+    if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey] && showSuccessNotifications)
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle: NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
                                                     SCNotificationCenterNotificationDescription: NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionInternal", nil),
@@ -197,7 +193,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
         NSDictionary *steamAppsFolderAttributes = [fManager attributesOfItemAtPath:localSteamAppsFolderPath error:nil];
         if([[steamAppsFolderAttributes fileType] isEqualToString:NSFileTypeSymbolicLink] && [self externalSteamAppsFolderExists] && ![[SCSteamDiskManager steamDiskManager] steamDriveIsConnected]){
             [[SCSteamDiskManager steamDiskManager] setSteamDriveIsConnected:YES];
-            if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+            if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey])
                 [SCNotificationCenter notifyWithDictionary:(@{
                                                             SCNotificationCenterNotificationTitle : NSLocalizedString(@"updatedSteamFoldersNotificationTitle", nil),
                                                             SCNotificationCenterNotificationDescription : NSLocalizedString(@"updatedSteamFoldersNotificationDescriptionExternal", nil),
@@ -216,7 +212,7 @@ static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
 }
 
 - (void)displayGenericErrorNotification{
-    if([[NSUserDefaults standardUserDefaults] boolForKey:growlNotificationsEnabledKey])
+    if([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey])
         [SCNotificationCenter notifyWithDictionary:(@{
                                                     SCNotificationCenterNotificationTitle: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationTitle", nil),
                                                     SCNotificationCenterNotificationDescription: NSLocalizedString(@"failedUpdatedSteamFoldersNotificationDescription", nil),

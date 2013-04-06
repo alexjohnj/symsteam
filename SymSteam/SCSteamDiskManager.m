@@ -9,10 +9,6 @@
 #import "SCSteamDiskManager.h"
 #import "SCSteamAppsFoldersController.h"
 
-static NSString * const steamDriveUUIDKey = @"steamDriveUUID";
-static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabled";
-static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
-
 #pragma mark - Disk Mount Approval Callbacks
 
 DADissenterRef diskWillMount(DADiskRef disk, void *context){
@@ -154,7 +150,7 @@ void unregisterForDADiskCallbacks(void *context){
         return NO;
     CFDictionaryRef driveDetails = DADiskCopyDescription(suspectDrive);
     if(driveDetails == NULL){
-        DDLogCError(@"The drive details provided from the suspect drive where NULL");
+        DDLogCError(@"The drive details provided from the suspect drive were NULL");
         return NO;
     } if(CFDictionaryGetValue(driveDetails, kDADiskDescriptionVolumeUUIDKey) == NULL){
         CFRelease(driveDetails);
@@ -166,7 +162,7 @@ void unregisterForDADiskCallbacks(void *context){
     CFStringRef cfSuspectDriveUUID = CFUUIDCreateString(kCFAllocatorDefault, cfUUID);
     CFRelease(cfUUID);
     NSString *suspectDriveUUID = (__bridge_transfer NSString *)cfSuspectDriveUUID;
-    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:steamDriveUUIDKey];
+    NSString *steamDriveUUID = [[NSUserDefaults standardUserDefaults] stringForKey:SCSteamDriveUUIDKey];
     if([steamDriveUUID isEqualToString:suspectDriveUUID])
         return YES;
     else

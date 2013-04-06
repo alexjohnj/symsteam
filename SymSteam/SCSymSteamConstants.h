@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCSymSteamConstants : NSObject
-
 extern NSString *const SCSymSteamErrorDomain;
 
-@end
+#pragma mark - User Defaults Keys
+
+extern NSString *const SCSetupCompleteKey;
+extern NSString *const SCNotificationsEnabledKey;
+extern NSString *const SCSteamAppsSymbolicLinkLocationKey;
+extern NSString *const SCSteamAppsSymbolicLinkDestinationKey;
+extern NSString *const SCSteamAppsLocalLocationKey;
+extern NSString *const SCSteamDriveUUIDKey;

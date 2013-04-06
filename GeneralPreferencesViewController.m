@@ -9,12 +9,6 @@
 #import "GeneralPreferencesViewController.h"
 #import "AppDelegate.h"
 
-static NSString * const steamAppsLocalPathKey = @"steamAppsLocalPath";
-static NSString * const steamAppsSymbolicLinkPathKey = @"steamAppsSymbolicLinkPath";
-static NSString * const symbolicPathDestinationKey = @"symbolicPathDestination";
-static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
-
-
 @implementation GeneralPreferencesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,14 +29,13 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
         [self.notificationOptions removeRow:0];
         [self.notificationOptions sizeToCells];
         
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:notificationsEnabledKey])
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]) {
             [self.notificationOptions selectCellAtRow:1 column:0];
-        else
+        } else {
             [self.notificationOptions selectCellAtRow:0 column:0];
-    }
-    
-    else {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:notificationsEnabledKey])
+        }
+    } else {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey])
             [self.notificationOptions selectCellAtRow:2 column:0];
         else if ([[SCNotificationCenter sharedCenter] getNotificationMethod] == SCNotificationCenterNotifyWithNotificationCenter || [[SCNotificationCenter sharedCenter] getNotificationMethod] == SCNotificationCenterNotifyByAvailability)
             [self.notificationOptions selectCellAtRow:0 column:0];
@@ -52,8 +45,7 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
     
     if ([loginController checkSessionLoginItemsForApplication:bundleURL]) {
         [self.startAtLoginCheckbox setState:NSOnState];
-    }
-    else {
+    } else {
         [self.startAtLoginCheckbox setState:NSOffState];
     }
 }
@@ -93,20 +85,20 @@ static NSString * const notificationsEnabledKey = @"growlNotificationsEnabled";
 - (IBAction)changeNotificationOptions:(id)sender{
     if ([[SCNotificationCenter sharedCenter] systemNotificationCenterAvailable]){
         if (self.notificationOptions.selectedRow == 0 || self.notificationOptions.selectedRow == 1){
-            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:notificationsEnabledKey];
+            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:SCNotificationsEnabledKey];
             [[SCNotificationCenter sharedCenter] setNotificationMethodPreference:self.notificationOptions.selectedRow];
         }
         else {
-            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:notificationsEnabledKey];
+            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:SCNotificationsEnabledKey];
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
     else {
         if (self.notificationOptions.selectedRow == 0)
-            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:notificationsEnabledKey];
+            [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:SCNotificationsEnabledKey];
         else
-            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:notificationsEnabledKey];
+            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:SCNotificationsEnabledKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }

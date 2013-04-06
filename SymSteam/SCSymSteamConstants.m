@@ -8,8 +8,13 @@
 
 #import "SCSymSteamConstants.h"
 
-@implementation SCSymSteamConstants
-
 NSString *const SCSymSteamErrorDomain = @"com.simplecode.symsteam";
 
-@end
+#pragma mark - User Defaults Keys
+
+NSString *const SCSetupCompleteKey = @"setupComplete";
+NSString *const SCNotificationsEnabledKey = @"growlNotificationsEnabled";
+NSString *const SCSteamAppsSymbolicLinkLocationKey = @"steamAppsSymbolicLinkPath";
+NSString *const SCSteamAppsSymbolicLinkDestinationKey = @"symbolicPathDestination";
+NSString *const SCSteamAppsLocalLocationKey = @"steamAppsLocalPath";
+NSString *const SCSteamDriveUUIDKey = @"steamDriveUUID";

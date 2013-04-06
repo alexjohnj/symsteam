@@ -122,7 +122,7 @@ static NSString * const growlNotificationsEnabledKey = @"growlNotificationsEnabl
     NSString *contextInfoString = (__bridge NSString *)contextInfo;
     
     if([contextInfoString isEqualToString:@"setupSuccessAlert"]){
-        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:@"setupComplete"];
+        [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:SCSetupCompleteKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [alert.window orderOut:self];
         [self showStartAtLoginSheet];

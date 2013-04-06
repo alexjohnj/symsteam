@@ -8,10 +8,6 @@
 
 #import "UpdatesPreferencesViewController.h"
 
-@interface UpdatesPreferencesViewController ()
-
-@end
-
 @implementation UpdatesPreferencesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

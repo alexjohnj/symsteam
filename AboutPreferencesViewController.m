@@ -8,10 +8,6 @@
 
 #import "AboutPreferencesViewController.h"
 
-@interface AboutPreferencesViewController ()
-
-@end
-
 @implementation AboutPreferencesViewController
 @synthesize aboutDescription = _aboutDescription;
 @synthesize versionLabel = _versionLabel;

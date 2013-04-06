@@ -140,14 +140,14 @@
 }
 
 - (void)saveSymbolicLinkDestinationToUserDefaults:(NSURL *)destination{
-    [[NSUserDefaults standardUserDefaults] setValue:destination.path forKey:@"symbolicPathDestination"];
+    [[NSUserDefaults standardUserDefaults] setValue:destination.path forKey:SCSteamAppsSymbolicLinkDestinationKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)saveDriveUUIDToUserDefaults:(DADiskRef)drive{
     NSString *uuid = [self getDriveUUID:drive];
     if(uuid){
-        [[NSUserDefaults standardUserDefaults] setValue:uuid forKey:@"steamDriveUUID"];
+        [[NSUserDefaults standardUserDefaults] setValue:uuid forKey:SCSteamDriveUUIDKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else{
@@ -156,7 +156,7 @@
 }
 
 - (void)markSetupAsComplete{
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"setupComplete"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SCSetupCompleteKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

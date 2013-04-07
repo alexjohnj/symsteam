@@ -15,6 +15,7 @@
 "Quit" = "Quit";
 "Error" = "Error";
 "No thanks" = "No thanks";
+"More Information" = "More Information";
 
 // **** Preferences ****
 
@@ -65,3 +66,24 @@
 "updatedSteamFoldersNotificationDescriptionExternal" = "You're now playing games off of your external drive.";
 "updatedSteamFoldersNotificationDescriptionInternal" = "You're now playing games off of your internal drive.";
 "updatedSteamFoldersNotificationGrowlTitle" = "Changed SteamApps Folders";
+
+// ******Error Messages******
+
+"SCError2000Description" = "A local SteamApps folder exists and a symbolic link exists but they're not named correctly and I couldn't fix it.";
+
+"SCError2001Description" = "A SteamApps folder couldn't be found on your computer.";
+"SCError2001FailureReason" = "A SteamApps folder couldn't be found at ~/Library/Application Support/Steam/SteamApps/ or ~/Library/Application Support/Steam/SteamAppsLoc/.";
+"SCError2001RecoverySuggestion" = "Launch Steam to create a new one.";
+
+"SCError2002Description" = "A symbolic link couldn't be found on your computer.";
+"SCError2002FailureReason" = "No symbolic link was found at ~/Library/Application Support/Steam/SteamAppsSymb/.";
+"SCError2002RecoverySuggestion" = "Rerun setup to recreate the symbolic link.";
+
+"SCError2003Description" = "There's too many folders in the Steam folder.";
+"SCError2003FailureReason" = "A SteamApps folder, a SteamAppsLoc folder and a SteamAppsSymb folder were found on your computer. That's one too many!";
+"SCError2003RecoverySuggestion" = "Delete either the SteamApps or SteamAppsLoc folder in ~/Library/Application Support/Steam/. Check the contents of these folders first or you might delete your games!";
+
+
+"SCError3000Description" = "Could not make the symbolic link the primary SteamApps folder.";
+"SCError3001Description" = "Could not make the local SteamApps folder the primary folder.";
+

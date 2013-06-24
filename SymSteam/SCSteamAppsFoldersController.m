@@ -57,6 +57,8 @@
         if ([[NSUserDefaults standardUserDefaults] boolForKey:SCNotificationsEnabledKey]) {
             [[SCNotificationCenter sharedCenter] notifyWithError:folderChangeFailureError];
         }
+        // Revert the changes made to the SteamApps folder
+        [fManager moveItemAtPath:newLocalSteamAppsPath toPath:localSteamAppsPath error:nil];
         return NO;
     }
     

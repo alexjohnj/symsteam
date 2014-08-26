@@ -1,345 +1,378 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script type="text/javascript">
-		
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-30696062-1']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		
-		</script>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      SymSteam Changelog
+    </title>
+    <script type="text/javascript">
+      
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30696062-1']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      }
+      )();
+      
+    </script>
     <style>
-  @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
-
-body {
-  padding:50px;
-  font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#777;
-  font-weight:300;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color:#222;
-  margin:0 0 20px;
-}
-
-p, ul, ol, table, pre, dl {
-  margin:0 0 20px;
-}
-
-h1, h2, h3 {
-  line-height:1.1;
-}
-
-h1 {
-  font-size:28px;
-}
-
-h2 {
-  color:#393939;
-}
-
-h3, h4, h5, h6 {
-  color:#494949;
-}
-
-a {
-  color:#39c;
-  font-weight:400;
-  text-decoration:none;
-}
-
-a small {
-  font-size:11px;
-  color:#777;
-  margin-top:-0.6em;
-  display:block;
-}
-
-.wrapper {
-  width:860px;
-  margin:0 auto;
-}
-
-blockquote {
-  border-left:1px solid #e5e5e5;
-  margin:0;
-  padding:0 0 0 20px;
-  font-style:italic;
-}
-
-code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
-  font-size:12px;
-}
-
-pre {
-  padding:8px 15px;
-  background: #f8f8f8;  
-  border-radius:5px;
-  border:1px solid #e5e5e5;
-  overflow-x: auto;
-}
-
-table {
-  width:100%;
-  border-collapse:collapse;
-}
-
-th, td {
-  text-align:left;
-  padding:5px 10px;
-  border-bottom:1px solid #e5e5e5;
-}
-
-dt {
-  color:#444;
-  font-weight:700;
-}
-
-th {
-  color:#444;
-}
-
-img {
-  max-width:100%;
-}
-
-header {
-  width:270px;
-  float:left;
-  position:fixed;
-}
-
-header ul {
-  list-style:none;
-  height:40px;
-  
-  padding:0;
-  
-  background: #eee;
-  background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  
-  border-radius:5px;
-  border:1px solid #d2d2d2;
-  box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
-  width:270px;
-}
-
-header li {
-  width:89px;
-  float:left;
-  border-right:1px solid #d2d2d2;
-  height:40px;
-}
-
-header ul a {
-  line-height:1;
-  font-size:11px;
-  color:#999;
-  display:block;
-  text-align:center;
-  padding-top:6px;
-  height:40px;
-}
-
-strong {
-  color:#222;
-  font-weight:700;
-}
-
-header ul li + li {
-  width:88px;
-  border-left:1px solid #fff;
-}
-
-header ul li + li + li {
-  border-right:none;
-  width:89px;
-}
-
-header ul a strong {
-  font-size:14px;
-  display:block;
-  color:#222;
-}
-
-section {
-  width:500px;
-  float:right;
-  padding-bottom:50px;
-}
-
-small {
-  font-size:11px;
-}
-
-hr {
-  border:0;
-  background:#e5e5e5;
-  height:1px;
-  margin:0 0 20px;
-}
-
-footer {
-  width:270px;
-  float:left;
-  position:fixed;
-  bottom:50px;
-}
-
-@media print, screen and (max-width: 960px) {
-  
-  div.wrapper {
-    width:auto;
-    margin:0;
-  }
-  
-  header, section, footer {
-    float:none;
-    position:static;
-    width:auto;
-  }
-  
-  header {
-    padding-right:320px;
-  }
-  
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
-  }
-  
-  header a small {
-    display:inline;
-  }
-  
-  header ul {
-    position:absolute;
-    right:50px;
-    top:52px;
-  }
-}
-
-@media print, screen and (max-width: 720px) {
-  body {
-    word-wrap:break-word;
-  }
-  
-  header {
-    padding:0;
-  }
-  
-  header ul, header p.view {
-    position:static;
-  }
-  
-  pre, code {
-    word-wrap:normal;
-  }
-}
-
-@media print, screen and (max-width: 480px) {
-  body {
-    padding:15px;
-  }
-  
-  header ul {
-    display:none;
-  }
-}
-
-@media print {
-  body {
-    padding:0.4in;
-    font-size:12pt;
-    color:#444;
-  }
-}
+      @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+      
+      body {
+        padding:50px;
+        font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color:#777;
+        font-weight:300;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color:#222;
+        margin:0 0 20px;
+      }
+      
+      p, ul, ol, table, pre, dl {
+        margin:0 0 20px;
+      }
+      
+      h1, h2, h3 {
+        line-height:1.1;
+      }
+      
+      h1 {
+        font-size:28px;
+      }
+      
+      h2 {
+        color:#393939;
+      }
+      
+      h3, h4, h5, h6 {
+        color:#494949;
+      }
+      
+      a {
+        color:#39c;
+        font-weight:400;
+        text-decoration:none;
+      }
+      
+      a small {
+        font-size:11px;
+        color:#777;
+        margin-top:-0.6em;
+        display:block;
+      }
+      
+      .wrapper {
+        width:860px;
+        margin:0 auto;
+      }
+      
+      blockquote {
+        border-left:1px solid #e5e5e5;
+        margin:0;
+        padding:0 0 0 20px;
+        font-style:italic;
+      }
+      
+      code, pre {
+        font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+        color:#333;
+        font-size:12px;
+      }
+      
+      pre {
+        padding:8px 15px;
+        background: #f8f8f8;
+        
+        border-radius:5px;
+        border:1px solid #e5e5e5;
+        overflow-x: auto;
+      }
+      
+      table {
+        width:100%;
+        border-collapse:collapse;
+      }
+      
+      th, td {
+        text-align:left;
+        padding:5px 10px;
+        border-bottom:1px solid #e5e5e5;
+      }
+      
+      dt {
+        color:#444;
+        font-weight:700;
+      }
+      
+      th {
+        color:#444;
+      }
+      
+      img {
+        max-width:100%;
+      }
+      
+      header {
+        width:270px;
+        float:left;
+        position:fixed;
+      }
+      
+      header ul {
+        list-style:none;
+        height:40px;
+        
+        padding:0;
+        
+        background: #eee;
+        background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+        background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+        background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+        background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+        background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+        
+        border-radius:5px;
+        border:1px solid #d2d2d2;
+        box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+        width:270px;
+      }
+      
+      header li {
+        width:89px;
+        float:left;
+        border-right:1px solid #d2d2d2;
+        height:40px;
+      }
+      
+      header ul a {
+        line-height:1;
+        font-size:11px;
+        color:#999;
+        display:block;
+        text-align:center;
+        padding-top:6px;
+        height:40px;
+      }
+      
+      strong {
+        color:#222;
+        font-weight:700;
+      }
+      
+      header ul li + li {
+        width:88px;
+        border-left:1px solid #fff;
+      }
+      
+      header ul li + li + li {
+        border-right:none;
+        width:89px;
+      }
+      
+      header ul a strong {
+        font-size:14px;
+        display:block;
+        color:#222;
+      }
+      
+      section {
+        width:500px;
+        float:right;
+        padding-bottom:50px;
+      }
+      
+      small {
+        font-size:11px;
+      }
+      
+      hr {
+        border:0;
+        background:#e5e5e5;
+        height:1px;
+        margin:0 0 20px;
+      }
+      
+      footer {
+        width:270px;
+        float:left;
+        position:fixed;
+        bottom:50px;
+      }
+      
+      @media print, screen and (max-width: 960px) {
+        
+        div.wrapper {
+          width:auto;
+          margin:0;
+        }
+        
+        header, section, footer {
+          float:none;
+          position:static;
+          width:auto;
+        }
+        
+        header {
+          padding-right:320px;
+        }
+        
+        section {
+          border:1px solid #e5e5e5;
+          border-width:1px 0;
+          padding:20px 0;
+          margin:0 0 20px;
+        }
+        
+        header a small {
+          display:inline;
+        }
+        
+        header ul {
+          position:absolute;
+          right:50px;
+          top:52px;
+        }
+      }
+      
+      @media print, screen and (max-width: 720px) {
+        body {
+          word-wrap:break-word;
+        }
+        
+        header {
+          padding:0;
+        }
+        
+        header ul, header p.view {
+          position:static;
+        }
+        
+        pre, code {
+          word-wrap:normal;
+        }
+      }
+      
+      @media print, screen and (max-width: 480px) {
+        body {
+          padding:15px;
+        }
+        
+        header ul {
+          display:none;
+        }
+      }
+      
+      @media print {
+        body {
+          padding:0.4in;
+          font-size:12pt;
+          color:#444;
+        }
+      }
     </style>
-		<link rel="stylesheet" href="stylesheets/styles.css">
-		<meta charset="UTF-8">
-		<title>SymSteam Changelog</title>
-	</head>
-	<body>
-		<h1>Ch-Ch-Changes</h1>
-
-		<h2 id="beta2.10.3.1">Beta 2.1 (0.3.1)</h2>
-		<h3 id="sunday31stofmarch2013">Sunday 31st of March 2013</h3>
-		<ul>
-			<li>Improved error handling during setup.</li>
-			<li>Fixed a spelling mistake in the UI.</li>
-		</ul>
-
-		<h2 id="beta20.3">Beta 2 (0.3)</h2>
-		<h3 id="monday3rdofdecember">Monday 3rd of December</h3>
-		
-		<ul>
-		<li>(Yet another) total rewrite of the application. The Steam drive is now detected based on the drive&#8217;s UUID, rather than on the drive&#8217;s name so drive&#8217;s with the same name as the Steam drive won&#8217;t cause SymSteam to switch SteamApps folders. (N.B. You will have to re-run setup).</li>
-		<li>Icon!</li>
-		<li>Shortened messages in notifications so that they aren&#8217;t truncated.</li>
-		<li>Much more reliable detection &amp; repairing of issues with your SteamApps folders that would prevent SymSteam from working.</li>
-		<li>Fixed a crash that would occur if SymSteam was started on login.</li>
-		<li>Added the ability to reset SymSteam&#8217;s settings by holding down the option (⌥) key when quitting SymSteam via the quit button.</li>
-		<li>Holding down the option (⌥) key while launching SymSteam will now show the preferences window.</li>
-		<li>Added a preference to launch SymSteam on login (highly recommended!).</li>
-		<li>Added support for Notification Centre on Mac OS 10.8 (Growl is still used on OS 10.7 and can be selected instead of Notification Centre on OS 10.8).</li>
-		<li>Significantly more detailed messages are logged to the console now. If you receive an error, check the console for some details.</li>
-		</ul>
-		
-		<h3 id="setupimprovements">Setup Improvements</h3>
-		
-		<ul>
-		<li>Setup has been greatly simplified. You no longer need to specify the location of the symbolic and local SteamApps folders, instead you just need to tell SymSteam where the SteamApps folder is on the external hard drive.</li>
-		<li>SymSteam will now quit if you close the setup window without finishing setup.</li>
-		<li>It&#8217;s not longer possible to open the preferences window before finishing setup.</li>
-		<li>SymSteam will no longer watch for drives being plugged in before setup is finished.</li>
-		<li>Fixed a bug where setup would report that it was successful after reporting that it wasn&#8217;t.</li>
-		<li>Added a title to the setup window.</li>
-		<li>Fixed the alignment of the &#8220;Quit&#8221; button in the setup window. It was a few points too far from the window&#8217;s frame.</li>
-		</ul>
-		
-		<h2 id="beta10.2">Beta 1 (0.2)</h2>
-		
-		<h3 id="sunday8thofapril">Sunday 8th of April</h3>
-		
-		<ul>
-		<li>Growl notifications for a variety of events in the application.</li>
-		<li>A total rewrite of the underlying application has taken place. SymSteam no longer scans drives, rather it will resolve the symbolic link you point it to and only scan at that path for the SteamApps folder. This makes SymSteam substantially faster now.</li>
-		<li>The preferences window has been redesigned and now looks like a preferences window. The window also features a new about section with information about SymSteam and credits to those who made the libraries used in SymSteam.</li>
-		<li>It&#8217;s now possible to quit SymSteam via the preferences window.</li>
-		<li>An autoupdate system has been added to SymSteam.</li>
-		<li>The first run setup experience has been improved greatly. The instructions are now a lot clearer and SymSteam includes a small “wizard” to help create a symbolic link to the SteamApps folder on your external hard drive.</li>
-		<li>SymSteam will now attempt to repair any problems with the naming of your SteamApps folder when launched with limited success.</li>
-		<li>SymSteam will now detect if your external hard drive is connected and update the SteamApps folders accordingly on launch.</li>
-		<li>The majority of alerts and popups in SymSteam (mainly file open dialogues) are now sheets attached to a window.</li>
-		<li>If SymSteam is quit while a Steam drive is connected, it will revert the SteamApps folders so that it is better prepared for when it&#8217;s relaunched.</li>
-		</ul>
-		
-		<h2 id="">0.1.5</h2>
-		
-		<ul>
-		<li>Added a basic, potentially buggy, preferences window that allows you to change the location of the local and symbolic SteamApps folders.</li>
-		<li>Improved drive management. SymSteam now keeps track of which drives aren&#8217;t steam drives far better and won&#8217;t rename the SteamApps folder if a non steam drive is unplugged whilst a steam drive is still plugged in.</li>
-		<li>Slightly sped up searching of drives for a SteamApps folder.</li>
-		</ul>
-		
-		<h2 id="">0.1</h2>
-		
-		<p>First release</p>
-	</body>
+  </head>
+  <body>
+    <h1>
+      Ch-Ch-Changes
+    </h1>
+    <h2 id="beta10.2">
+      Beta 1 (0.2)
+    </h2>
+    <h3 id="sunday8supthsupofapril">
+      Sunday 8
+      <sup>
+        th
+      </sup>
+      of April
+    </h3>
+    <ul>
+      <li>
+        Growl notifications for a variety of events in the
+        application.
+      </li>
+      <li>
+        A total rewrite of the underlying application has taken place.
+        SymSteam no longer scans drives, rather it will resolve the
+        symbolic link you point it to and only scan at that path for the
+        SteamApps folder. This makes SymSteam substantially faster
+        now.
+      </li>
+      <li>
+        The preferences window has been redesigned and now looks like a
+        preferences window. The window also features a new about section
+        with information about SymSteam and credits to those who made the
+        libraries used in SymSteam.
+      </li>
+      <li>
+        It’s now possible to quit SymSteam via the preferences
+        window.
+      </li>
+      <li>
+        An autoupdate system has been added to SymSteam.
+      </li>
+      <li>
+        The first run setup experience has been improved greatly. The
+        instructions are now a lot clearer and SymSteam includes a small
+        “wizard” to help create a symbolic link to the SteamApps folder on
+        your external hard drive.
+      </li>
+      <li>
+        SymSteam will now attempt to repair any problems with the
+        naming of your SteamApps folder when launched with limited
+        success.
+      </li>
+      <li>
+        SymSteam will now detect if your external hard drive is
+        connected and update the SteamApps folders accordingly on
+        launch.
+      </li>
+      <li>
+        The majority of alerts and popups in SymSteam (mainly file open
+        dialogues) are now sheets attached to a window.
+      </li>
+      <li>
+        If SymSteam is quit while a Steam drive is connected, it will
+        revert the SteamApps folders so that it is better prepared for when
+        it’s relaunched.
+      </li>
+    </ul>
+    <h2>
+      0.1.5
+    </h2>
+    <ul>
+      <li>
+        Added a basic, potentially buggy, preferences window that
+        allows you to change the location of the local and symbolic
+        SteamApps folders.
+      </li>
+      <li>
+        Improved drive management. SymSteam now keeps track of which
+        drives aren't steam drives far better and won't rename the
+        SteamApps folder if a non steam drive is unplugged whilst a steam
+        drive is still plugged in.
+      </li>
+      <li>
+        Slightly sped up searching of drives for a SteamApps
+        folder.
+      </li>
+    </ul>
+    <h2>
+      0.1
+    </h2>
+    <ul>
+      <li>
+        First release
+      </li>
+    </ul>
+  </body>
 </html>
